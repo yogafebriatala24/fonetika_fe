@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Mulish } from "next/font/google";
+import { Ubuntu } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
-const mulish = Mulish({
-  subsets: ["latin"],
-  variable: "--font-mulish",
+const ubuntu = Ubuntu({
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -19,8 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mulish.variable} ${mulish.variable} antialiased`}>
-        {children}
+      <body className={`${ubuntu.className} ${ubuntu.className} antialiased`}>
+        <Header />
+        <div className="md:max-w-2xl lg:max-w-6xl max-w-full   mx-auto">
+          {children}
+        </div>
+        <div className="mt-4">
+          <Footer />
+        </div>
       </body>
     </html>
   );
