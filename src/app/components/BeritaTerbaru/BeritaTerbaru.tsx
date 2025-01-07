@@ -61,7 +61,7 @@ export default async function BeritaTerbaru() {
           ))}
           {listBerita && listBerita.length > maxItems && (
             <div className="mt-4 text-center text-primary text-sm">
-              <Link href="#" className="flex gap-2 items-center justify-center">
+              <Link href="/" className="flex gap-2 items-center justify-center">
                 Muat Lebih Banyak
                 <IoIosArrowDown />
               </Link>
