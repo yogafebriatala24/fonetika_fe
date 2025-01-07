@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 
 const figtree = Figtree({
   weight: ["400", "500", "600", "700", "800", "900"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
