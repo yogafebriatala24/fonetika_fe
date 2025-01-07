@@ -19,9 +19,7 @@ export default function Home() {
           {/* <BeritaTerbaru /> */}
           <hr className="mt-4" />
         </div>
-        <div className="md:col-span-5 ">
-          <Trending />
-        </div>
+        <div className="md:col-span-5 ">{/* <Trending /> */}</div>
       </section>
     </>
   );
