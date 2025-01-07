@@ -8,7 +8,7 @@ export default async function Menu() {
     <>
       <div className="flex  overflow-auto items-center border-b p-2 ">
         {listKategori?.map((data) => (
-          <Link href={"#"} className="whitespace-nowrap mx-3" key={data.slug}>
+          <Link href={"/"} className="whitespace-nowrap mx-3" key={data.slug}>
             {data.nama}
           </Link>
         ))}

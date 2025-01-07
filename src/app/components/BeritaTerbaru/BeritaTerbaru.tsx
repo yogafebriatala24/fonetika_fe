@@ -72,3 +72,6 @@ export default async function BeritaTerbaru() {
     </>
   );
 }
+
+export const revalidate = 10;
+export const dynamicParams = true;
