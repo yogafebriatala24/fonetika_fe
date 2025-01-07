@@ -41,7 +41,7 @@ export default async function BeritaTerbaru() {
               <div className="col-span-8 md:col-span-9">
                 <div>
                   <Link
-                    href={`/pages/detail-berita/${data.slug}`}
+                    href={`/detail-berita/${data.slug}`}
                     className="w-full md:text-base text-[14px] font-semibold"
                   >
                     {truncateText(data.nama, 12)}
