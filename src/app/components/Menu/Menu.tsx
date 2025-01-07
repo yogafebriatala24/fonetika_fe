@@ -3,9 +3,8 @@ import { BeritaType } from "@/app/types/BeritaType";
 import Link from "next/link";
 import React from "react";
 
-export const revalidate = 30;
 export default async function Menu() {
-  const listKategori = await fetchKategori();
+  const listKategori: BeritaType[] = await fetchKategori();
   return (
     <>
       <div className="flex  overflow-auto items-center border-b p-2 ">

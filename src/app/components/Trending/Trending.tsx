@@ -2,9 +2,10 @@ import React from "react";
 
 import ContentTrending from "./Content";
 import { fetchBeritaList } from "@/app/libs/ApiDetailBerita";
+import { BeritaType } from "@/app/types/BeritaType";
 
 export default async function Trending() {
-  const listBerita = await fetchBeritaList();
+  const listBerita: BeritaType[] = await fetchBeritaList();
   const maxItems = 4;
   const limitedBerita = listBerita?.slice(0, maxItems);
   return (

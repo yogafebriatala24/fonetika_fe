@@ -1,13 +1,13 @@
 import React from "react";
 import BeritaTerbaru from "./BeritaTerbaru";
 import { fetchBeritaList } from "@/app/libs/ApiDetailBerita";
+import { BeritaType } from "@/app/types/BeritaType";
 
 export default async function BeritaTerbaruPage() {
-  const listBerita = await fetchBeritaList();
+  const listBerita: BeritaType[] = await fetchBeritaList();
   return (
     <>
       <BeritaTerbaru listBerita={listBerita} />
     </>
   );
 }
-export const revalidate = 90;
