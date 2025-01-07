@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer";
 
 const figtree = Figtree({
   weight: ["400", "500", "700"],
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   display: "swap",
   preload: false,
 });
