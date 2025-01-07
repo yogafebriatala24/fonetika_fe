@@ -5,10 +5,10 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
 const figtree = Figtree({
-  weight: ["400", "500", "700"],
-  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
   preload: false,
+  variable: "--font-figtree",
 });
 
 export const metadata: Metadata = {
