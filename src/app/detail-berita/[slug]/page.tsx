@@ -18,5 +18,3 @@ export default async function DetailBerita({
   );
 }
 export const dynamic = "force-dynamic";
-
-export const revalidate = 90;
