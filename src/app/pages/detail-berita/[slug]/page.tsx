@@ -1,13 +1,11 @@
 import { fetchDetailBerita } from "@/app/api/berita/GetBerita";
 import ContentDetailBerita from "./Content";
 
-interface DetailBeritaProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function DetailBerita({ params }: DetailBeritaProps) {
+export default async function DetailBerita({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const { slug } = params;
 
   const detailBerita = await fetchDetailBerita(slug);
