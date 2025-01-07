@@ -1,5 +1,5 @@
 import React from "react";
-import { fetchBeritaList } from "@/app/api/berita/route";
+import { fetchBeritaList } from "@/app/api/berita/GetBerita";
 import ContentTrending from "./Content";
 
 export default async function Trending() {

@@ -1,4 +1,4 @@
-import { fetchKategoriList } from "@/app/api/kategori/route";
+import { fetchKategoriList } from "@/app/api/kategori/GetKategori";
 import Link from "next/link";
 import React from "react";
 

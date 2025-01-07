@@ -1,4 +1,4 @@
-import { fetchBeritaList } from "@/app/api/berita/route";
+import { fetchBeritaList } from "@/app/api/berita/GetBerita";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -42,7 +42,7 @@ export default async function BeritaTerbaru() {
                 <div>
                   <Link
                     href={`/pages/detail-berita/${data.slug}`}
-                    className="w-full text-[14px] font-semibold"
+                    className="w-full md:text-base text-[14px] font-semibold"
                   >
                     {truncateText(data.nama, 12)}
                   </Link>
