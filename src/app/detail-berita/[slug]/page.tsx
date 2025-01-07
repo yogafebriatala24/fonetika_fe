@@ -17,3 +17,4 @@ export default async function DetailBerita({
     </>
   );
 }
+export const dynamic = "force-dynamic";

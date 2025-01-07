@@ -19,3 +19,5 @@ export default async function Trending() {
     </>
   );
 }
+
+export const dynamic = "force-dynamic";

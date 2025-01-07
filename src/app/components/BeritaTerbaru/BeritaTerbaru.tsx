@@ -72,3 +72,5 @@ export default async function BeritaTerbaru() {
     </>
   );
 }
+
+export const dynamic = "force-dynamic";
