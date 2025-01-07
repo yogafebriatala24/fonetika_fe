@@ -1,9 +1,6 @@
 import React from "react";
-const ContentDetailBerita = dynamic(() => import("./Content"), {
-  ssr: false,
-});
+import ContentDetailBerita from "./Content";
 import { fetchDetailBerita } from "@/app/api/berita/GetBerita";
-import dynamic from "next/dynamic";
 
 export default async function DetailBerita({
   params,
