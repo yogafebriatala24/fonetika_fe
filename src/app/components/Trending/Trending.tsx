@@ -1,6 +1,7 @@
 import React from "react";
-import { fetchBeritaList } from "@/app/api/berita/GetBerita";
+
 import ContentTrending from "./Content";
+import { fetchBeritaList } from "@/app/libs/ApiDetailBerita";
 
 export default async function Trending() {
   const listBerita = await fetchBeritaList();
@@ -19,5 +20,3 @@ export default async function Trending() {
     </>
   );
 }
-
-export const dynamic = "force-dynamic";

@@ -1,14 +1,17 @@
-import { fetchBeritaList } from "@/app/api/berita/GetBerita";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { LuUserPen } from "react-icons/lu";
 import { MdOutlineDateRange } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
+import { BeritaType } from "@/app/types/BeritaType";
 
-export default async function BeritaTerbaru() {
-  const listBerita = await fetchBeritaList();
-
+export default function BeritaTerbaru({
+  listBerita,
+}: {
+  listBerita: BeritaType[];
+}) {
   const truncateText = (text: string, wordLimit: number) => {
     const words = text.split(" ");
     if (words.length > wordLimit) {
@@ -42,6 +45,7 @@ export default async function BeritaTerbaru() {
                 <div>
                   <Link
                     href={`/detail-berita/${data.slug}`}
+                    prefetch
                     className="w-full md:text-base text-[14px] font-semibold"
                   >
                     {truncateText(data.nama, 12)}
@@ -72,5 +76,3 @@ export default async function BeritaTerbaru() {
     </>
   );
 }
-
-export const dynamic = "force-dynamic";

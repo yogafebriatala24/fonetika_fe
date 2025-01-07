@@ -1,6 +1,6 @@
 import React from "react";
 import ContentDetailBerita from "./Content";
-import { fetchDetailBerita } from "@/app/api/berita/GetBerita";
+import { fetchDetailBerita } from "@/app/libs/ApiDetailBerita";
 
 export default async function DetailBerita({
   params,
@@ -17,4 +17,5 @@ export default async function DetailBerita({
     </>
   );
 }
-export const dynamic = "force-dynamic";
+
+export const revalidate = 10;
