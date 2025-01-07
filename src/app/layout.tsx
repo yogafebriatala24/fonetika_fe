@@ -8,6 +8,7 @@ const figtree = Figtree({
   weight: ["400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
