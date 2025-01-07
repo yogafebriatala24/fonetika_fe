@@ -7,14 +7,13 @@ export default async function DetailBerita({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const slug = (await params).slug;
 
   const detailBerita = await fetchDetailBerita(slug);
+
   return (
     <>
       <ContentDetailBerita detailBerita={detailBerita} />
     </>
   );
 }
-export const revalidate = 10;
-export const dynamicParams = true;
