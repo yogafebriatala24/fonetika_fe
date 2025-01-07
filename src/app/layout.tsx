@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Ubuntu } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
-const ubuntu = Ubuntu({
+const figtree = Figtree({
   weight: ["400", "500", "700"],
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${ubuntu.className} ${ubuntu.className} antialiased`}>
+      <body className={`${figtree.className} ${figtree.className} antialiased`}>
         <Header />
         <div className="md:max-w-2xl lg:max-w-6xl max-w-full   mx-auto">
           {children}

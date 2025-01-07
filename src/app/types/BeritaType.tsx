@@ -5,4 +5,5 @@ export interface BeritaType {
   createdAt: string;
   updatedAt: string;
   slug: string;
+  url_image: string;
 }

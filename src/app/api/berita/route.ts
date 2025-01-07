@@ -1,5 +1,6 @@
 import axiosInstance from "@/app/libs/axiosIntance";
 import { BeritaType } from "@/app/types/BeritaType";
+import { DetailBeritaType } from "@/app/types/DetailBerita";
 
 export const fetchBeritaList = async (): Promise<BeritaType[]> => {
   const response = await axiosInstance.get("/home");
@@ -7,8 +8,10 @@ export const fetchBeritaList = async (): Promise<BeritaType[]> => {
   return response?.data.data.artikel_nasional;
 };
 
-export async function fetchDetailBerita(query: string): Promise<BeritaType> {
-  const response = await axiosInstance.get(`/artikel-data?${query}`);
-  console.log(response.data);
-  return response.data;
+export async function fetchDetailBerita(
+  slug: string
+): Promise<DetailBeritaType> {
+  const response = await axiosInstance.get(`/artikel/${slug}`);
+  console.log(response.data.data);
+  return response.data.data;
 }
