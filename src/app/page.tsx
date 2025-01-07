@@ -1,5 +1,4 @@
 import Menu from "./components/Menu/Menu";
-import Trending from "./components/Trending/Trending";
 import Headline from "./components/Headline/Banner";
 
 export default function Home() {
