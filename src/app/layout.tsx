@@ -6,6 +6,8 @@ import Footer from "./components/Footer/Footer";
 
 const figtree = Figtree({
   weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.className} ${figtree.className} antialiased`}>
+      <body className={`${figtree.className}  antialiased`}>
         <Header />
         <div className="md:max-w-2xl lg:max-w-6xl max-w-full   mx-auto">
           {children}
