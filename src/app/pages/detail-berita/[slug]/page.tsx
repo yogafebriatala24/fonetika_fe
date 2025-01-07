@@ -1,4 +1,4 @@
-import { fetchDetailBerita } from "@/app/api/berita/route";
+import { fetchDetailBerita } from "@/app/api/berita/[slug]/route";
 import ContentDetailBerita from "./Content";
 
 interface DetailBeritaProps {
