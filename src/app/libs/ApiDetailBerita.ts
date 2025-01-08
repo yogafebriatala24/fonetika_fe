@@ -1,6 +1,6 @@
 export function fetchDetailBerita(slug: string): Promise<any> {
   return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`, {
-    next: { revalidate: 10 },
+    next: { revalidate: 90 },
   })
     .then((res) => {
       if (!res.ok) {
@@ -24,7 +24,7 @@ export function fetchDetailBerita(slug: string): Promise<any> {
 
 export async function fetchBeritaList() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`, {
-    next: { revalidate: 10 },
+    next: { revalidate: 90 },
   });
 
   if (!res.ok) {
