@@ -1,7 +1,24 @@
+export function fetchWithTimeout(
+  url: string,
+  options: RequestInit,
+  timeout: number
+) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+
+  const fetchOptions = {
+    ...options,
+    signal: controller.signal,
+  };
+
+  return fetch(url, fetchOptions).finally(() => clearTimeout(id));
+}
 export function fetchDetailBerita(slug: string): Promise<any> {
-  return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`, {
-    next: { revalidate: 10 },
-  })
+  return fetchWithTimeout(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`,
+    { next: { revalidate: 10 } },
+    10000
+  )
     .then((res) => {
       if (!res.ok) {
         throw new Error(`Failed to fetch detail berita: ${res.statusText}`);
