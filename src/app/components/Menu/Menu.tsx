@@ -7,9 +7,13 @@ export default async function Menu() {
   const listKategori: BeritaType[] = await fetchKategori();
   return (
     <>
-      <div className="flex  overflow-auto items-center border-b p-2 ">
+      <div className="flex  overflow-auto items-center border-b p-2">
         {listKategori?.map((data: BeritaType) => (
-          <Link href={"/"} className="whitespace-nowrap mx-3" key={data.slug}>
+          <Link
+            href={"/"}
+            className="whitespace-nowrap mx-3 font-medium hover:text-gray-600"
+            key={data.slug}
+          >
             {data.nama}
           </Link>
         ))}

@@ -1,30 +1,15 @@
-import { BeritaType } from "../types/BeritaType";
-import { DetailBeritaType } from "../types/DetailBerita";
-
-export async function fetchDetailBerita(
-  slug: string
-): Promise<DetailBeritaType> {
+export async function fetchDetailBerita(slug: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`,
     {
       next: { revalidate: 30 },
     }
   );
-
-  if (!res.ok) {
-    throw new Error(`Failed to fetch detail berita: ${res.statusText}`);
-  }
-
   const data = await res.json();
-
-  if (!data || !data.data) {
-    throw new Error("Invalid API response");
-  }
-
   return data.data;
 }
 
-export async function fetchBeritaList(): Promise<BeritaType[]> {
+export async function fetchBeritaList() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`, {
     next: { revalidate: 30 },
   });

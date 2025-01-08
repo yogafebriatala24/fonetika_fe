@@ -2,28 +2,43 @@ import Menu from "./components/Menu/Menu";
 import Trending from "./components/Trending/Trending";
 import Headline from "./components/Headline/Banner";
 import BeritaTerbaruPage from "./components/BeritaTerbaru";
+import Video from "./components/Video/Video";
 
 export default function Home() {
   return (
     <>
-      <section className="grid grid-col-1 md:grid-cols-12  gap-2 md:mt-10 mt-4  md:mx-0">
-        <div className="md:col-span-7 md:block hidden">
-          <Menu />
-          <BeritaTerbaruPage />
-        </div>
-        <div className="sm:block md:hidden w-screen">
-          <Menu />
+      <main>
+        {/* Main Grid Section */}
+        <section className="grid grid-cols-1 md:grid-cols-12 gap-4 md:mt-10 mt-4">
+          {/* Left Section: Menu and Latest News (Desktop Only) */}
+          <div className="hidden md:block md:col-span-7">
+            <Menu />
+            <BeritaTerbaruPage />
+          </div>
 
-          <Headline />
-        </div>
-        <div className="sm:block md:hidden">
-          <BeritaTerbaruPage />
-          <hr className="mt-4" />
-        </div>
-        <div className="md:col-span-5 ">
-          <Trending />
-        </div>
-      </section>
+          {/* Middle Section: Headline (Mobile Only) */}
+          <div className="block md:hidden w-full">
+            <Menu />
+            <Headline />
+          </div>
+
+          {/* Latest News for Mobile */}
+          <div className="block md:hidden">
+            <Trending />
+            <hr className="mt-4" />
+            <BeritaTerbaruPage />
+            <hr className="mt-4" />
+          </div>
+
+          {/* Right Section: Trending (Desktop Only) */}
+          <div className="hidden md:block md:col-span-5">
+            <Trending />
+          </div>
+        </section>
+        <section>
+          <Video />
+        </section>
+      </main>
     </>
   );
 }

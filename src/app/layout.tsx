@@ -11,7 +11,58 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: "Fonetika",
-  description: "Memberikan Makna Disetiap Berita",
+  description: "Memberikan makna disetiap berita",
+  icons: "./favicon.ico",
+  // viewport: "width=device-width, initial-scale=1",
+  // authors: [{ name: "Fonetika" }],
+  openGraph: {
+    title: "Fonetika",
+    description: "Memberikan makna disetiap berita",
+    url: "https://fonetika.vercel.app/",
+    siteName: "Fonetika",
+    images: [
+      {
+        url: "https://fonetika.vercel.app/favicon.io",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en-ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fonetika",
+    description: "Memberikan makna disetiap berita",
+    images: ["https://fonetika.vercel.app/favicon.io"],
+  },
+  facebook: {
+    admins: ["Fonetika"],
+  },
+  // robots: {
+  //   index: true,
+  //   follow: true,
+  //   nocache: true,
+  //   googleBot: {
+  //     index: true,
+  //     follow: true,
+  //     noimageindex: true,
+  //     "max-video-preview": -1,
+  //     "max-image-preview": "large",
+  //     "max-snippet": -1,
+  //   },
+  // },
+  // keywords: [
+  //   "Fonetika",
+  //   "Fonetika Indonesia",
+  //   "Fonetika Indonesia Berita",
+  //   "Fonetika Indonesia Berita Terbaru",
+  //   "Fonetika Indonesia Berita Terbaru Terkini",
+  //   "Fonetika Indonesia Berita Terbaru Terkini Terbaru",
+  //   "Fonetika Indonesia Berita Terbaru Terkini Terbaru Terkini",
+  //   "Fonetika Indonesia Berita Terbaru Terkini Terbaru Terkini Terbaru",
+  // ],
+  // publisher: "Fonetika",
 };
 
 export default function RootLayout({
@@ -23,7 +74,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${figtree.className}  antialiased`}>
         <Header />
-        <div className="md:max-w-2xl lg:max-w-6xl max-w-full   mx-auto">
+        <div className="md:max-w-2xl lg:max-w-6xl max-w-full mt-[70px] md:mt-28   mx-auto">
           {children}
         </div>
         <div className="mt-4">

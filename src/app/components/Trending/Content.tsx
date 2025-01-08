@@ -2,8 +2,6 @@ import { BeritaType } from "@/app/types/BeritaType";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { LuUserPen } from "react-icons/lu";
-import { MdOutlineDateRange } from "react-icons/md";
 
 export default function ContentTrending({
   listBerita,
@@ -20,34 +18,27 @@ export default function ContentTrending({
 
   return (
     <>
-      <div className="mt-4 ">
+      {/* Container for ContentTrending */}
+      <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-auto ">
         {listBerita?.map((data) => (
-          <div className="grid grid-cols-12 gap-2 mt-4 " key={data.slug}>
-            <div className="col-span-4 md:col-span-3">
-              <Image
-                src={"/images/samsat.png"}
-                alt=""
-                width={500}
-                height={500}
-                className="md:w-40 w-full h-[100px] rounded-md object-cover"
-              />
-            </div>
-            <div className="col-span-8 md:col-span-9">
-              <div>
-                <Link href={`#`} className="w-full text-[14px] font-semibold ">
-                  {truncateText(data.nama, 12)}
-                </Link>
-              </div>
-              <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
-                <div className="flex items-center gap-2">
-                  <LuUserPen /> <h1>Admin</h1>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MdOutlineDateRange />
-                  <p>01-01-2025</p>
-                </div>
-              </div>
-            </div>
+          <div
+            className="flex-shrink-0 md:flex md:gap-4  md:mb-4"
+            key={data.slug}
+          >
+            {/* Image */}
+            <Image
+              src={data.url_image}
+              alt={data.nama}
+              width={500}
+              height={500}
+              className="md:w-[200px] w-[200px] shrink-0 h-[100px] rounded-md object-cover"
+            />
+            {/* Title */}
+            <Link href={`/detail-berita/${data.slug}`}>
+              <p className="md:mt-2 text-sm md:text-lg hover:text-gray-600 md:font-semibold md:max-w-full max-w-[190px]">
+                {truncateText(data.nama, 10)}
+              </p>
+            </Link>
           </div>
         ))}
       </div>

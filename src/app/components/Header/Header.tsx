@@ -5,9 +5,9 @@ import Link from "next/link";
 export default function Header() {
   return (
     <>
-      <div className="border-b border-gray-200 p-2">
+      <div className="border-b border-gray-200 bg-white w-full p-2 fixed top-0 z-50">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ">
             <Link href="/">
               <IconLogo />
             </Link>
