@@ -46,8 +46,8 @@ export default function BeritaTerbaru({
                 <Image
                   src={data.url_image}
                   alt=""
-                  width={500}
-                  height={500}
+                  width={200}
+                  height={100}
                   className="md:w-40 w-full h-[100px] rounded  object-cover"
                 />
               </div>

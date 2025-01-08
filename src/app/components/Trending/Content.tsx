@@ -29,8 +29,8 @@ export default function ContentTrending({
             <Image
               src={data.url_image}
               alt={data.nama}
-              width={500}
-              height={500}
+              width={200}
+              height={100}
               className="md:w-[200px] w-[200px] shrink-0 h-[100px] rounded-md object-cover"
             />
             {/* Title */}

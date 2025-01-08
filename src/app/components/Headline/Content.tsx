@@ -19,8 +19,8 @@ export default function ContentHeadline({
     date: berita.created_at,
     content: berita.content,
     slug: berita.slug,
-    width: 1200,
-    height: 500,
+    width: 200,
+    height: 100,
   }));
   const limitListBerita = listBerita.slice(0, 2);
 
