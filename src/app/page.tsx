@@ -3,6 +3,8 @@ import Trending from "./components/Trending/Trending";
 import Headline from "./components/Headline/Banner";
 import BeritaTerbaruPage from "./components/BeritaTerbaru";
 import Video from "./components/Video/Video";
+import TopikTrending from "./components/TopikTrending/TopikTrending";
+import OpiniPage from "./components/Opini/OpiniPage";
 
 export default function Home() {
   return (
@@ -37,6 +39,8 @@ export default function Home() {
         </section>
         <section>
           <Video />
+          <TopikTrending />
+          <OpiniPage />
         </section>
       </main>
     </>

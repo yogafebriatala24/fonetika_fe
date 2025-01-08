@@ -7,6 +7,7 @@ import { MdOutlineDateRange } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { BeritaType } from "@/app/types/BeritaType";
 import { IconLine } from "@/app/assets/icons";
+import { formatDateSecond } from "@/app/utils/FormatDate";
 
 export default function BeritaTerbaru({
   listBerita,
@@ -21,7 +22,7 @@ export default function BeritaTerbaru({
     return text;
   };
 
-  const maxItems = 4;
+  const maxItems = 10;
   const limitedBerita = listBerita?.slice(0, maxItems);
 
   return (
@@ -66,7 +67,7 @@ export default function BeritaTerbaru({
                   </div>
                   <div className="flex items-center gap-2">
                     <MdOutlineDateRange />
-                    <p>01-01-2025</p>
+                    <p>{formatDateSecond(data.created_at)}</p>
                   </div>
                 </div>
               </div>

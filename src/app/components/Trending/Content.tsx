@@ -19,7 +19,7 @@ export default function ContentTrending({
   return (
     <>
       {/* Container for ContentTrending */}
-      <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-auto ">
+      <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-auto scrollbar-none">
         {listBerita?.map((data) => (
           <div
             className="flex-shrink-0 md:flex md:gap-4  md:mb-4"
@@ -35,7 +35,7 @@ export default function ContentTrending({
             />
             {/* Title */}
             <Link href={`/detail-berita/${data.slug}`}>
-              <p className="md:mt-2 text-sm md:text-lg hover:text-gray-600 md:font-semibold md:max-w-full max-w-[190px]">
+              <p className="md:mt-2  mt-4 md:text-lg hover:text-gray-600 md:font-semibold md:max-w-full max-w-[190px]">
                 {truncateText(data.nama, 10)}
               </p>
             </Link>

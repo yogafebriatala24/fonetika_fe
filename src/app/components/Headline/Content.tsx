@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image"; // Mengimpor komponen Image dari Next.js
 import { BeritaType } from "@/app/types/BeritaType";
-import { formatDate } from "@/app/utils/FormatDate";
+import { formatDate, formatDateSecond } from "@/app/utils/FormatDate";
 import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
 
@@ -22,6 +22,7 @@ export default function ContentHeadline({
     width: 1200,
     height: 500,
   }));
+  const limitListBerita = listBerita.slice(0, 2);
 
   const truncateText = (text: string, wordLimit: number) => {
     const words = text.split(" ");
@@ -48,8 +49,8 @@ export default function ContentHeadline({
           className="flex transition-all duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {data.map((data, index) => (
-            <div key={index} className="w-full flex-shrink-0 relative ">
+          {data.map((data) => (
+            <div key={data.slug} className="w-full flex-shrink-0 relative ">
               <Image
                 src={data.src}
                 alt={data.title}
@@ -59,7 +60,7 @@ export default function ContentHeadline({
               />
               <div className=" absolute bottom-0   bg-white  p-2 text-black text-lg   font-bold">
                 <p className="text-xs font-normal mb-2">
-                  {formatDate(data.date)}
+                  {formatDateSecond(data.date)}
                 </p>
                 <Link
                   href={`/detail-berita/${data.slug}`}
@@ -74,6 +75,18 @@ export default function ContentHeadline({
             </div>
           ))}
         </div>
+      </div>
+      <div className="mt-4 ">
+        {limitListBerita.map((data) => (
+          <div className="border-b p-2" key={data.slug}>
+            <Link href={`/detail-berita/${data.slug}`} className="font-medium">
+              {data.nama}
+            </Link>
+            <p className="text-xs mt-2 text-gray-500">
+              {formatDateSecond(data.created_at)}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

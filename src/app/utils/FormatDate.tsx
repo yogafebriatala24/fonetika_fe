@@ -15,3 +15,32 @@ export function formatDate(created_at: string): string {
 
   return `${day} ${month} ${year} | ${hours}.${minutes} WIB`;
 }
+
+export function formatDateSecond(created_at: string): string {
+  const date = new Date(created_at);
+  const now = new Date();
+
+  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
+
+  if (diffInSeconds < 60) {
+    return "1 menit yang lalu";
+  } else if (diffInMinutes < 60) {
+    return `${diffInMinutes} menit yang lalu`;
+  } else if (diffInHours < 24) {
+    return `${diffInHours} jam yang lalu`;
+  } else if (diffInDays === 1) {
+    return "1 hari yang lalu";
+  } else if (diffInDays < 2) {
+    return `${diffInDays} hari yang lalu`;
+  } else {
+    const day = date.getDate();
+    const month = new Intl.DateTimeFormat("id-ID", { month: "long" }).format(
+      date
+    );
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  }
+}

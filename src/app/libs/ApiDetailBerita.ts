@@ -35,9 +35,9 @@ export async function fetchBeritaList() {
 
   console.log(data);
 
-  if (!data || !data.data || !data.data.artikel_nasional) {
+  if (!data || !data.data || !data.data.artikel_terkini) {
     throw new Error("Invalid response format from API");
   }
 
-  return data.data.artikel_nasional;
+  return data.data.artikel_terkini;
 }
