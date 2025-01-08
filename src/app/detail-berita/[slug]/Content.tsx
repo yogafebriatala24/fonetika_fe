@@ -18,7 +18,7 @@ export default function ContentDetailBerita({
 
   const [isFontSizePopupOpen, setIsFontSizePopupOpen] = useState(false);
   const [isSharePopupOpen, setIsSharePopupOpen] = useState(false);
-  const currentUrl = encodeURIComponent(window.location.href);
+  const [currentUrl, setCurrentUrl] = useState("");
   const title = encodeURIComponent("Judul Artikel yang Akan Dibagikan");
   const [isCopied, setIsCopied] = useState(false);
   const getFontSizeLabel = (size: number) => {
@@ -37,11 +37,19 @@ export default function ContentDetailBerita({
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(currentUrl).then(() => {
-      setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
-    });
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(currentUrl).then(() => {
+        setIsCopied(true);
+        setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+      });
+    }
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setCurrentUrl(encodeURIComponent(window.location.href));
+    }
+  }, []);
 
   const increaseFontSize = () => {
     setFontSize((prevSize) => {
