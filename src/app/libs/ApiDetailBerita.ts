@@ -1,12 +1,8 @@
 export function fetchDetailBerita(slug: string): Promise<any> {
-  console.log(`Fetching detail berita for slug: ${slug}`);
-
   return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`, {
     next: { revalidate: 30 },
   })
     .then((res) => {
-      console.log(`Response status for slug ${slug}:`, res.status);
-
       if (!res.ok) {
         throw new Error(`Failed to fetch detail berita: ${res.statusText}`);
       }
@@ -14,11 +10,6 @@ export function fetchDetailBerita(slug: string): Promise<any> {
       return res.json();
     })
     .then((data) => {
-      console.log(
-        `Data received for slug ${slug}:`,
-        JSON.stringify(data, null, 2)
-      );
-
       if (!data || !data.data) {
         throw new Error(`Invalid response format for slug: ${slug}`);
       }

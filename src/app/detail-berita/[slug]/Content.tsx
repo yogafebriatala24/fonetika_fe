@@ -40,7 +40,7 @@ export default function ContentDetailBerita({
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard.writeText(currentUrl).then(() => {
         setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+        setTimeout(() => setIsCopied(false), 2000);
       });
     }
   };

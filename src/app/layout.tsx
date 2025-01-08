@@ -12,17 +12,17 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   title: "Fonetika",
   description: "Memberikan makna disetiap berita",
-  icons: "./favicon.ico",
+  icons: "./logo.png",
   // viewport: "width=device-width, initial-scale=1",
   // authors: [{ name: "Fonetika" }],
   openGraph: {
     title: "Fonetika",
     description: "Memberikan makna disetiap berita",
-    url: "https://fonetika.vercel.app/",
+    url: "https://fonetika.netlify.app/",
     siteName: "Fonetika",
     images: [
       {
-        url: "https://fonetika.vercel.app/favicon.io",
+        url: "https://fonetika.vercel.app/logo.png",
         width: 800,
         height: 600,
       },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fonetika",
     description: "Memberikan makna disetiap berita",
-    images: ["https://fonetika.vercel.app/favicon.io"],
+    images: ["https://fonetika.netlify.app/logo.png"],
   },
   facebook: {
     admins: ["Fonetika"],
