@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { DetailBeritaType } from "@/app/types/DetailBerita";
 import { BeritaType } from "@/app/types/BeritaType";
 
+export const revalidate = 90;
+
 type Params = Promise<{ slug: string }>;
 
 export async function generateMetadata({
