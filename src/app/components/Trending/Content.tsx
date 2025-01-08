@@ -19,7 +19,7 @@ export default function ContentTrending({
   return (
     <>
       {/* Container for ContentTrending */}
-      <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-auto scrollbar-none">
+      <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-auto scrollbar">
         {listBerita?.map((data) => (
           <div
             className="flex-shrink-0 md:flex md:gap-4  md:mb-4"
