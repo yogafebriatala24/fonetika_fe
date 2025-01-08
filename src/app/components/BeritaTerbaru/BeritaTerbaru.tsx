@@ -67,7 +67,7 @@ export default function BeritaTerbaru({
                   </div>
                   <div className="flex items-center gap-2">
                     <MdOutlineDateRange />
-                    <p>{formatDateSecond(data.created_at)}</p>
+                    <span>{formatDateSecond(data.created_at)}</span>
                   </div>
                 </div>
               </div>

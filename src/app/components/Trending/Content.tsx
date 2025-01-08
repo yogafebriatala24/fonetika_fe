@@ -36,10 +36,10 @@ export default function ContentTrending({
             />
             {/* Title */}
             <Link href={`/detail-berita/${data.slug}`}>
-              <p className="md:mt-2  mt-3 md:text-lg font-medium focus:text-gray-500 md:font-semibold md:max-w-full max-w-[190px]">
-                <p className="text-xs mb-2 text-gray-400">
-                  {formatDateSecond(data.created_at)}
-                </p>
+              <p className="text-xs  mt-3 text-gray-400">
+                {formatDateSecond(data.created_at)}
+              </p>
+              <p className="md:mt-2  mt-2 md:text-lg font-medium focus:text-gray-500 md:font-semibold md:max-w-full max-w-[190px]">
                 {truncateText(data.nama, 10)}
               </p>
             </Link>

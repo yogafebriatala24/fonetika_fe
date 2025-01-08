@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image"; // Mengimpor komponen Image dari Next.js
 import { BeritaType } from "@/app/types/BeritaType";
-import { formatDate, formatDateSecond } from "@/app/utils/FormatDate";
+import { formatDateSecond } from "@/app/utils/FormatDate";
 import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
 

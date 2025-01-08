@@ -6,13 +6,13 @@ import Footer from "./components/Footer/Footer";
 
 const figtree = Figtree({
   weight: ["400", "500", "600", "700", "800", "900"],
-  preload: false,
+  preload: true,
 });
 
 export const metadata: Metadata = {
   title: "Fonetika",
   description: "Memberikan makna disetiap berita",
-  icons: "./logo.png",
+  icons: "/logo.png",
   // viewport: "width=device-width, initial-scale=1",
   // authors: [{ name: "Fonetika" }],
   openGraph: {
