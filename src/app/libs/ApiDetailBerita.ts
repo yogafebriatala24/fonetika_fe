@@ -1,40 +1,30 @@
-export function fetchWithTimeout(
-  url: string,
-  options: RequestInit,
-  timeout: number
-) {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
-
-  const fetchOptions = {
-    ...options,
-    signal: controller.signal,
-  };
-
-  return fetch(url, fetchOptions).finally(() => clearTimeout(id));
-}
 export function fetchDetailBerita(slug: string): Promise<any> {
-  return fetchWithTimeout(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`,
-    { next: { revalidate: 10 } },
-    10000
-  )
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`Failed to fetch detail berita: ${res.statusText}`);
-      }
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 30000);
 
+  return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`, {
+    next: { revalidate: 10 },
+    signal: controller.signal,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      clearTimeout(timeoutId);
+      if (!res.ok) {
+        throw new Error(`Gagal mengambil detail berita: ${res.statusText}`);
+      }
       return res.json();
     })
     .then((data) => {
       if (!data || !data.data) {
-        throw new Error(`Invalid response format for slug: ${slug}`);
+        throw new Error(`Format response tidak valid untuk slug: ${slug}`);
       }
-
       return data.data;
     })
     .catch((error) => {
-      console.error(`Error in fetchDetailBerita for slug ${slug}:`, error);
+      clearTimeout(timeoutId);
+      console.error(`Error di fetchDetailBerita untuk slug ${slug}:`, error);
       throw error;
     });
 }

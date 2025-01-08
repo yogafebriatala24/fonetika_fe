@@ -78,9 +78,21 @@ export default async function DetailBerita(props: { params: Params }) {
 }
 
 export async function generateStaticParams() {
-  const beritaList = await fetchBeritaList();
+  try {
+    const beritaList = await fetchBeritaList();
 
-  return beritaList.map((berita: BeritaType) => ({
-    slug: berita.slug,
-  }));
+    if (!Array.isArray(beritaList)) {
+      console.error("Daftar berita bukan array");
+      return [];
+    }
+
+    return beritaList
+      .filter((berita: BeritaType) => berita && berita.slug)
+      .map((berita: BeritaType) => ({
+        slug: berita.slug,
+      }));
+  } catch (error) {
+    console.error("Error saat generate static params:", error);
+    return []; // Kembalikan array kosong daripada gagal build
+  }
 }
