@@ -56,7 +56,7 @@ export default function BeritaTerbaru({
                   <Link
                     href={`/detail-berita/${data.slug}`}
                     prefetch
-                    className="w-full md:text-base text-[15px] font-semibold hover:text-gray-600"
+                    className="w-full md:text-base text-[15px] font-semibold focus:text-gray-500"
                   >
                     {truncateText(data.nama, 12)}
                   </Link>

@@ -58,13 +58,14 @@ export default function ContentHeadline({
                 height={data.height}
                 className="w-full h-[400px]  rounded object-cover hover:scale-105 hover:transition-all "
               />
-              <div className=" absolute bottom-0   bg-white  p-2 text-black text-lg   font-bold">
+
+              <div className=" absolute bottom-0   bg-white  p-2 text-black text-xl  font-bold">
                 <p className="text-xs font-normal mb-2">
                   {formatDateSecond(data.date)}
                 </p>
                 <Link
                   href={`/detail-berita/${data.slug}`}
-                  className="hover:text-gray-600"
+                  className="focus:text-gray-500"
                 >
                   {data.title}
                   <p className="text-sm font-normal mt-2 ">
@@ -79,7 +80,10 @@ export default function ContentHeadline({
       <div className="mt-4 ">
         {limitListBerita.map((data) => (
           <div className="border-b p-2" key={data.slug}>
-            <Link href={`/detail-berita/${data.slug}`} className="font-medium">
+            <Link
+              href={`/detail-berita/${data.slug}`}
+              className="font-medium focus:text-gray-500"
+            >
               {data.nama}
             </Link>
             <p className="text-xs mt-2 text-gray-500">

@@ -1,4 +1,5 @@
 import { BeritaType } from "@/app/types/BeritaType";
+import { formatDateSecond } from "@/app/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -19,7 +20,7 @@ export default function ContentTrending({
   return (
     <>
       {/* Container for ContentTrending */}
-      <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-auto scrollbar">
+      <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-auto scrollbar">
         {listBerita?.map((data) => (
           <div
             className="flex-shrink-0 md:flex md:gap-4  md:mb-4"
@@ -31,11 +32,14 @@ export default function ContentTrending({
               alt={data.nama}
               width={200}
               height={100}
-              className="md:w-[200px] w-[200px] shrink-0 h-[100px] rounded-md object-cover"
+              className="md:w-[200px] w-[180px] shrink-0 h-[100px] rounded-md object-cover"
             />
             {/* Title */}
             <Link href={`/detail-berita/${data.slug}`}>
-              <p className="md:mt-2  mt-4 md:text-lg hover:text-gray-600 md:font-semibold md:max-w-full max-w-[190px]">
+              <p className="md:mt-2  mt-3 md:text-lg font-medium focus:text-gray-500 md:font-semibold md:max-w-full max-w-[190px]">
+                <p className="text-xs mb-2 text-gray-400">
+                  {formatDateSecond(data.created_at)}
+                </p>
                 {truncateText(data.nama, 10)}
               </p>
             </Link>

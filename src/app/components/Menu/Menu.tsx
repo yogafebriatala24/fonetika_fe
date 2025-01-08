@@ -11,7 +11,7 @@ export default async function Menu() {
         {listKategori?.map((data: BeritaType) => (
           <Link
             href={"/"}
-            className="whitespace-nowrap mx-3 font-medium hover:text-gray-600"
+            className="whitespace-nowrap mx-3 font-medium focus:text-gray-500"
             key={data.slug}
           >
             {data.nama}
