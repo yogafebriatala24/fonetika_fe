@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fonetika",
     description: "Memberikan makna disetiap berita",
-    url: "https://fonetika.netlify.app/",
+    url: "https://fonetika-fe.netlify.app/",
     siteName: "Fonetika",
     images: [
       {
-        url: "https://fonetika.vercel.app/logo.png",
+        url: "https://fonetika-fe.vercel.app/logo.png",
         width: 800,
         height: 600,
       },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fonetika",
     description: "Memberikan makna disetiap berita",
-    images: ["https://fonetika.netlify.app/logo.png"],
+    images: ["https://fonetika-fe.netlify.app/logo.png"],
   },
   facebook: {
     admins: ["Fonetika"],
