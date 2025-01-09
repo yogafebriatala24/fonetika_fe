@@ -4,6 +4,8 @@ import { formatDateSecond } from "@/app/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaUserCircle } from "react-icons/fa";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 export default function ContentRekomendasi({
   listBerita,
@@ -26,12 +28,21 @@ export default function ContentRekomendasi({
                 height={400}
                 className="w-full h-[200px] object-cover rounded hover:scale-105 transition-transform duration-300 ease-in-out"
               />
-              <p className="mt-2 text-sm text-gray-400">
+              <div className="flex items-center gap-2 text-[13px] mb-2 mt-2">
+                <h1 className="flex items-center gap-1 font-medium">
+                  <FaUserCircle />
+                  FonetikaSPORT
+                  <span className="text-primary">
+                    <RiVerifiedBadgeFill />
+                  </span>
+                </h1>
+              </div>
+              <p className="mt-2 mb-2 text-[11px] text-gray-400">
                 {formatDateSecond(data.created_at)}
               </p>
               <Link
                 href={`/detail-berita/${data.slug}`}
-                className="mt-2 font-semibold text-lg"
+                className=" font-semibold text-lg focus:underline"
               >
                 {data.nama}
               </Link>

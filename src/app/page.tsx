@@ -29,9 +29,8 @@ export default function Home() {
           {/* Latest News for Mobile */}
           <div className="block md:hidden">
             <Trending />
-            <hr className="mt-4" />
+
             <BeritaTerbaruPage />
-            <hr className="mt-4" />
           </div>
 
           {/* Right Section: Trending (Desktop Only) */}

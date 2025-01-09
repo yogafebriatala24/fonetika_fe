@@ -7,6 +7,8 @@ import React from "react";
 import { IoMdShare } from "react-icons/io";
 import { ImFontSize } from "react-icons/im";
 import Link from "next/link";
+import { FaUserCircle } from "react-icons/fa";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 export default function ContentDetailBerita({
   detailBerita,
@@ -92,6 +94,15 @@ export default function ContentDetailBerita({
           <h1 className="font-bold text-2xl md:text-3xl">
             {detailBerita.detail_artikel.nama}
           </h1>
+          <div className="flex items-center gap-2 text-sm mb-2 mt-4">
+            <h1 className="flex items-center gap-1 font-medium">
+              <FaUserCircle />
+              FonetikaNews{" "}
+              <span className="text-primary">
+                <RiVerifiedBadgeFill />
+              </span>
+            </h1>
+          </div>
           <p className="mt-2 text-gray-500 text-[14px]">
             {formatDate(detailBerita.detail_artikel.created_at)}
           </p>
@@ -117,21 +128,24 @@ export default function ContentDetailBerita({
             height={500}
             className="w-full h-60 object-cover mt-4"
           />
-          <p className="text-center text-xs mt-1 text-gray-400">
+          <p className="text-center text-[11px] mt-1 text-gray-400">
             https://freeprik.com
           </p>
         </div>
 
         <div className="mt-4">
           {/* Konten dengan ukuran font dinamis */}
-          <p className="text-lg" style={{ fontSize: `${fontSize}px` }}>
+          <p
+            className="text-lg text-justify "
+            style={{ fontSize: `${fontSize}px` }}
+          >
             {detailBerita.detail_artikel.content}
           </p>
         </div>
       </div>
 
       {isFontSizePopupOpen && (
-        <div className="absolute bottom-0 w-full md:max-w-6xl backdrop-brightness-50 md:backdrop-brightness-100 h-screen content-end z-10">
+        <div className="absolute bottom-0 w-full md:max-w-6xl backdrop-brightness-50 transition-all ease-in duration-700 md:backdrop-brightness-100 h-screen content-end z-10">
           <div className="bg-white border shadow-md p-4">
             <div className="flex gap-4 items-center justify-center">
               <button

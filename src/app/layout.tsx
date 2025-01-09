@@ -13,9 +13,8 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   title: "Fonetika",
   description: "Memberikan makna disetiap berita",
-  icons: "/logo.png",
-  // viewport: "width=device-width, initial-scale=1",
-  // authors: [{ name: "Fonetika" }],
+  icons: "/logo.png ",
+  authors: [{ name: "Fonetika Media" }],
   openGraph: {
     title: "Fonetika",
     description: "Memberikan makna disetiap berita",

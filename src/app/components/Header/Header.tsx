@@ -29,12 +29,11 @@ const Header: React.FC = () => {
                 className="border border-gray-300 p-1 w-full rounded-lg"
               />
             </div>
-            <button
-              className="text-3xl text-gray-700 ms-auto"
-              onClick={toggleSidebar}
-            >
-              <RiMenuSearchLine />
-            </button>
+            <div className="flex text-3xl text-gray-700 ms-auto items-center gap-4">
+              <button className="" onClick={toggleSidebar}>
+                <RiMenuSearchLine />
+              </button>
+            </div>
           </div>
         </div>
       </div>

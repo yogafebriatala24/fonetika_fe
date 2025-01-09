@@ -20,6 +20,7 @@ export default async function Trending() {
         </div>
         <div className="mt-4">
           <ContentTrending listBerita={limitedBerita} />
+          <hr className="mt-4" />
         </div>
       </div>
     </>

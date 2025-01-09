@@ -2,9 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { LuUserPen } from "react-icons/lu";
-import { MdOutlineDateRange } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
+
 import { IoIosArrowDown } from "react-icons/io";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { BeritaType } from "@/app/types/BeritaType";
 import { IconLine } from "@/app/assets/icons";
 import { formatDateSecond } from "@/app/utils/FormatDate";
@@ -38,17 +39,14 @@ export default function BeritaTerbaru({
         </div>
         <div className="mt-4">
           {limitedBerita?.map((data) => (
-            <div
-              className="grid grid-cols-12 gap-2 mt-4 items-center"
-              key={data.slug}
-            >
+            <div className="grid grid-cols-12 gap-2 mt-4 " key={data.slug}>
               <div className="col-span-4 md:col-span-3 ">
                 <Image
                   src={data.url_image}
                   alt=""
                   width={200}
                   height={100}
-                  className="md:w-40 w-full h-[100px] rounded  object-cover"
+                  className="md:w-40 w-full h-[90px] rounded-md  object-cover hover:scale-105 hover:transition-all"
                 />
               </div>
               <div className="col-span-8 md:col-span-9">
@@ -56,19 +54,23 @@ export default function BeritaTerbaru({
                   <Link
                     href={`/detail-berita/${data.slug}`}
                     prefetch
-                    className="w-full md:text-base text-[15px] font-semibold focus:text-gray-500"
+                    className="w-full md:text-base text-[14px] font-semibold focus:underline"
                   >
                     {truncateText(data.nama, 12)}
                   </Link>
                 </div>
-                <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
-                  <div className="flex items-center gap-2">
-                    <LuUserPen /> <h1>Admin</h1>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MdOutlineDateRange />
-                    <span>{formatDateSecond(data.created_at)}</span>
-                  </div>
+                <div className="flex items-center gap-2 text-[13px] mb-2 mt-1">
+                  <h1 className="flex items-center gap-1 font-medium">
+                    <FaUserCircle />
+                    FonetikaNEWS{" "}
+                    <span className="text-primary">
+                      <RiVerifiedBadgeFill />
+                    </span>
+                  </h1>
+                </div>
+
+                <div className="flex items-center gap-2 text-[11px] text-gray-400">
+                  <span>{formatDateSecond(data.created_at)}</span>
                 </div>
               </div>
               <div className="col-span-12 mt-2">

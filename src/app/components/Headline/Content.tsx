@@ -5,6 +5,8 @@ import { BeritaType } from "@/app/types/BeritaType";
 import { formatDateSecond } from "@/app/utils/FormatDate";
 import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
+import { FaUserCircle } from "react-icons/fa";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 
 export default function ContentHeadline({
   listBerita,
@@ -42,9 +44,9 @@ export default function ContentHeadline({
 
   return (
     <div className="w-full relative mt-4  bg-gray-50 p-4">
-      <h1 className="font-bold text-xl mb-4 text-primary">Headline</h1>
-
-      <div className="relative w-full overflow-hidden">
+      <h1 className="font-bold text-xl  text-primary">Headline</h1>
+      <IconLine />
+      <div className="relative w-full overflow-hidden mt-4">
         <div
           className="flex transition-all duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -56,22 +58,35 @@ export default function ContentHeadline({
                 alt={data.title}
                 width={data.width}
                 height={data.height}
-                className="w-full h-[400px]  rounded object-cover hover:scale-105 hover:transition-all "
+                className="w-full h-[400px]  rounded object-cover hover:scale-105 hover:transition-all"
               />
 
               <div className=" absolute bottom-0   bg-white  p-2 text-black text-xl  font-bold">
-                <p className="text-xs font-normal mb-2">
+                <div className="flex items-center gap-2 text-[13px]  mt-2">
+                  <h1 className="flex items-center gap-1 font-medium">
+                    <FaUserCircle />
+                    FonetikaPOLITIK{" "}
+                    <span className="text-primary">
+                      <RiVerifiedBadgeFill />
+                    </span>
+                  </h1>
+                  <p className="bg-secondary text-[10px] rounded px-2">
+                    Hot News
+                  </p>
+                </div>
+                <p className="text-[11px] font-normal mb-2 text-gray-500">
                   {formatDateSecond(data.date)}
                 </p>
+
                 <Link
                   href={`/detail-berita/${data.slug}`}
-                  className="focus:text-gray-500"
+                  className="focus:underline"
                 >
                   {data.title}
-                  <p className="text-sm font-normal mt-2 ">
-                    {truncateText(data.content, 15)}
-                  </p>
                 </Link>
+                <p className="text-sm font-normal mt-2 ">
+                  {truncateText(data.content, 15)}
+                </p>
               </div>
             </div>
           ))}
@@ -82,11 +97,20 @@ export default function ContentHeadline({
           <div className="border-b p-2" key={data.slug}>
             <Link
               href={`/detail-berita/${data.slug}`}
-              className="font-medium focus:text-gray-500"
+              className="font-medium focus:underline"
             >
               {data.nama}
             </Link>
-            <p className="text-xs mt-2 text-gray-500">
+            <div className="flex items-center gap-2 text-[13px] mb-2 mt-2">
+              <h1 className="flex items-center gap-1 font-medium">
+                <FaUserCircle />
+                FonetikaTECH
+                <span className="text-primary">
+                  <RiVerifiedBadgeFill />
+                </span>
+              </h1>
+            </div>
+            <p className="text-[11px] mt-2 text-gray-500">
               {formatDateSecond(data.created_at)}
             </p>
           </div>
