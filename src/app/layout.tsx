@@ -3,6 +3,8 @@ import { Figtree } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { Providers } from "./providers";
+import { PopupContainer } from "./components/Popup/PopupContainer";
 
 const figtree = Figtree({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -39,30 +41,6 @@ export const metadata: Metadata = {
   facebook: {
     admins: ["Fonetika"],
   },
-  // robots: {
-  //   index: true,
-  //   follow: true,
-  //   nocache: true,
-  //   googleBot: {
-  //     index: true,
-  //     follow: true,
-  //     noimageindex: true,
-  //     "max-video-preview": -1,
-  //     "max-image-preview": "large",
-  //     "max-snippet": -1,
-  //   },
-  // },
-  // keywords: [
-  //   "Fonetika",
-  //   "Fonetika Indonesia",
-  //   "Fonetika Indonesia Berita",
-  //   "Fonetika Indonesia Berita Terbaru",
-  //   "Fonetika Indonesia Berita Terbaru Terkini",
-  //   "Fonetika Indonesia Berita Terbaru Terkini Terbaru",
-  //   "Fonetika Indonesia Berita Terbaru Terkini Terbaru Terkini",
-  //   "Fonetika Indonesia Berita Terbaru Terkini Terbaru Terkini Terbaru",
-  // ],
-  // publisher: "Fonetika",
 };
 
 export default async function RootLayout({
@@ -72,14 +50,17 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.className}  antialiased`}>
-        <Header />
-        <div className="md:max-w-2xl lg:max-w-6xl max-w-full mt-[70px] md:mt-28   mx-auto">
-          {children}
-        </div>
-        <div className="mt-4">
-          <Footer />
-        </div>
+      <body className={`${figtree.className} antialiased`}>
+        <Providers>
+          <PopupContainer />
+          <Header />
+          <div className="md:max-w-2xl lg:max-w-6xl max-w-full mt-[70px] md:mt-28 mx-auto">
+            {children}
+          </div>
+          <div className="mt-4">
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );
