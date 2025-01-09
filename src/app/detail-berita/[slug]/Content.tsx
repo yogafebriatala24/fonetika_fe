@@ -36,7 +36,7 @@ export default function ContentDetailBerita({
         <span
           className="float-left text-7xl font-serif leading-[0.8] mr-1 mt-1"
           style={{
-            fontSize: `${fontSize * 4}px`,
+            fontSize: `${fontSize * 3}px`,
             lineHeight: "0.8",
           }}
         >
