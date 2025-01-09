@@ -1,5 +1,4 @@
 "use client";
-
 import { DetailBeritaType } from "@/app/types/DetailBerita";
 import { formatDate } from "@/app/utils/FormatDate";
 import Image from "next/image";
@@ -16,6 +15,7 @@ export default function ContentDetailBerita({
   detailBerita: DetailBeritaType;
 }) {
   const { fontSize, openFontSizePopup, openSharePopup } = usePopup();
+
   const handleFontSizeClick = () => {
     console.log("Opening font size popup");
     openFontSizePopup();
@@ -24,6 +24,27 @@ export default function ContentDetailBerita({
   const handleShareClick = () => {
     console.log("Opening share popup");
     openSharePopup();
+  };
+
+  const renderContentWithDropCap = (content: string) => {
+    if (!content) return null;
+    const firstLetter = content.charAt(0);
+    const restOfContent = content.slice(1);
+
+    return (
+      <div className="relative">
+        <span
+          className="float-left text-7xl font-serif leading-[0.8] mr-1 mt-1"
+          style={{
+            fontSize: `${fontSize * 4}px`,
+            lineHeight: "0.8",
+          }}
+        >
+          {firstLetter}
+        </span>
+        <span style={{ fontSize: `${fontSize}px` }}>{restOfContent}</span>
+      </div>
+    );
   };
 
   return (
@@ -66,13 +87,8 @@ export default function ContentDetailBerita({
           </p>
         </div>
 
-        <div className="mt-4">
-          <p
-            className="text-lg text-justify"
-            style={{ fontSize: `${fontSize}px` }}
-          >
-            {detailBerita.detail_artikel.content}
-          </p>
+        <div className="mt-4 text-justify">
+          {renderContentWithDropCap(detailBerita.detail_artikel.content)}
         </div>
       </div>
     </>
