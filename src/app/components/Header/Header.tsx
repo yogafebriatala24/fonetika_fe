@@ -30,7 +30,7 @@ const Header: React.FC = () => {
               />
             </div>
             <button
-              className="text-3xl text-gray-700 ms-auto md:hidden"
+              className="text-3xl text-gray-700 ms-auto"
               onClick={toggleSidebar}
             >
               <RiMenuSearchLine />

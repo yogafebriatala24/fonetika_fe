@@ -1,0 +1,45 @@
+import { IconLine } from "@/app/assets/icons";
+import { BeritaType } from "@/app/types/BeritaType";
+import { formatDateSecond } from "@/app/utils/FormatDate";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+export default function ContentRekomendasi({
+  listBerita,
+}: {
+  listBerita: BeritaType[];
+}) {
+  return (
+    <>
+      <div className=" p-4">
+        <h1 className="font-bold text-primary text-xl">Rekomendasi</h1>
+        <IconLine />
+
+        <div className="grid grid-cols-12 gap-4 mt-4">
+          {listBerita.map((data) => (
+            <div className="col-span-12 md:col-span-4" key={data.slug}>
+              <Image
+                src={data.url_image}
+                alt="rekomendasi"
+                width={400}
+                height={400}
+                className="w-full h-[200px] object-cover rounded hover:scale-105 transition-transform duration-300 ease-in-out"
+              />
+              <p className="mt-2 text-sm text-gray-400">
+                {formatDateSecond(data.created_at)}
+              </p>
+              <Link
+                href={`/detail-berita/${data.slug}`}
+                className="mt-2 font-semibold text-lg"
+              >
+                {data.nama}
+              </Link>
+              <hr className="mt-2 mb-2" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}

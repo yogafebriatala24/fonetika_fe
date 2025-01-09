@@ -32,11 +32,11 @@ export default function ContentTrending({
               alt={data.nama}
               width={200}
               height={100}
-              className="md:w-[200px] w-[180px] shrink-0 h-[100px] rounded-md object-cover"
+              className="md:w-[200px] w-[180px]  shrink-0 h-[100px] md:h-[120px] rounded-md object-cover"
             />
             {/* Title */}
             <Link href={`/detail-berita/${data.slug}`}>
-              <p className="text-xs  mt-3 text-gray-400">
+              <p className="text-xs  mt-3 text-gray-400 md:hidden">
                 {formatDateSecond(data.created_at)}
               </p>
               <p className="md:mt-2  mt-2 md:text-lg font-medium focus:text-gray-500 md:font-semibold md:max-w-full max-w-[190px]">

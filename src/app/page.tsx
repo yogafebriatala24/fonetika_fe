@@ -2,9 +2,10 @@ import Menu from "./components/Menu/Menu";
 import Trending from "./components/Trending/Trending";
 import Headline from "./components/Headline/Banner";
 import BeritaTerbaruPage from "./components/BeritaTerbaru";
-import Video from "./components/Video/Video";
 import TopikTrending from "./components/TopikTrending/TopikTrending";
 import OpiniPage from "./components/Opini/OpiniPage";
+import Rekomendasi from "./components/Rekomendasi";
+import VideoPage from "./components/Video";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           {/* Left Section: Menu and Latest News (Desktop Only) */}
           <div className="hidden md:block md:col-span-7">
             <Menu />
+            <Headline />
             <BeritaTerbaruPage />
           </div>
 
@@ -33,13 +35,17 @@ export default function Home() {
           </div>
 
           {/* Right Section: Trending (Desktop Only) */}
-          <div className="hidden md:block md:col-span-5">
+          <div className="hidden md:block md:col-span-5 ">
             <Trending />
+            <TopikTrending />
           </div>
         </section>
-        <section>
-          <Video />
+        <section className="mt-4">
+          <VideoPage />
+          <Rekomendasi />
           <TopikTrending />
+        </section>
+        <section>
           <OpiniPage />
         </section>
       </main>
