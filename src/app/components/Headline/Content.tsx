@@ -97,7 +97,7 @@ export default function ContentHeadline({
           <div className="border-b p-2" key={data.slug}>
             <Link
               href={`/detail-berita/${data.slug}`}
-              className="font-medium focus:underline"
+              className="font-medium text-[17px] focus:underline"
             >
               {data.nama}
             </Link>
