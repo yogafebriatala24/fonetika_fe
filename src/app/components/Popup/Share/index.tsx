@@ -14,7 +14,6 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Pastikan kita mendapatkan URL lengkap
     if (typeof window !== "undefined") {
       const fullUrl = window.location.origin + pathname;
       setCurrentUrl(fullUrl);
