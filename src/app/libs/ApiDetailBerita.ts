@@ -1,6 +1,6 @@
 export function fetchDetailBerita(slug: string): Promise<any> {
   return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`, {
-    next: { revalidate: 90 },
+    next: { revalidate: 10 },
   })
     .then((res) => {
       if (!res.ok) {

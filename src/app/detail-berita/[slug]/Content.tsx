@@ -26,27 +26,6 @@ export default function ContentDetailBerita({
     openSharePopup();
   };
 
-  const renderContentWithDropCap = (content: string) => {
-    if (!content) return null;
-    const firstLetter = content.charAt(0);
-    const restOfContent = content.slice(1);
-
-    return (
-      <div className="relative">
-        <span
-          className="float-left text-7xl font-serif leading-[0.8] mr-1 mt-1"
-          style={{
-            fontSize: `${fontSize * 3}px`,
-            lineHeight: "0.8",
-          }}
-        >
-          {firstLetter}
-        </span>
-        <span style={{ fontSize: `${fontSize}px` }}>{restOfContent}</span>
-      </div>
-    );
-  };
-
   return (
     <>
       <div className="mt-6 mx-4">
@@ -87,8 +66,16 @@ export default function ContentDetailBerita({
           </p>
         </div>
 
-        <div className="mt-4 text-justify">
-          {renderContentWithDropCap(detailBerita.detail_artikel.content)}
+        <p className="mt-4 text-justify">
+          {detailBerita.detail_artikel.content}
+        </p>
+        <div className="mt-4 mb-4 bg-gray-50 p-3">
+          <h4 className="font-medium text-primary">Baca Juga</h4>
+          <div className="mt-4">
+            <p className="font-semibold">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit
+            </p>
+          </div>
         </div>
       </div>
     </>

@@ -15,7 +15,7 @@ export default function ContentHeadline({
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const data = listBerita.slice(0, 1).map((berita) => ({
+  const data = listBerita.slice(0, 3).map((berita) => ({
     src: berita.url_image,
     title: berita.nama,
     date: berita.created_at,
