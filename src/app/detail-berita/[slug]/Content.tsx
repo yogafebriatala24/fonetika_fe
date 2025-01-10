@@ -17,12 +17,10 @@ export default function ContentDetailBerita({
   const { fontSize, openFontSizePopup, openSharePopup } = usePopup();
 
   const handleFontSizeClick = () => {
-    console.log("Opening font size popup");
     openFontSizePopup();
   };
 
   const handleShareClick = () => {
-    console.log("Opening share popup");
     openSharePopup(detailBerita.detail_artikel.nama);
   };
 

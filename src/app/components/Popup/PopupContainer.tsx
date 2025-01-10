@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { usePopup } from "@/app/context/PopupContext";
 import { FontSizePopup } from "./FontSize";
 import { SharePopup } from "./Share";
@@ -15,6 +16,14 @@ export function PopupContainer() {
     decreaseFontSize,
   } = usePopup();
 
+  const [documentTitle, setDocumentTitle] = useState<string>("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setDocumentTitle(document.title);
+    }
+  }, []);
+
   return (
     <>
       <div className="relative">
@@ -29,7 +38,7 @@ export function PopupContainer() {
         <SharePopup
           isOpen={isSharePopupOpen}
           onClose={closeSharePopup}
-          title={encodeURIComponent(document.title)}
+          title={encodeURIComponent(documentTitle)}
         />
       </div>
     </>
