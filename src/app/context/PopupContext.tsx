@@ -11,9 +11,10 @@ type PopupContextType = {
   isFontSizePopupOpen: boolean;
   isSharePopupOpen: boolean;
   fontSize: number;
+  shareTitle: string;
   openFontSizePopup: () => void;
   closeFontSizePopup: () => void;
-  openSharePopup: () => void;
+  openSharePopup: (title: string) => void;
   closeSharePopup: () => void;
   increaseFontSize: () => void;
   decreaseFontSize: () => void;
@@ -26,6 +27,7 @@ export function PopupProvider({ children }: { children: ReactNode }) {
   const [isSharePopupOpen, setIsSharePopupOpen] = useState(false);
   const [fontSize, setFontSize] = useState(16);
   const fontSizes = [14, 16, 18, 20];
+  const [shareTitle, setShareTitle] = useState("");
 
   useEffect(() => {
     const body = document.body;
@@ -51,7 +53,10 @@ export function PopupProvider({ children }: { children: ReactNode }) {
 
   const openFontSizePopup = () => setIsFontSizePopupOpen(true);
   const closeFontSizePopup = () => setIsFontSizePopupOpen(false);
-  const openSharePopup = () => setIsSharePopupOpen(true);
+  const openSharePopup = (title: string) => {
+    setShareTitle(title);
+    setIsSharePopupOpen(true);
+  };
   const closeSharePopup = () => setIsSharePopupOpen(false);
 
   const increaseFontSize = () => {
@@ -76,6 +81,7 @@ export function PopupProvider({ children }: { children: ReactNode }) {
         isFontSizePopupOpen,
         isSharePopupOpen,
         fontSize,
+        shareTitle,
         openFontSizePopup,
         closeFontSizePopup,
         openSharePopup,

@@ -23,7 +23,7 @@ export default function ContentDetailBerita({
 
   const handleShareClick = () => {
     console.log("Opening share popup");
-    openSharePopup();
+    openSharePopup(detailBerita.detail_artikel.nama);
   };
 
   return (

@@ -29,7 +29,7 @@ export function PopupContainer() {
         <SharePopup
           isOpen={isSharePopupOpen}
           onClose={closeSharePopup}
-          title={encodeURIComponent("Judul Artikel yang Akan Dibagikan")}
+          title={encodeURIComponent(document.title)}
         />
       </div>
     </>
