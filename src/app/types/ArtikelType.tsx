@@ -1,6 +1,6 @@
 export interface ArtikelType {
   nama: string;
-  deskripsi: string;
+  created_at: string;
   image: string;
   kategori: {
     slug: string;
