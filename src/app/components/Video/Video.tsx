@@ -14,7 +14,7 @@ export default function VideoContent({ listVideo }: { listVideo: string[] }) {
   };
   return (
     <>
-      <div className="bg-gray-50 p-4 mt-4">
+      <div className="bg-gray-50 p-4 mt-4 rounded">
         <h1 className="font-bold text-xl text-primary">Video</h1>
         <div className="flex gap-3 overflow-x-auto scrollbar mt-4">
           {listVideo.map((link, index) => {

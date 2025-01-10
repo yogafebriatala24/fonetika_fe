@@ -4,7 +4,7 @@ import React from "react";
 export default function TopikTrending() {
   return (
     <>
-      <div className="mt-4 mx-4 md:bg-gray-50 md:p-4 md:rounded">
+      <div className="mt-4 mx-4 lg:bg-gray-50 lg:p-4 lg:rounded">
         <h1 className="text-primary text-xl font-bold">Topik Trending</h1>
         <IconLine />
         <div className="mt-4">

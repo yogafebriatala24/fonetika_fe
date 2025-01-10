@@ -42,7 +42,7 @@ export function FontSizePopup({
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
     >
-      <div className="absolute bottom-0 w-full md:max-w-6xl">
+      <div className="absolute bottom-0 w-full lg:max-w-6xl">
         <div className="bg-white border shadow-md p-4">
           <div className="flex gap-4 items-center justify-center">
             <button

@@ -40,21 +40,21 @@ export default function BeritaTerbaru({
         <div className="mt-4">
           {limitedBerita?.map((data) => (
             <div className="grid grid-cols-12 gap-2 mt-4 " key={data.slug}>
-              <div className="col-span-4 md:col-span-3 ">
+              <div className="col-span-4 lg:col-span-3 ">
                 <Image
                   src={data.url_image}
                   alt=""
                   width={200}
                   height={100}
-                  className="md:w-40 w-full h-[90px] rounded-md  object-cover hover:scale-105 hover:transition-all"
+                  className="lg:w-40 w-full h-[90px] rounded-md  object-cover hover:scale-105 hover:transition-all"
                 />
               </div>
-              <div className="col-span-8 md:col-span-9">
+              <div className="col-span-8 lg:col-span-9">
                 <div>
                   <Link
                     href={`/detail-berita/${data.slug}`}
                     prefetch
-                    className="w-full md:text-base text-[14px] font-semibold focus:underline"
+                    className="w-full lg:text-base md:text-lg text-[14px] font-semibold focus:underline"
                   >
                     {truncateText(data.nama, 12)}
                   </Link>

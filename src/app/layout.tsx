@@ -52,11 +52,11 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${figtree.className} antialiased`}>
+      <body className={`${figtree.className} antialiased `}>
         <Providers>
           <PopupContainer />
           <Header />
-          <div className="md:max-w-2xl lg:max-w-6xl max-w-full mt-[70px] md:mt-28 mx-auto">
+          <div className=" lg:max-w-6xl max-w-full mt-[70px] lg:mt-28 mx-auto">
             <ErrorBoundary errorComponent={ErrorComponent}>
               {children}
             </ErrorBoundary>

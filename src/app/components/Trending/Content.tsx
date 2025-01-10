@@ -22,10 +22,10 @@ export default function ContentTrending({
   return (
     <>
       {/* Container for ContentTrending */}
-      <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-auto scrollbar">
+      <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-auto scrollbar">
         {listBerita?.map((data) => (
           <div
-            className="flex-shrink-0 md:flex md:gap-4  md:mb-4"
+            className="flex-shrink-0 lg:flex lg:gap-4  lg:mb-4"
             key={data.slug}
           >
             {/* Image */}
@@ -34,10 +34,10 @@ export default function ContentTrending({
               alt={data.nama}
               width={200}
               height={100}
-              className="md:w-[200px] w-[180px] hover:scale-105 hover:transition-all  shrink-0 h-[100px] md:h-[120px] rounded-md object-cover"
+              className="lg:w-[200px] w-[180px] hover:scale-105 hover:transition-all   h-[100px] lg:h-[120px] rounded-md object-cover"
             />
             {/* Title */}
-            <div className="flex items-center gap-2 text-sm mb-2 mt-2">
+            <div className="flex items-center gap-2 text-sm mb-2 mt-2 lg:hidden">
               <h1 className="flex items-center gap-1 font-medium">
                 <FaUserCircle />
                 FonetikaHEALTH{" "}
@@ -46,17 +46,32 @@ export default function ContentTrending({
                 </span>
               </h1>
             </div>
-            <p className="text-[11px]  mt-3 text-gray-400 md:hidden">
+            <p className="text-[11px]  mt-3 text-gray-400 lg:hidden">
               {formatDateSecond(data.created_at)}
             </p>
-            <Link
-              href={`/detail-berita/${data.slug}`}
-              className="focus:underline"
-            >
-              <p className="md:mt-2  mt-2 md:text-lg font-medium  md:font-semibold  md:max-w-full max-w-[190px]">
-                {truncateText(data.nama, 10)}
+            <div className="">
+              <Link
+                href={`/detail-berita/${data.slug}`}
+                className="focus:underline"
+              >
+                <p className="lg:mt-0  mt-2 font-medium  lg:font-semibold  lg:max-w-full max-w-[190px]">
+                  {truncateText(data.nama, 15)}
+                </p>
+              </Link>
+              <p className="flex  items-center text-[11px]  mt-2 text-gray-400 lg:block max-lg:hidden">
+                <span>{formatDateSecond(data.created_at)}</span>
+                <span className="font-semibold ml-2 text-primary">Health</span>
               </p>
-            </Link>
+              <span className="hidden lg:block text-[13px] mt-2">
+                <span className="flex items-center gap-1 font-medium ">
+                  <FaUserCircle />
+                  FonetikaHEALTH{" "}
+                  <span className="text-primary">
+                    <RiVerifiedBadgeFill />
+                  </span>
+                </span>
+              </span>
+            </div>
           </div>
         ))}
       </div>

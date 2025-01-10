@@ -43,7 +43,7 @@ export default function ContentHeadline({
   }, [data.length]);
 
   return (
-    <div className="w-full relative mt-4  bg-gray-50 p-4">
+    <div className="w-full relative mt-4  bg-gray-50 p-4 rounded">
       <h1 className="font-bold text-xl  text-primary">Headline</h1>
       <IconLine />
       <div className="relative w-full overflow-hidden mt-4">
@@ -74,9 +74,10 @@ export default function ContentHeadline({
                     Hot News
                   </p>
                 </div>
-                <p className="text-[11px] font-normal mb-2 text-gray-500">
-                  {formatDateSecond(data.date)}
-                </p>
+                <div className="flex items-center gap-2 text-[11px] font-normal mb-2 text-gray-500">
+                  <p className="">{formatDateSecond(data.date)}</p>
+                  <p className="font-semibold text-primary">Politik</p>
+                </div>
 
                 <Link
                   href={`/detail-berita/${data.slug}`}
@@ -85,7 +86,7 @@ export default function ContentHeadline({
                   {data.title}
                 </Link>
                 <p className="text-sm font-normal mt-2 ">
-                  {truncateText(data.content, 15)}
+                  {truncateText(data.content, 18)}
                 </p>
               </div>
             </div>

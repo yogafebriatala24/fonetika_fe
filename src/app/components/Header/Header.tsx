@@ -21,7 +21,7 @@ const Header: React.FC = () => {
             <Link href="/">
               <IconLogo />
             </Link>
-            <div className="ms-auto w-full hidden md:block">
+            <div className="ms-auto w-full hidden lg:block">
               <input
                 type="text"
                 id="search"

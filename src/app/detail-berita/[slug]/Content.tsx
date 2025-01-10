@@ -30,7 +30,7 @@ export default function ContentDetailBerita({
     <>
       <div className="mt-6 mx-4">
         <div>
-          <h1 className="font-bold text-2xl md:text-3xl">
+          <h1 className="font-bold text-2xl lg:text-3xl">
             {detailBerita.detail_artikel.nama}
           </h1>
           <div className="flex items-center gap-2 text-sm mb-2 mt-4">

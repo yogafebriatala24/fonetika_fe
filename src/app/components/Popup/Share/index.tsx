@@ -42,7 +42,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
     >
-      <div className="absolute bottom-0 w-full md:max-w-6xl">
+      <div className="absolute bottom-0 w-full lg:max-w-6xl">
         <div className="bg-white border shadow-md p-4">
           <h2 className="text-center text-lg font-bold mb-4">Bagikan ke:</h2>
           <div className="flex gap-4 justify-center">
