@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <main>
         {/* Main Grid Section */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:mt-10 mt-4">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-4  lg:mt-20">
           {/* Left Section: Menu and Latest News (Desktop Only) */}
           <div className="hidden lg:block lg:col-span-7">
             <Menu />
@@ -34,9 +34,11 @@ export default function Home() {
           </div>
 
           {/* Right Section: Trending (Desktop Only) */}
-          <div className="hidden lg:block lg:col-span-5 ">
-            <Trending />
-            <TopikTrending />
+          <div className="hidden lg:block lg:col-span-5 sticky-wrapper">
+            <div id="trending-section" className="sticky top-20">
+              <Trending />
+              <TopikTrending />
+            </div>
           </div>
         </section>
         <section className="mt-4">

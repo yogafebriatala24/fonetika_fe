@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -14,13 +13,13 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setCurrentUrl(encodeURIComponent(window.location.href));
+      setCurrentUrl(window.location.href); // Ambil URL halaman yang aktif
     }
   }, []);
 
   const copyToClipboard = () => {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(decodeURIComponent(currentUrl)).then(() => {
+      navigator.clipboard.writeText(currentUrl).then(() => {
         setIsCopied(true);
         setTimeout(() => setIsCopied(false), 2000);
       });
@@ -42,8 +41,8 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
     >
-      <div className="absolute bottom-0 w-full lg:max-w-6xl">
-        <div className="bg-white border shadow-md p-4">
+      <div className="absolute bottom-0  w-full lg:flex lg:inset-0 lg:items-center lg:justify-center">
+        <div className="bg-white border shadow-md p-4 lg:w-[500px] lg:p-6 lg:rounded">
           <h2 className="text-center text-lg font-bold mb-4">Bagikan ke:</h2>
           <div className="flex gap-4 justify-center">
             <Link

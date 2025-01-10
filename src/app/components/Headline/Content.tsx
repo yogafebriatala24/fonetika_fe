@@ -61,7 +61,7 @@ export default function ContentHeadline({
                 className="w-full h-[400px]  rounded object-cover hover:scale-105 hover:transition-all"
               />
 
-              <div className=" absolute bottom-0   bg-white  p-2 text-black text-xl  font-bold">
+              <div className=" absolute bottom-0   bg-white  p-2 text-black   font-bold">
                 <div className="flex items-center gap-2 text-[13px]  mt-2">
                   <h1 className="flex items-center gap-1 font-medium">
                     <FaUserCircle />
@@ -81,11 +81,11 @@ export default function ContentHeadline({
 
                 <Link
                   href={`/detail-berita/${data.slug}`}
-                  className="focus:underline"
+                  className="focus:underline md:text-2xl text-xl"
                 >
                   {data.title}
                 </Link>
-                <p className="text-sm font-normal mt-2 ">
+                <p className="text-sm font-normal mt-2">
                   {truncateText(data.content, 18)}
                 </p>
               </div>
@@ -98,7 +98,7 @@ export default function ContentHeadline({
           <div className="border-b p-2" key={data.slug}>
             <Link
               href={`/detail-berita/${data.slug}`}
-              className="font-medium text-[17px] focus:underline"
+              className="font-medium text-[17px] md:text-lg focus:underline"
             >
               {data.nama}
             </Link>

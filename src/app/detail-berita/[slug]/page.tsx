@@ -4,6 +4,8 @@ import { fetchBeritaList, fetchDetailBerita } from "@/app/libs/ApiDetailBerita";
 import { notFound } from "next/navigation";
 import { DetailBeritaType } from "@/app/types/DetailBerita";
 import { BeritaType } from "@/app/types/BeritaType";
+import Trending from "@/app/components/Trending/Trending";
+import TopikTrending from "@/app/components/TopikTrending/TopikTrending";
 
 type Params = Promise<{ slug: string }>;
 
@@ -72,7 +74,15 @@ export default async function DetailBerita(props: { params: Params }) {
 
   return (
     <>
-      <ContentDetailBerita detailBerita={detailBerita} />
+      <div className="grid grid-cols-12 gap-2  mt-[70px] lg:mt-28">
+        <ContentDetailBerita detailBerita={detailBerita} />
+        <div className="col-span-12 lg:col-span-5  sticky-wrapper">
+          <div className="sticky top-20" id="trending-section">
+            <Trending />
+            <TopikTrending />
+          </div>
+        </div>
+      </div>
     </>
   );
 }

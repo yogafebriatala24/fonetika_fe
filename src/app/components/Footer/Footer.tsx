@@ -34,7 +34,7 @@ export default function Footer() {
           <Link href={"/"} className="font-medium">
             Peta Situs
           </Link>
-          <Link href={"/"} className="font-medium">
+          <Link href={"/pedoman-siber"} className="font-medium">
             Pedoman Siber
           </Link>
           <Link href={"/"} className="font-medium">

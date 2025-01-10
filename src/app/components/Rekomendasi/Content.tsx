@@ -20,7 +20,10 @@ export default function ContentRekomendasi({
 
         <div className="grid grid-cols-12 gap-4 mt-4">
           {listBerita.map((data) => (
-            <div className="col-span-12 lg:col-span-4" key={data.slug}>
+            <div
+              className="col-span-12 md:col-span-6 lg:col-span-4"
+              key={data.slug}
+            >
               <Image
                 src={data.url_image}
                 alt="rekomendasi"

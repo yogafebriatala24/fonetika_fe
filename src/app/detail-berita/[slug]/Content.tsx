@@ -28,11 +28,14 @@ export default function ContentDetailBerita({
 
   return (
     <>
-      <div className="mt-6 mx-4">
-        <div>
+      <div className="col-span-12 lg:col-span-7 mx-4">
+        <div className="">
+          {/* Judul Berita */}
           <h1 className="font-bold text-2xl lg:text-3xl">
             {detailBerita.detail_artikel.nama}
           </h1>
+
+          {/* Informasi Penulis dan Tanggal */}
           <div className="flex items-center gap-2 text-sm mb-2 mt-4">
             <h1 className="flex items-center gap-1 font-medium">
               <FaUserCircle />
@@ -45,6 +48,8 @@ export default function ContentDetailBerita({
           <p className="mt-2 text-gray-500 text-[14px]">
             {formatDate(detailBerita.detail_artikel.created_at)}
           </p>
+
+          {/* Tombol untuk Font Size dan Share */}
           <div className="flex items-center ms-auto text-gray-500 w-fit mt-2 gap-4 border border-gray-500 rounded py-2 px-4">
             <button className="text-xl" onClick={handleFontSizeClick}>
               <ImFontSize />
@@ -54,6 +59,7 @@ export default function ContentDetailBerita({
             </button>
           </div>
 
+          {/* Gambar Berita */}
           <Image
             src={detailBerita.detail_artikel.url_image}
             alt={detailBerita.detail_artikel.image}
@@ -65,10 +71,15 @@ export default function ContentDetailBerita({
             https://freeprik.com
           </p>
         </div>
-
-        <p className="mt-4 text-justify">
+        {/* Konten Berita */}
+        <p
+          className="mt-4 "
+          style={{ fontSize: `${fontSize}px` }} // Mengubah ukuran font hanya pada konten
+        >
           {detailBerita.detail_artikel.content}
         </p>
+
+        {/* Baca Juga Section */}
         <div className="mt-4 mb-4 bg-gray-50 p-3">
           <h4 className="font-medium text-primary">Baca Juga</h4>
           <div className="mt-4">

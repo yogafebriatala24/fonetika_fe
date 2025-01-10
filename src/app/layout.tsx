@@ -56,7 +56,7 @@ export default async function RootLayout({
         <Providers>
           <PopupContainer />
           <Header />
-          <div className=" lg:max-w-6xl max-w-full mt-[70px] lg:mt-28 mx-auto">
+          <div className=" lg:max-w-6xl max-w-full  mx-auto">
             <ErrorBoundary errorComponent={ErrorComponent}>
               {children}
             </ErrorBoundary>
