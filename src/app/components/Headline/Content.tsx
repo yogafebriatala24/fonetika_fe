@@ -111,9 +111,10 @@ export default function ContentHeadline({
                 </span>
               </h1>
             </div>
-            <p className="text-[11px] mt-2 text-gray-500">
-              {formatDateSecond(data.created_at)}
-            </p>
+            <div className="flex items-center gap-2 text-[11px] font-normal mb-2 text-gray-500">
+              <p className="">{formatDateSecond(data.created_at)}</p>
+              <p className="font-semibold text-primary">Politik</p>
+            </div>
           </div>
         ))}
       </div>

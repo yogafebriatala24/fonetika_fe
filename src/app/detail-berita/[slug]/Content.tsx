@@ -70,10 +70,7 @@ export default function ContentDetailBerita({
           </p>
         </div>
         {/* Konten Berita */}
-        <p
-          className="mt-4 "
-          style={{ fontSize: `${fontSize}px` }} // Mengubah ukuran font hanya pada konten
-        >
+        <p className="mt-4 text-justify" style={{ fontSize: `${fontSize}px` }}>
           {detailBerita.detail_artikel.content}
         </p>
 
