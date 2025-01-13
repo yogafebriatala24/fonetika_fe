@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image"; // Mengimpor komponen Image dari Next.js
+import Image from "next/image";
 import { BeritaType } from "@/app/types/BeritaType";
 import { formatDateSecond } from "@/app/utils/FormatDate";
 import Link from "next/link";

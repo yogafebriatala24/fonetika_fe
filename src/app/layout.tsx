@@ -63,7 +63,7 @@ export default async function RootLayout({
             </ErrorBoundary>
           </div>
           <div className="mt-4">
-            <div className="mb-14">
+            <div className="mb-14 lg:mb-0 md:mb-0">
               <Footer />
             </div>
             <BottomNav />

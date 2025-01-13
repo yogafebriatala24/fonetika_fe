@@ -62,7 +62,7 @@ export default function ContentDetailBerita({
             src={detailBerita.detail_artikel.url_image}
             alt={detailBerita.detail_artikel.image}
             width={170}
-            height={100}
+            height={10}
             className="w-full h-60 object-cover mt-4"
           />
           <p className="text-center text-[11px] mt-1 text-gray-400">
