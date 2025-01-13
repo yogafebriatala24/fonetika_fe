@@ -47,7 +47,7 @@ export default function BeritaTerbaru({
                 <Image
                   src={data.url_image}
                   alt=""
-                  width={200}
+                  width={70}
                   height={200}
                   className="lg:w-40 w-full h-[90px] md:h-[150px] lg:h-[100px] rounded-md  object-cover hover:scale-105 hover:transition-all"
                 />

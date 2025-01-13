@@ -15,7 +15,7 @@ export default async function Trending() {
       <div className=" mx-4  rounded-xl  ">
         <div className=" text-primary text-xl flex items-center   font-bold">
           <div className="">
-            Trending
+            Populer
             <span className="mt-2">
               <IconLine />
             </span>

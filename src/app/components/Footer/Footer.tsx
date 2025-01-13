@@ -45,6 +45,9 @@ export default function Footer() {
           </Link>
         </div>
       </div>
+      {/* <div className="w-full bg-primary p-1 text-white flex justify-center text-xs">
+        <p>© 2025 PT Media Bersama | All rights reserved.</p>
+      </div> */}
     </>
   );
 }

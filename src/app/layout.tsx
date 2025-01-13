@@ -7,6 +7,7 @@ import { Providers } from "./providers";
 import { PopupContainer } from "./components/Popup/PopupContainer";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import ErrorComponent from "./error";
+import BottomNav from "./components/NavBottom/NavBottom";
 
 const figtree = Figtree({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -62,7 +63,10 @@ export default async function RootLayout({
             </ErrorBoundary>
           </div>
           <div className="mt-4">
-            <Footer />
+            <div className="mb-14">
+              <Footer />
+            </div>
+            <BottomNav />
           </div>
         </Providers>
       </body>

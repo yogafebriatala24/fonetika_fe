@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <main>
         {/* Main Grid Section */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-4  lg:mt-20">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-4  lg:mt-20 mt-[70px]">
           {/* Left Section: Menu and Latest News (Desktop Only) */}
           <div className="hidden lg:block lg:col-span-7">
             <Menu />

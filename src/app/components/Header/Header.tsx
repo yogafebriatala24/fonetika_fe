@@ -4,6 +4,7 @@ import { IconLogo } from "./icons";
 import Link from "next/link";
 import { RiMenuSearchLine } from "react-icons/ri";
 import Sidebar from "./Sidebar";
+import { LuCircleUserRound } from "react-icons/lu";
 
 const Header: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -30,6 +31,9 @@ const Header: React.FC = () => {
               />
             </div>
             <div className="flex text-3xl text-gray-700 ms-auto items-center gap-4">
+              <Link href="/login">
+                <LuCircleUserRound />
+              </Link>
               <button className="" onClick={toggleSidebar}>
                 <RiMenuSearchLine />
               </button>

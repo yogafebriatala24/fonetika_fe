@@ -27,8 +27,8 @@ export default function ContentRekomendasi({
               <Image
                 src={data.url_image}
                 alt="rekomendasi"
-                width={400}
-                height={400}
+                width={150}
+                height={10}
                 className="w-full h-[200px] object-cover rounded hover:scale-105 transition-transform duration-300 ease-in-out"
               />
               <div className="flex items-center gap-2 text-[13px] mb-2 mt-2">

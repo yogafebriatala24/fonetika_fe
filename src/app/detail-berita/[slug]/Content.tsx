@@ -21,7 +21,7 @@ export default function ContentDetailBerita({
   };
 
   const handleShareClick = () => {
-    openSharePopup(detailBerita.detail_artikel.nama);
+    openSharePopup("Share Berita: " + detailBerita.detail_artikel.nama);
   };
 
   return (
@@ -61,8 +61,8 @@ export default function ContentDetailBerita({
           <Image
             src={detailBerita.detail_artikel.url_image}
             alt={detailBerita.detail_artikel.image}
-            width={500}
-            height={500}
+            width={170}
+            height={100}
             className="w-full h-60 object-cover mt-4"
           />
           <p className="text-center text-[11px] mt-1 text-gray-400">

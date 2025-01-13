@@ -32,7 +32,7 @@ export default function ContentTrending({
             <Image
               src={data.url_image}
               alt={data.nama}
-              width={200}
+              width={70}
               height={100}
               className="lg:w-[200px] w-[180px] hover:scale-105 hover:transition-all   h-[100px] lg:h-[120px] rounded-md object-cover"
             />

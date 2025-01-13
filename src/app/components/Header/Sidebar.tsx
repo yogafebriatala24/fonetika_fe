@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
+import { LuCircleUserRound } from "react-icons/lu";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -57,7 +58,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           </Link>
         </div>
         <div className="fixed bottom-10 mx-4 text-gray-500">
-          PT. Media Bersama-sama aja
+          <Link href="/login" className=" flex items-center gap-2">
+            Masuk
+          </Link>
+          <p className="mt-2">PT. Media Bersama-sama aja</p>
         </div>
       </div>
     </div>
