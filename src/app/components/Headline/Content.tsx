@@ -27,13 +27,13 @@ export default function ContentHeadline({
   }));
   const limitListBerita = listBerita.slice(0, 2);
 
-  // const truncateText = (text: string, wordLimit: number) => {
-  //   const words = text.split(" ");
-  //   if (words.length > wordLimit) {
-  //     return words.slice(0, wordLimit).join(" ") + "...";
-  //   }
-  //   return text;
-  // };
+  const truncateText = (text: string, wordLimit: number) => {
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + "...";
+    }
+    return text;
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -86,7 +86,7 @@ export default function ContentHeadline({
                 >
                   {data.title}
                 </Link>
-                <p className="text-sm font-normal mt-2">{(data.content, 18)}</p>
+                <p className="text-sm font-normal mt-2">{data.slug}</p>
               </div>
             </div>
           ))}
