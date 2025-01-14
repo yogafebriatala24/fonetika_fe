@@ -1,11 +1,12 @@
 import React from "react";
 import ContentDetailBerita from "./Content";
-import { fetchBeritaList, fetchDetailBerita } from "@/app/libs/ApiDetailBerita";
+import { fetchBeritaList, fetchDetailBerita } from "@/service/ApiDetailBerita";
 import { notFound } from "next/navigation";
-import { DetailBeritaType } from "@/app/types/DetailBerita";
-import { BeritaType } from "@/app/types/BeritaType";
-import Trending from "@/app/components/Trending/Trending";
-import TopikTrending from "@/app/components/TopikTrending/TopikTrending";
+import { DetailBeritaType } from "@/types/DetailBerita";
+import { BeritaType } from "@/types/BeritaType";
+import Trending from "@/components/Trending/Trending";
+import TopikTrending from "@/components/TopikTrending/TopikTrending";
+import { useSession } from "next-auth/react";
 
 type Params = Promise<{ slug: string }>;
 

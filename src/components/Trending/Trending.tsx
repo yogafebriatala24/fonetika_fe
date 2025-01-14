@@ -1,11 +1,11 @@
 import React from "react";
 
 import ContentTrending from "./Content";
-import { fetchBeritaList } from "@/app/libs/ApiDetailBerita";
-import { BeritaType } from "@/app/types/BeritaType";
+import { fetchBeritaList } from "@/service/ApiDetailBerita";
+import { BeritaType } from "@/types/BeritaType";
 import { IconLine } from "@/app/assets/icons";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import { ArtikelType } from "@/app/types/ArtikelType";
+import { ArtikelType } from "@/types/ArtikelType";
 
 export default async function Trending() {
   const listBerita: ArtikelType[] = await fetchBeritaList();

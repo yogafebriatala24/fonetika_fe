@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { usePopup } from "@/app/context/PopupContext";
+import { usePopup } from "@/context/PopupContext";
 import { FontSizePopup } from "./FontSize";
 import { SharePopup } from "./Share";
 

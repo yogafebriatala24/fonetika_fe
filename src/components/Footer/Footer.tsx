@@ -11,7 +11,7 @@ import {
 export default function Footer() {
   return (
     <>
-      <div className="border-t p-6 border-gray-200">
+      <div className="border-t p-6  border-gray-200">
         <div className="flex justify-center">
           <Image
             src={"/fonetika-logo.png"}

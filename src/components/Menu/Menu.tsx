@@ -1,6 +1,6 @@
-import { fetchKategori } from "@/app/libs/ApiKategori";
-import { ArtikelType } from "@/app/types/ArtikelType";
-import { BeritaType } from "@/app/types/BeritaType";
+import { fetchKategori } from "@/service/ApiKategori";
+import { ArtikelType } from "@/types/ArtikelType";
+import { BeritaType } from "@/types/BeritaType";
 import Link from "next/link";
 import React from "react";
 

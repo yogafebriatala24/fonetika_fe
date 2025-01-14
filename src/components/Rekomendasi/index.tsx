@@ -1,8 +1,8 @@
 import React from "react";
 import ContentRekomendasi from "./Content";
-import { BeritaType } from "@/app/types/BeritaType";
-import { fetchBeritaList } from "@/app/libs/ApiDetailBerita";
-import { ArtikelType } from "@/app/types/ArtikelType";
+import { BeritaType } from "@/types/BeritaType";
+import { fetchBeritaList } from "@/service/ApiDetailBerita";
+import { ArtikelType } from "@/types/ArtikelType";
 
 export default async function Rekomendasi() {
   const listBerita: ArtikelType[] = await fetchBeritaList();

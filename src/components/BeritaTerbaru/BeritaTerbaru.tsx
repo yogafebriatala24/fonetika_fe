@@ -6,10 +6,11 @@ import { FaUserCircle } from "react-icons/fa";
 
 import { IoIosArrowDown } from "react-icons/io";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { BeritaType } from "@/app/types/BeritaType";
+import { BeritaType } from "@/types/BeritaType";
 import { IconLine } from "@/app/assets/icons";
-import { formatDateSecond } from "@/app/utils/FormatDate";
-import { ArtikelType } from "@/app/types/ArtikelType";
+import { formatDateSecond } from "@/utils/FormatDate";
+import { ArtikelType } from "@/types/ArtikelType";
+import { useSession } from "next-auth/react";
 
 export default function BeritaTerbaru({
   listBerita,

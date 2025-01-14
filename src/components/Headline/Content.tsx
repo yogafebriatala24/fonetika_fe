@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { BeritaType } from "@/app/types/BeritaType";
-import { formatDateSecond } from "@/app/utils/FormatDate";
+import { BeritaType } from "@/types/BeritaType";
+import { formatDateSecond } from "@/utils/FormatDate";
 import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
 import { FaUserCircle } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { ArtikelType } from "@/app/types/ArtikelType";
+import { ArtikelType } from "@/types/ArtikelType";
 
 export default function ContentHeadline({
   listBerita,

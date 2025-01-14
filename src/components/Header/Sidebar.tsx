@@ -2,6 +2,7 @@ import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 import { LuCircleUserRound } from "react-icons/lu";
+import { useSession, signOut } from "next-auth/react";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -9,6 +10,8 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const { data: session } = useSession(); // Mengambil session
+
   if (!isOpen) return null;
 
   return (
@@ -37,7 +40,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             className="w-full rounded p-2 border"
           />
         </div>
-        <div className=" mx-4">
+        <div className="mx-4">
           <Link
             href="/"
             className="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded-lg"
@@ -57,10 +60,22 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             Redaksi
           </Link>
         </div>
+
+        {/* Sidebar Bottom */}
         <div className="fixed bottom-10 mx-4 text-gray-500">
-          <Link href="/login" className=" flex items-center gap-2">
-            Masuk
-          </Link>
+          {!session ? (
+            <Link href="/signin" className="flex items-center gap-2">
+              <LuCircleUserRound /> Masuk
+            </Link>
+          ) : (
+            <button
+              onClick={() => signOut({ callbackUrl: "/" })}
+              className="block focus:underline  rounded-lg mt-4"
+            >
+              Keluar
+            </button>
+          )}
+
           <p className="mt-2">PT. Media Bersama-sama aja</p>
         </div>
       </div>

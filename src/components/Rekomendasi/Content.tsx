@@ -1,7 +1,7 @@
 import { IconLine } from "@/app/assets/icons";
-import { ArtikelType } from "@/app/types/ArtikelType";
-import { BeritaType } from "@/app/types/BeritaType";
-import { formatDateSecond } from "@/app/utils/FormatDate";
+import { ArtikelType } from "@/types/ArtikelType";
+import { BeritaType } from "@/types/BeritaType";
+import { formatDateSecond } from "@/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

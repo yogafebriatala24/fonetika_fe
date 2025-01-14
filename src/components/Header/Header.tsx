@@ -5,10 +5,12 @@ import Link from "next/link";
 import { RiMenuSearchLine } from "react-icons/ri";
 import Sidebar from "./Sidebar";
 import { LuCircleUserRound } from "react-icons/lu";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const { data: session } = useSession();
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -31,9 +33,21 @@ const Header: React.FC = () => {
               />
             </div>
             <div className="flex text-3xl text-gray-700 ms-auto items-center gap-4">
-              <Link href="/login">
-                <LuCircleUserRound />
-              </Link>
+              {session ? (
+                <div className="relative">
+                  <Image
+                    width={100}
+                    height={100}
+                    src={session.user.image || "/default-avatar.png"}
+                    alt={session.user.name || "User"}
+                    className="w-8 h-8 rounded-full object-cover"
+                  />
+                </div>
+              ) : (
+                <Link href="/signin">
+                  <LuCircleUserRound />
+                </Link>
+              )}
               <button className="" onClick={toggleSidebar}>
                 <RiMenuSearchLine />
               </button>

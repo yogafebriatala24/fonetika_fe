@@ -1,11 +1,42 @@
-import Menu from "./components/Menu/Menu";
-import Trending from "./components/Trending/Trending";
-import Headline from "./components/Headline/Banner";
-import BeritaTerbaruPage from "./components/BeritaTerbaru";
-import TopikTrending from "./components/TopikTrending/TopikTrending";
-import OpiniPage from "./components/Opini/OpiniPage";
-import Rekomendasi from "./components/Rekomendasi";
-import VideoPage from "./components/Video";
+import Menu from "../components/Menu/Menu";
+import Trending from "../components/Trending/Trending";
+import Headline from "../components/Headline/Banner";
+import BeritaTerbaruPage from "../components/BeritaTerbaru";
+import TopikTrending from "../components/TopikTrending/TopikTrending";
+import OpiniPage from "../components/Opini/OpiniPage";
+import Rekomendasi from "../components/Rekomendasi";
+import VideoPage from "../components/Video";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Fonetika",
+  description: "Memberikan makna disetiap berita",
+  icons: "/logo.png ",
+  authors: [{ name: "Fonetika Media" }],
+  openGraph: {
+    title: "Fonetika",
+    description: "Memberikan makna disetiap berita",
+    url: "https://fonetika-fe.netlify.app/",
+    siteName: "Fonetika",
+    images: [
+      {
+        url: "https://fonetika-fe.vercel.app/logo.png",
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en-ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fonetika",
+    description: "Memberikan makna disetiap berita",
+    images: ["https://fonetika-fe.netlify.app/logo.png"],
+  },
+  facebook: {
+    admins: ["Fonetika"],
+  },
+};
 
 export default function Home() {
   return (

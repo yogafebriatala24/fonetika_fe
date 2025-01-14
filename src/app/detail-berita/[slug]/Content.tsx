@@ -1,13 +1,14 @@
 "use client";
-import { DetailBeritaType } from "@/app/types/DetailBerita";
-import { formatDate } from "@/app/utils/FormatDate";
+import { DetailBeritaType } from "@/types/DetailBerita";
+import { formatDate } from "@/utils/FormatDate";
 import Image from "next/image";
 import React from "react";
 import { IoMdShare } from "react-icons/io";
 import { ImFontSize } from "react-icons/im";
 import { FaUserCircle } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { usePopup } from "@/app/context/PopupContext";
+import { usePopup } from "@/context/PopupContext";
+import { useSession } from "next-auth/react";
 
 export default function ContentDetailBerita({
   detailBerita,
