@@ -1,8 +1,8 @@
 export async function fetchKategori() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/kategori`, {
-    next: { revalidate: 30 },
+    next: { revalidate: 10 },
     headers: {
-      Accept: "application/json",
+      "Cache-Control": "public, max-age=60, stale-while-revalidate=120",
     },
   });
   const data = await res.json();

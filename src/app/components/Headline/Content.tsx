@@ -82,6 +82,7 @@ export default function ContentHeadline({
 
                 <Link
                   href={`/detail-berita/${data.slug}`}
+                  prefetch={true}
                   className="focus:underline md:text-2xl text-xl"
                 >
                   {data.title}
