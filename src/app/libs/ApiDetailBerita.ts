@@ -1,6 +1,6 @@
 export function fetchDetailBerita(slug: string): Promise<any> {
   return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`, {
-    next: { revalidate: 30 },
+    next: { revalidate: 90 },
   })
     .then((res) => {
       if (!res.ok) {
@@ -10,11 +10,11 @@ export function fetchDetailBerita(slug: string): Promise<any> {
       return res.json();
     })
     .then((data) => {
-      if (!data || !data.data) {
+      if (!data || !data.detail_artikel) {
         throw new Error(`Invalid response format for slug: ${slug}`);
       }
 
-      return data.data;
+      return data.detail_artikel;
     })
     .catch((error) => {
       console.error(`Error in fetchDetailBerita for slug ${slug}:`, error);
@@ -23,8 +23,8 @@ export function fetchDetailBerita(slug: string): Promise<any> {
 }
 
 export async function fetchBeritaList() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/home`, {
-    next: { revalidate: 30 },
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel`, {
+    next: { revalidate: 90 },
   });
 
   if (!res.ok) {
@@ -33,9 +33,9 @@ export async function fetchBeritaList() {
 
   const data = await res.json();
 
-  if (!data || !data.data || !data.data.artikel_nasional) {
+  if (!data || !data.data.data) {
     throw new Error("Invalid response format from API");
   }
 
-  return data.data.artikel_nasional;
+  return data.data.data;
 }

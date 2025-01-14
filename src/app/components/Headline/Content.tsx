@@ -7,11 +7,12 @@ import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
 import { FaUserCircle } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { ArtikelType } from "@/app/types/ArtikelType";
 
 export default function ContentHeadline({
   listBerita,
 }: {
-  listBerita: BeritaType[];
+  listBerita: ArtikelType[];
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -26,13 +27,13 @@ export default function ContentHeadline({
   }));
   const limitListBerita = listBerita.slice(0, 2);
 
-  const truncateText = (text: string, wordLimit: number) => {
-    const words = text.split(" ");
-    if (words.length > wordLimit) {
-      return words.slice(0, wordLimit).join(" ") + "...";
-    }
-    return text;
-  };
+  // const truncateText = (text: string, wordLimit: number) => {
+  //   const words = text.split(" ");
+  //   if (words.length > wordLimit) {
+  //     return words.slice(0, wordLimit).join(" ") + "...";
+  //   }
+  //   return text;
+  // };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,9 +86,7 @@ export default function ContentHeadline({
                 >
                   {data.title}
                 </Link>
-                <p className="text-sm font-normal mt-2">
-                  {truncateText(data.content, 18)}
-                </p>
+                <p className="text-sm font-normal mt-2">{(data.content, 18)}</p>
               </div>
             </div>
           ))}

@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["tangselupdate.nusacitateknologi.com"],
+    domains: ["fenotika.nusacitateknologi.com"], // Tambahkan hostname di sini
   },
   eslint: {
     dirs: ["src"],

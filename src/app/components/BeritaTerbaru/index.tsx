@@ -1,10 +1,11 @@
 import React from "react";
 import BeritaTerbaru from "./BeritaTerbaru";
 import { fetchBeritaList } from "@/app/libs/ApiDetailBerita";
-import { BeritaType } from "@/app/types/BeritaType";
+import { ArtikelType } from "@/app/types/ArtikelType";
 
 export default async function BeritaTerbaruPage() {
-  const listBerita: BeritaType[] = await fetchBeritaList();
+  const listBerita: ArtikelType[] = await fetchBeritaList();
+
   return (
     <>
       <BeritaTerbaru listBerita={listBerita} />

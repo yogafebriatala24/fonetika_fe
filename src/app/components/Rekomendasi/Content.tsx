@@ -1,4 +1,5 @@
 import { IconLine } from "@/app/assets/icons";
+import { ArtikelType } from "@/app/types/ArtikelType";
 import { BeritaType } from "@/app/types/BeritaType";
 import { formatDateSecond } from "@/app/utils/FormatDate";
 import Image from "next/image";
@@ -10,7 +11,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 export default function ContentRekomendasi({
   listBerita,
 }: {
-  listBerita: BeritaType[];
+  listBerita: ArtikelType[];
 }) {
   return (
     <>

@@ -4,10 +4,8 @@ export default function VideoContent({ listVideo }: { listVideo: string[] }) {
   const getVideoId = (url: string) => {
     let videoId = "";
     if (url.includes("youtu.be")) {
-      // Handle short YouTube URL
       videoId = url.split("youtu.be/")[1]?.split("?")[0];
     } else if (url.includes("youtube.com")) {
-      // Handle standard YouTube URL
       videoId = url.split("v=")[1]?.split("&")[0];
     }
     return videoId;

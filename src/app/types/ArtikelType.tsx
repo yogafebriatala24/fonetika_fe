@@ -16,6 +16,7 @@ export interface ArtikelType {
     created_at: string;
     updatedAt: string;
   };
+  content: string;
   slug: string;
   url_image: string;
 }

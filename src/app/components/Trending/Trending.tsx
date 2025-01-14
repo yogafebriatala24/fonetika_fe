@@ -5,9 +5,10 @@ import { fetchBeritaList } from "@/app/libs/ApiDetailBerita";
 import { BeritaType } from "@/app/types/BeritaType";
 import { IconLine } from "@/app/assets/icons";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { ArtikelType } from "@/app/types/ArtikelType";
 
 export default async function Trending() {
-  const listBerita: BeritaType[] = await fetchBeritaList();
+  const listBerita: ArtikelType[] = await fetchBeritaList();
   const maxItems = 4;
   const limitedBerita = listBerita?.slice(0, maxItems);
   return (

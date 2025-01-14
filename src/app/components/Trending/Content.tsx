@@ -1,3 +1,4 @@
+import { ArtikelType } from "@/app/types/ArtikelType";
 import { BeritaType } from "@/app/types/BeritaType";
 import { formatDateSecond } from "@/app/utils/FormatDate";
 import Image from "next/image";
@@ -9,7 +10,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 export default function ContentTrending({
   listBerita,
 }: {
-  listBerita: BeritaType[];
+  listBerita: ArtikelType[];
 }) {
   const truncateText = (text: string, wordLimit: number) => {
     const words = text.split(" ");

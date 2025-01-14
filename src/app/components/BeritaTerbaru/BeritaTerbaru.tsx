@@ -9,11 +9,12 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { BeritaType } from "@/app/types/BeritaType";
 import { IconLine } from "@/app/assets/icons";
 import { formatDateSecond } from "@/app/utils/FormatDate";
+import { ArtikelType } from "@/app/types/ArtikelType";
 
 export default function BeritaTerbaru({
   listBerita,
 }: {
-  listBerita: BeritaType[];
+  listBerita: ArtikelType[];
 }) {
   const truncateText = (text: string, wordLimit: number) => {
     const words = text.split(" ");
