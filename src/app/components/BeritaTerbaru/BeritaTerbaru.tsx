@@ -57,7 +57,7 @@ export default function BeritaTerbaru({
                 <div>
                   <Link
                     href={`/detail-berita/${data.slug}`}
-                    prefetch
+                    prefetch={true}
                     className="w-full lg:text-base md:text-xl text-[14px] font-semibold focus:underline"
                   >
                     {truncateText(data.nama, 12)}
@@ -84,7 +84,11 @@ export default function BeritaTerbaru({
           ))}
           {listBerita && listBerita.length > maxItems && (
             <div className="mt-4 text-center text-primary text-sm">
-              <Link href="/" className="flex gap-2 items-center justify-center">
+              <Link
+                href="/"
+                className="flex gap-2 items-center justify-center"
+                prefetch={true}
+              >
                 Muat Lebih Banyak
                 <IoIosArrowDown />
               </Link>

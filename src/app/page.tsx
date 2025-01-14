@@ -42,7 +42,7 @@ export default function Home() {
           </div>
         </section>
         <section className="mt-4">
-          <VideoPage />
+          {/* <VideoPage /> */}
           <Rekomendasi />
           <TopikTrending />
         </section>

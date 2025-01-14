@@ -45,6 +45,7 @@ export default function ContentRekomendasi({
                 {formatDateSecond(data.created_at)}
               </p>
               <Link
+                prefetch={true}
                 href={`/detail-berita/${data.slug}`}
                 className=" font-semibold text-lg focus:underline"
               >

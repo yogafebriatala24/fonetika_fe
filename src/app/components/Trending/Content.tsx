@@ -52,6 +52,7 @@ export default function ContentTrending({
             </p>
             <div className="">
               <Link
+                prefetch={true}
                 href={`/detail-berita/${data.slug}`}
                 className="focus:underline"
               >
