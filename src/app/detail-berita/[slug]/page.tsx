@@ -64,6 +64,7 @@ export default async function DetailBerita(props: { params: Params }) {
 
   try {
     detailBerita = await fetchDetailBerita(slug);
+    console.log(detailBerita);
   } catch (error) {
     notFound();
   }

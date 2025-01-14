@@ -62,7 +62,7 @@ export default function ContentHeadline({
                 className="w-full h-[400px]  rounded object-cover hover:scale-105 hover:transition-all"
               />
 
-              <div className=" absolute bottom-0   bg-white  p-2 text-black   font-bold">
+              <div className=" absolute bottom-0   bg-white w-full  p-2 text-black   font-bold">
                 <div className="flex items-center gap-2 text-[13px]  mt-2">
                   <h1 className="flex items-center gap-1 font-medium">
                     <FaUserCircle />

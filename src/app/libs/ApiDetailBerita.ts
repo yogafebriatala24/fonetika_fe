@@ -10,11 +10,11 @@ export function fetchDetailBerita(slug: string): Promise<any> {
       return res.json();
     })
     .then((data) => {
-      if (!data || !data.detail_artikel) {
+      if (!data || !data.data) {
         throw new Error(`Invalid response format for slug: ${slug}`);
       }
 
-      return data.detail_artikel;
+      return data.data;
     })
     .catch((error) => {
       console.error(`Error in fetchDetailBerita for slug ${slug}:`, error);
