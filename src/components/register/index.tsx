@@ -52,10 +52,13 @@ export default function RegisterPage() {
     form.append("image", formData.image);
 
     try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        body: form,
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/register`,
+        {
+          method: "POST",
+          body: form,
+        }
+      );
 
       const data = await response.json();
 
