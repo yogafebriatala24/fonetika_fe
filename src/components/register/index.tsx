@@ -3,6 +3,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -71,15 +73,31 @@ export default function RegisterPage() {
 
         if (loginResponse?.error) {
           setError(loginResponse.error);
+          toast.error(loginResponse.error, {
+            autoClose: 2000,
+            onClose: () => {},
+          });
         } else {
-          alert("Registration and login successful!");
-          router.push("/");
+          toast.success("Registrasi berhasil!", {
+            autoClose: 2000,
+            onClose: () => {
+              router.push("/");
+            },
+          });
         }
       } else {
-        setError(data.message || "Registration failed");
+        setError(data.message || "Registrasigagal!");
+        toast.error(data.message || "Registrasi gagal!", {
+          autoClose: 2000,
+          onClose: () => {},
+        });
       }
     } catch (error) {
       setError("An error occurred. Please try again.");
+      toast.error("An error occurred. Please try again.", {
+        autoClose: 2000,
+        onClose: () => {},
+      });
     } finally {
       setLoading(false);
     }
@@ -173,6 +191,7 @@ export default function RegisterPage() {
           </div>
         </form>
       </div>
+      <ToastContainer style={{ width: "200px", textAlign: "center" }} />
     </>
   );
 }
