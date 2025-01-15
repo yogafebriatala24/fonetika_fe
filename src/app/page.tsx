@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fonetika",
     description: "Memberikan makna disetiap berita",
-    url: "https://fonetika-fe.netlify.app/",
+    url: "https://yogafebriatala.cloud/",
     siteName: "Fonetika",
     images: [
       {
-        url: "https://fonetika-fe.vercel.app/logo.png",
+        url: "https://yogafebriatala.cloud/logo.png",
         width: 800,
         height: 600,
       },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fonetika",
     description: "Memberikan makna disetiap berita",
-    images: ["https://fonetika-fe.netlify.app/logo.png"],
+    images: ["https://yogafebriatala.cloud/logo.png"],
   },
   facebook: {
     admins: ["Fonetika"],
@@ -73,7 +73,7 @@ export default function Home() {
           </div>
         </section>
         <section className="mt-4">
-          {/* <VideoPage /> */}
+          <VideoPage />
           <Rekomendasi />
           <TopikTrending />
         </section>

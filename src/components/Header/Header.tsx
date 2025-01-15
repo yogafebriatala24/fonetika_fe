@@ -32,7 +32,7 @@ const Header: React.FC = () => {
                 className="border border-gray-300 p-1 w-full rounded-lg"
               />
             </div>
-            <div className="flex text-3xl text-gray-700 ms-auto items-center gap-4">
+            <div className="flex text-3xl text-gray-700 ms-auto lg:w-[10%] items-center gap-4">
               {session ? (
                 <div className="relative">
                   <Image
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
                     height={100}
                     src={session.user.image || "/default-avatar.png"}
                     alt={session.user.name || "User"}
-                    className="w-8 h-8 rounded-full object-cover"
+                    className="w-8 h-8 rounded-full  object-cover"
                   />
                 </div>
               ) : (

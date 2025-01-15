@@ -53,13 +53,16 @@ export default function ContentHeadline({
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {data.map((data) => (
-            <div key={data.slug} className="w-full flex-shrink-0 relative ">
+            <div
+              key={data.slug}
+              className="w-full flex-shrink-0 relative h-[350px] "
+            >
               <Image
                 src={data.src}
                 alt={data.title}
                 width={data.width}
                 height={data.height}
-                className="w-full h-[400px]  rounded object-cover hover:scale-105 hover:transition-all"
+                className="w-full h-full rounded object-cover hover:scale-105 hover:transition-all"
               />
 
               <div className=" absolute bottom-0   bg-white w-full  p-2 text-black   font-bold">

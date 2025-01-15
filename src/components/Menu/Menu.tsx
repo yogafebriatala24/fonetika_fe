@@ -11,9 +11,10 @@ export default async function Menu() {
       <div className="flex  overflow-auto items-center border-b p-2 scrollbar">
         {listKategori?.map((data: ArtikelType) => (
           <Link
-            href={"/"}
+            href={`/detail-kategori/${data.slug}`}
             className="whitespace-nowrap mx-3 font-medium focus:underline"
             key={data.slug}
+            prefetch={true}
           >
             {data.nama}
           </Link>
