@@ -14,7 +14,7 @@ type PopupContextType = {
   shareTitle: string;
   openFontSizePopup: () => void;
   closeFontSizePopup: () => void;
-  openSharePopup: (title: string) => void;
+  openSharePopup: () => void;
   closeSharePopup: () => void;
   increaseFontSize: () => void;
   decreaseFontSize: () => void;
@@ -53,8 +53,7 @@ export function PopupProvider({ children }: { children: ReactNode }) {
 
   const openFontSizePopup = () => setIsFontSizePopupOpen(true);
   const closeFontSizePopup = () => setIsFontSizePopupOpen(false);
-  const openSharePopup = (title: string) => {
-    setShareTitle(title);
+  const openSharePopup = () => {
     setIsSharePopupOpen(true);
   };
   const closeSharePopup = () => setIsSharePopupOpen(false);

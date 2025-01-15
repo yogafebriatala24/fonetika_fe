@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 interface SharePopupProps {
   isOpen: boolean;
@@ -47,14 +48,14 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
       <div className="absolute bottom-0 w-full lg:flex lg:inset-0 lg:items-center lg:justify-center">
         <div className="bg-white border shadow-md p-4 lg:w-[500px] lg:p-6 lg:rounded">
           <h2 className="text-center text-lg font-bold mb-4">Bagikan ke:</h2>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center text-4xl">
             <Link
               href={shareLinks.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800"
             >
-              Facebook
+              <FaFacebook />
             </Link>
             <Link
               href={shareLinks.twitter}
@@ -62,7 +63,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-600"
             >
-              Twitter
+              <FaTwitter />
             </Link>
             <Link
               href={shareLinks.whatsapp}
@@ -70,7 +71,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
               rel="noopener noreferrer"
               className="text-green-600 hover:text-green-800"
             >
-              WhatsApp
+              <FaWhatsapp />
             </Link>
           </div>
           <div className="flex justify-center mt-4">

@@ -36,10 +36,10 @@ export async function generateMetadata({
 
   return {
     title: detailBerita.detail_artikel.nama || "Detail Berita",
-    description: detailBerita.detail_artikel.slug || "",
+    description: detailBerita.detail_artikel.content || "",
     openGraph: {
       title: detailBerita.detail_artikel.nama || "Detail Berita",
-      description: detailBerita.detail_artikel.slug || "",
+      description: detailBerita.detail_artikel.content || "",
       images: [
         {
           url: detailBerita.detail_artikel.url_image,
@@ -51,7 +51,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: detailBerita.detail_artikel.nama || "Detail Berita",
-      description: detailBerita.detail_artikel.slug || "",
+      description: detailBerita.detail_artikel.content || "",
       images: [detailBerita.detail_artikel.url_image],
     },
   };

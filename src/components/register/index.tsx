@@ -191,7 +191,7 @@ export default function RegisterPage() {
           </div>
         </form>
       </div>
-      <ToastContainer style={{ width: "200px", textAlign: "center" }} />
+      <ToastContainer />
     </>
   );
 }

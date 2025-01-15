@@ -22,7 +22,7 @@ export default function ContentDetailBerita({
   };
 
   const handleShareClick = () => {
-    openSharePopup("Share Berita: " + detailBerita.detail_artikel.nama);
+    openSharePopup();
   };
 
   return (
