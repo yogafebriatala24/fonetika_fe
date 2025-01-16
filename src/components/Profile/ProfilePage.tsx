@@ -7,24 +7,17 @@ import { FaSignOutAlt } from "react-icons/fa";
 export default function ProfilePage() {
   const { data: session } = useSession();
 
-  const profileImage = session?.user?.image;
   return (
     <>
       <div className="mt-[90px] mx-4">
         <div className="flex flex-col items-center justify-center bg-white shadow rounded p-4">
-          {profileImage ? (
-            <Image
-              src={profileImage}
-              alt="Profile Image"
-              width={100}
-              height={100}
-              className="w-16 h-16 rounded-full object-cover"
-            />
-          ) : (
-            <div className="w-16 h-16 rounded-full bg-gray-300 flex items-center justify-center">
-              <span className="text-white text-lg">?</span>
-            </div>
-          )}
+          <Image
+            src={session?.user?.image || ""}
+            alt="Profile Image"
+            width={100}
+            height={100}
+            className="w-16 h-16 rounded-full object-cover"
+          />
           <div className="mt-2 flex items-center flex-col">
             <p className="text-lg">{session?.user?.name}</p>
             <p className="text-gray-300 text-sm">{session?.user?.email}</p>
