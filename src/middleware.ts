@@ -10,6 +10,13 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
+  if (
+    !token &&
+    (url.pathname === "/profile" || url.pathname.startsWith("/profile/"))
+  ) {
+    return NextResponse.redirect(new URL("/signin", req.url));
+  }
+
   if (!token && (url.pathname === "/signin" || url.pathname === "/register")) {
     return NextResponse.next();
   }
