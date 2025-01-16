@@ -1,5 +1,4 @@
 import { ArtikelType } from "@/types/ArtikelType";
-import { BeritaType } from "@/types/BeritaType";
 import { formatDateSecond } from "@/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";

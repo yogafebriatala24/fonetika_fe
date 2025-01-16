@@ -9,6 +9,9 @@ import { FaUserCircle } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { usePopup } from "@/context/PopupContext";
 import { useSession } from "next-auth/react";
+import { SiGooglenews } from "react-icons/si";
+import Link from "next/link";
+import DOMPurify from "dompurify";
 
 export default function ContentDetailBerita({
   detailBerita,
@@ -24,6 +27,7 @@ export default function ContentDetailBerita({
   const handleShareClick = () => {
     openSharePopup();
   };
+  const cleanContent = DOMPurify.sanitize(detailBerita.detail_artikel.content);
 
   return (
     <>
@@ -64,29 +68,40 @@ export default function ContentDetailBerita({
             alt={detailBerita.detail_artikel.image}
             width={170}
             height={10}
-            className="w-full h-60 object-cover mt-4"
+            className="w-full h-60 object-cover mt-4 rounded"
           />
           <p className="text-center text-[11px] mt-1 text-gray-400">
             https://freeprik.com
           </p>
         </div>
         {/* Konten Berita */}
+        <div className="flex mt-3"></div>
         <p
-          className="mt-4"
+          className=""
           style={{ fontSize: `${fontSize}px` }}
           dangerouslySetInnerHTML={{
-            __html: detailBerita.detail_artikel.content,
+            __html: "<strong>Fonetika.id</strong> -" + " " + cleanContent,
           }}
         ></p>
 
         {/* Baca Juga Section */}
         <div className="mt-4 mb-4 bg-gray-50 p-3">
-          <h4 className="font-medium text-primary">Baca Juga</h4>
-          <div className="mt-4">
-            <p className="font-semibold">
+          <h4 className="font-medium ">Baca Juga</h4>
+          <div className="">
+            <p className="font-semibold text-primary">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit
             </p>
           </div>
+        </div>
+        <div className="mt-4 mb-4   flex items-center gap-2">
+          <SiGooglenews className="text-blue-400 text-4xl" />
+          <span className="text-sm lg:text-base text font-semibold">
+            {" "}
+            Baca berita juga dari Fonetika di{" "}
+            <Link href={"/"} className="text-primary">
+              Google News
+            </Link>
+          </span>
         </div>
       </div>
     </>
