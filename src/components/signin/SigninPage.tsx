@@ -56,6 +56,7 @@ const SignInPage: React.FC = () => {
 
       if (result?.ok) {
         router.push("/");
+        window.location.reload();
       } else {
         setError("Login gagal. Silakan coba lagi.");
       }

@@ -57,13 +57,15 @@ export default function ContentHeadline({
               key={data.slug}
               className="w-full flex-shrink-0 relative h-[350px] "
             >
-              <Image
-                src={data.src}
-                alt={data.title}
-                width={data.width}
-                height={data.height}
-                className="w-full h-full rounded object-cover hover:scale-105 hover:transition-all"
-              />
+              <Link href={`/detail-berita/${data.slug}`} prefetch={true}>
+                <Image
+                  src={data.src}
+                  alt={data.title}
+                  width={data.width}
+                  height={data.height}
+                  className="w-full h-full rounded object-cover hover:scale-105 hover:transition-all"
+                />
+              </Link>
 
               <div className=" absolute bottom-0   bg-white w-full  p-2 text-black   font-bold">
                 <div className="flex items-center gap-2 text-[13px]  mt-2">

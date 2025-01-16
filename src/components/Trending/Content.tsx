@@ -25,18 +25,21 @@ export default function ContentTrending({
       {/* Container for ContentTrending */}
       <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-auto scrollbar">
         {listBerita?.map((data) => (
-          <div
-            className="flex-shrink-0 lg:flex lg:gap-4  lg:mb-4"
-            key={data.slug}
-          >
+          <div className=" lg:flex lg:gap-4  lg:mb-4" key={data.slug}>
             {/* Image */}
-            <Image
-              src={data.url_image}
-              alt={data.nama}
-              width={70}
-              height={100}
-              className="lg:w-[200px] w-[180px] hover:scale-105 hover:transition-all   h-[100px] lg:h-[120px] rounded-md object-cover"
-            />
+            <Link
+              prefetch={true}
+              href={`/detail-berita/${data.slug}`}
+              className="flex-shrink-0"
+            >
+              <Image
+                src={data.url_image}
+                alt={data.nama}
+                width={70}
+                height={100}
+                className="lg:w-[200px] w-[180px] hover:scale-105 hover:transition-all   h-[100px] lg:h-[120px] rounded-md object-cover"
+              />
+            </Link>
             {/* Title */}
             <div className="flex items-center gap-2 text-sm mb-2 mt-2 lg:hidden">
               <h1 className="flex items-center gap-1 font-medium">

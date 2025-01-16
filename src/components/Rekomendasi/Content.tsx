@@ -25,13 +25,15 @@ export default function ContentRekomendasi({
               className="col-span-12 md:col-span-6 lg:col-span-4"
               key={data.slug}
             >
-              <Image
-                src={data.url_image}
-                alt="rekomendasi"
-                width={150}
-                height={10}
-                className="w-full h-[200px] object-cover rounded hover:scale-105 transition-transform duration-300 ease-in-out"
-              />
+              <Link prefetch={true} href={`/detail-berita/${data.slug}`}>
+                <Image
+                  src={data.url_image}
+                  alt="rekomendasi"
+                  width={150}
+                  height={10}
+                  className="w-full h-[200px] object-cover rounded hover:scale-105 transition-transform duration-300 ease-in-out"
+                />
+              </Link>
               <div className="flex items-center gap-2 text-[13px] mb-2 mt-2">
                 <h1 className="flex items-center gap-1 font-medium">
                   <FaUserCircle />

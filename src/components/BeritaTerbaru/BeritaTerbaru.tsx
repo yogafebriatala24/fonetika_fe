@@ -46,13 +46,15 @@ export default function BeritaTerbaru({
               key={data.slug}
             >
               <div className="col-span-4 md:col-span-5 lg:col-span-3 ">
-                <Image
-                  src={data.url_image}
-                  alt=""
-                  width={70}
-                  height={200}
-                  className="lg:w-40 w-full h-[90px] md:h-[150px] lg:h-[100px] rounded-md  object-cover hover:scale-105 hover:transition-all"
-                />
+                <Link prefetch={true} href={`/detail-berita/${data.slug}`}>
+                  <Image
+                    src={data.url_image}
+                    alt=""
+                    width={70}
+                    height={200}
+                    className="lg:w-40 w-full h-[90px] md:h-[150px] lg:h-[100px] rounded-md  object-cover hover:scale-105 hover:transition-all"
+                  />
+                </Link>
               </div>
               <div className="col-span-8 md:col-span-7 lg:col-span-9">
                 <div>
