@@ -1,6 +1,7 @@
 import { fetchDetailKategori } from "@/service/ApiKategori";
 import { KategoriListType } from "@/types/KategoriListType";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -40,7 +41,12 @@ export default async function DetailKategori(props: { params: Params }) {
               />
             </div>
             <div className="lg:col-span-10 col-span-8">
-              <h1 className="font-bold  lg:text-xl">{data.nama}</h1>
+              <Link
+                href={`/detail-berita/${data.slug}`}
+                className="font-bold  lg:text-xl"
+              >
+                {data.nama}
+              </Link>
             </div>
             <div className="col-span-12">
               <hr className="w-full" />

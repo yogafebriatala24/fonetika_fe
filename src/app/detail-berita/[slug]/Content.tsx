@@ -71,9 +71,13 @@ export default function ContentDetailBerita({
           </p>
         </div>
         {/* Konten Berita */}
-        <p className="mt-4 text-justify" style={{ fontSize: `${fontSize}px` }}>
-          {detailBerita.detail_artikel.content}
-        </p>
+        <p
+          className="mt-4"
+          style={{ fontSize: `${fontSize}px` }}
+          dangerouslySetInnerHTML={{
+            __html: detailBerita.detail_artikel.content,
+          }}
+        ></p>
 
         {/* Baca Juga Section */}
         <div className="mt-4 mb-4 bg-gray-50 p-3">
