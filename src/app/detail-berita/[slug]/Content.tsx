@@ -100,7 +100,7 @@ export default function ContentDetailBerita({
           <SiGooglenews className="text-blue-400 text-4xl" />
           <span className="text-sm lg:text-base text font-semibold">
             {" "}
-            Baca berita juga dari Fonetika di{" "}
+            Baca juga berita Fonetika di{" "}
             <Link href={"/"} className="text-primary">
               Google News
             </Link>

@@ -49,17 +49,16 @@ export default function ContentHeadline({
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {data.map((data) => (
-            <div
-              key={data.slug}
-              className="w-full flex-shrink-0 relative h-[350px] "
-            >
+            <div key={data.slug} className="w-full flex-shrink-0 relative ">
               <Link href={`/detail-berita/${data.slug}`} prefetch={true}>
                 <Image
                   src={data.src}
                   alt={data.title}
                   width={data.width}
                   height={data.height}
-                  className="w-full h-full rounded object-cover hover:scale-105 hover:transition-all"
+                  layout="responsive"
+                  priority
+                  className="rounded object-cover hover:scale-105 hover:transition-all"
                 />
               </Link>
 
