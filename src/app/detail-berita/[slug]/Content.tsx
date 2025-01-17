@@ -54,10 +54,16 @@ export default function ContentDetailBerita({
 
           {/* Tombol untuk Font Size dan Share */}
           <div className="flex items-center ms-auto text-gray-500 w-fit mt-2 gap-4 border border-gray-500 rounded py-2 px-4">
-            <button className="text-xl" onClick={handleFontSizeClick}>
+            <button
+              className="text-xl active:scale-90 transition-all duration-100"
+              onClick={handleFontSizeClick}
+            >
               <ImFontSize />
             </button>
-            <button className="text-2xl" onClick={handleShareClick}>
+            <button
+              className="text-2xl active:scale-90 transition-all duration-100"
+              onClick={handleShareClick}
+            >
               <IoMdShare />
             </button>
           </div>

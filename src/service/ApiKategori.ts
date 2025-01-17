@@ -27,7 +27,7 @@ export function fetchDetailKategori(slug: string): Promise<any> {
       if (!data || !data.data.artikel.data) {
         throw new Error(`Invalid response format for slug: ${slug}`);
       }
-
+      console.log(data.data.artikel.data);
       return data.data.artikel.data;
     })
     .catch((error) => {

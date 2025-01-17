@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
@@ -16,6 +16,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
   const [currentUrl, setCurrentUrl] = useState<string>("");
   const [isCopied, setIsCopied] = useState(false);
   const pathname = usePathname();
+  const popupRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -28,7 +29,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
     if (typeof navigator !== "undefined" && navigator.clipboard) {
       navigator.clipboard.writeText(currentUrl).then(() => {
         setIsCopied(true);
-        setTimeout(() => setIsCopied(false), 2000);
+        setTimeout(() => setIsCopied(false), 1000);
       });
     }
   };
@@ -37,6 +38,11 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,
     twitter: `https://twitter.com/intent/tweet?url=${currentUrl}&text=${title}`,
     whatsapp: `https://api.whatsapp.com/send?text=${title}%20${currentUrl}`,
+  };
+  const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+      onClose();
+    }
   };
 
   if (!isOpen) return null;
@@ -47,6 +53,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
+      onClick={handleOverlayClick}
     >
       <motion.div
         initial={{ y: "100%", opacity: 0 }}
@@ -55,14 +62,17 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
         transition={{ duration: 0.3 }}
         className="absolute bottom-0 w-full lg:flex lg:inset-0 lg:items-center lg:justify-center"
       >
-        <div className="bg-white border shadow-md p-4 lg:w-[500px] lg:p-6 lg:rounded rounded-t-lg">
+        <div
+          className="bg-white border shadow-md p-4 lg:w-[500px] lg:p-6 lg:rounded rounded-t-lg"
+          ref={popupRef}
+        >
           <h2 className="text-center text-lg font-bold mb-4">Bagikan ke:</h2>
           <div className="flex gap-4 justify-center text-4xl">
             <Link
               href={shareLinks.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800"
+              className="text-blue-600 focus:text-blue-800 active:scale-90 transition-all duration-200"
             >
               <FaFacebook />
             </Link>
@@ -70,7 +80,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
               href={shareLinks.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-600"
+              className="text-blue-400 focus:text-blue-600 active:scale-90 transition-all duration-100"
             >
               <FaTwitter />
             </Link>
@@ -78,7 +88,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
               href={shareLinks.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-600 hover:text-green-800"
+              className="text-green-600 focus:text-green-800 active:scale-90 transition-all duration-100"
             >
               <FaWhatsapp />
             </Link>
@@ -86,7 +96,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
           <div className="flex justify-center mt-4">
             <button
               onClick={copyToClipboard}
-              className="px-4 py-2 w-full bg-gray-200 hover:bg-gray-300 rounded-md"
+              className="px-4 py-2 w-full bg-gray-200 ficus:bg-gray-300  active:scale-90 transition-all duration-100 rounded-md"
             >
               {isCopied ? "Tautan Disalin!" : "Salin Tautan"}
             </button>
@@ -94,7 +104,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
           <div className="flex justify-center mt-4">
             <button
               onClick={onClose}
-              className="px-4 py-2 w-full bg-gray-200 hover:bg-gray-300 rounded-md"
+              className="px-4 py-2 w-full bg-gray-200 focus:bg-gray-300 active:scale-90 transition-all duration-100 rounded-md"
             >
               Tutup
             </button>

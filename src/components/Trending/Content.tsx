@@ -17,25 +17,24 @@ export default function ContentTrending({
 
   return (
     <>
-      {/* Container for ContentTrending */}
       <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-auto scrollbar">
         {limitedBerita?.map((data) => (
           <div className=" lg:flex lg:gap-4  lg:mb-4" key={data.slug}>
-            {/* Image */}
             <Link
               prefetch={true}
               href={`/detail-berita/${data.slug}`}
-              className="flex-shrink-0"
+              className="flex-shrink-0 focus:scale-95 focus:transition-all"
             >
               <Image
                 src={data.url_image}
                 alt={data.nama}
                 width={70}
                 height={100}
-                className="lg:w-[200px] w-[180px] hover:scale-105 hover:transition-all   h-[100px] lg:h-[120px] rounded-md object-cover"
+                priority
+                className="lg:w-[200px] w-[180px]    h-[100px] lg:h-[120px] rounded-md object-cover"
               />
             </Link>
-            {/* Title */}
+
             <div className="flex items-center gap-2 text-[13px] mb-2 mt-2 lg:hidden">
               <h1 className="flex items-center gap-1 font-medium">
                 <FaUserCircle />

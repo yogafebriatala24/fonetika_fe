@@ -2,11 +2,28 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["fenotika.nusacitateknologi.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fenotika.nusacitateknologi.com",
+        pathname: "**",
+      },
+    ],
+  },
+  experimental: {
+    optimizePackageImports: [
+      "framer-motion",
+      "date-fns",
+      "date-fns-tz",
+      "react-icons",
+    ],
   },
   eslint: {
     dirs: ["src"],
   },
 };
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
 
-export default nextConfig;
+module.exports = withBundleAnalyzer(nextConfig);

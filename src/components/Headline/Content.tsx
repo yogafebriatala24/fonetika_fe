@@ -59,9 +59,8 @@ export default function ContentHeadline({
                   alt={data.title}
                   width={data.width}
                   height={data.height}
-                  layout="responsive"
                   priority
-                  className="rounded object-cover hover:scale-105 hover:transition-all"
+                  className="rounded w-full object-cover hover:scale-105 hover:transition-all"
                 />
               </Link>
 

@@ -55,12 +55,15 @@ const Header: React.FC = () => {
                       height={100}
                       src={session.user.image || "/default-avatar.png"}
                       alt={session.user.name || "User"}
-                      className="w-8 h-8 rounded-full  object-cover"
+                      className="w-8 h-8 rounded-full  object-cover active:scale-90 transition-all duration-100"
                     />
                   </Link>
                 </div>
               ) : (
-                <Link href="/signin">
+                <Link
+                  href="/signin"
+                  className="active:scale-90 transition-all duration-100"
+                >
                   <LuCircleUserRound />
                 </Link>
               )}

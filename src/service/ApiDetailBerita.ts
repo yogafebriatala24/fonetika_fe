@@ -1,8 +1,8 @@
 export function fetchDetailBerita(slug: string): Promise<any> {
   return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel/${slug}`, {
-    next: { revalidate: 30 },
+    next: { revalidate: 60 },
     headers: {
-      "Cache-Control": "public, max-age=60, stale-while-revalidate=120",
+      "Cache-Control": "public, max-age=30, stale-while-revalidate=60", // Cache hanya 30 detik, revalidate setelah 60 detik
     },
   })
     .then((res) => {
@@ -34,9 +34,9 @@ export async function fetchBeritaList(
       process.env.NEXT_PUBLIC_API_BASE_URL
     }/artikel?search=${encodeURIComponent(search)}&page=${page}`,
     {
-      next: { revalidate: 30 },
+      next: { revalidate: 60 },
       headers: {
-        "Cache-Control": "public, max-age=60, stale-while-revalidate=120",
+        "Cache-Control": "public, max-age=20, stale-while-revalidate=60",
       },
     }
   );
