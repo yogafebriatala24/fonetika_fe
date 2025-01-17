@@ -2,15 +2,13 @@ import React from "react";
 
 import ContentTrending from "./Content";
 import { fetchBeritaList } from "@/service/ApiDetailBerita";
-import { BeritaType } from "@/types/BeritaType";
 import { IconLine } from "@/app/assets/icons";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import { ArtikelType } from "@/types/ArtikelType";
+import { ArtikelListType } from "@/types/ArtikelType";
 
 export default async function Trending() {
-  const listBerita: ArtikelType[] = await fetchBeritaList();
-  const maxItems = 4;
-  const limitedBerita = listBerita?.slice(0, maxItems);
+  const listBerita: ArtikelListType = await fetchBeritaList();
+
   return (
     <>
       <div className=" mx-4  rounded-xl  ">
@@ -29,7 +27,7 @@ export default async function Trending() {
           </p>
         </div>
         <div className="mt-4">
-          <ContentTrending listBerita={limitedBerita} />
+          <ContentTrending listBerita={listBerita} />
           <hr className="mt-4" />
         </div>
       </div>

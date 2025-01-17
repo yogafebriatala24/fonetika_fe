@@ -1,31 +1,34 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { BeritaType } from "@/types/BeritaType";
 import { formatDateSecond } from "@/utils/FormatDate";
 import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
 import { FaUserCircle } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { ArtikelType } from "@/types/ArtikelType";
+import { ArtikelListType, ArtikelType } from "@/types/ArtikelType";
 
 export default function ContentHeadline({
   listBerita,
 }: {
-  listBerita: ArtikelType[];
+  listBerita: ArtikelListType;
 }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const data = listBerita.slice(0, 3).map((berita) => ({
-    src: berita.url_image,
-    title: berita.nama,
-    date: berita.created_at,
-    content: berita.content,
-    slug: berita.slug,
-    width: 200,
-    height: 100,
-  }));
-  const limitListBerita = listBerita.slice(0, 2);
+  const data = listBerita.data
+    ? listBerita.data.slice(0, 3).map((berita) => ({
+        src: berita.url_image,
+        title: berita.nama,
+        date: berita.created_at,
+        content: berita.content, // Pastikan berita memiliki properti content
+        slug: berita.slug,
+        width: 200,
+        height: 100,
+      }))
+    : [];
+
+  const maxItems = 3;
+  const limitedBerita = listBerita.data?.slice(0, maxItems);
 
   const truncateText = (text: string, wordLimit: number) => {
     const words = text.split(" ");
@@ -99,7 +102,7 @@ export default function ContentHeadline({
         </div>
       </div>
       <div className="mt-4 ">
-        {limitListBerita.map((data) => (
+        {limitedBerita.map((data) => (
           <div className="border-b p-2" key={data.slug}>
             <Link
               href={`/detail-berita/${data.slug}`}

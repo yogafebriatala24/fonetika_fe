@@ -25,13 +25,16 @@ export function fetchDetailBerita(slug: string): Promise<any> {
     });
 }
 
-export async function fetchBeritaList() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel`, {
-    next: { revalidate: 10 },
-    headers: {
-      "Cache-Control": "public, max-age=60, stale-while-revalidate=120",
-    },
-  });
+export async function fetchBeritaList(page: number = 1) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel?page=${page}`,
+    {
+      next: { revalidate: 10 },
+      headers: {
+        "Cache-Control": "public, max-age=60, stale-while-revalidate=120",
+      },
+    }
+  );
 
   if (!res.ok) {
     throw new Error(`Failed to fetch berita list: ${res.statusText}`);
@@ -39,9 +42,9 @@ export async function fetchBeritaList() {
 
   const data = await res.json();
 
-  if (!data || !data.data.data) {
+  if (!data || !data.data) {
     throw new Error("Invalid response format from API");
   }
 
-  return data.data.data;
+  return data.data;
 }

@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 import { SiGooglenews } from "react-icons/si";
 import Link from "next/link";
 import DOMPurify from "dompurify";
+import { de } from "date-fns/locale";
 
 export default function ContentDetailBerita({
   detailBerita,
@@ -27,7 +28,6 @@ export default function ContentDetailBerita({
   const handleShareClick = () => {
     openSharePopup();
   };
-  const cleanContent = DOMPurify.sanitize(detailBerita.detail_artikel.content);
 
   return (
     <>
@@ -80,7 +80,10 @@ export default function ContentDetailBerita({
           className=""
           style={{ fontSize: `${fontSize}px` }}
           dangerouslySetInnerHTML={{
-            __html: "<strong>Fonetika.id</strong> -" + " " + cleanContent,
+            __html:
+              "<strong>Fonetika.id</strong> -" +
+              " " +
+              detailBerita.detail_artikel.content,
           }}
         ></p>
 

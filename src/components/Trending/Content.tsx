@@ -1,4 +1,4 @@
-import { ArtikelType } from "@/types/ArtikelType";
+import { ArtikelListType, ArtikelType } from "@/types/ArtikelType";
 import { formatDateSecond } from "@/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 export default function ContentTrending({
   listBerita,
 }: {
-  listBerita: ArtikelType[];
+  listBerita: ArtikelListType;
 }) {
   const truncateText = (text: string, wordLimit: number) => {
     const words = text.split(" ");
@@ -18,12 +18,14 @@ export default function ContentTrending({
     }
     return text;
   };
+  const maxItems = 4;
+  const limitedBerita = listBerita.data?.slice(0, maxItems);
 
   return (
     <>
       {/* Container for ContentTrending */}
       <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-auto scrollbar">
-        {listBerita?.map((data) => (
+        {limitedBerita?.map((data) => (
           <div className=" lg:flex lg:gap-4  lg:mb-4" key={data.slug}>
             {/* Image */}
             <Link
