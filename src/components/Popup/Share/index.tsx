@@ -1,7 +1,10 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaFacebook, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 interface SharePopupProps {
   isOpen: boolean;
@@ -40,13 +43,19 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 ${!isOpen ? "hidden" : ""}`}
+      className="fixed inset-0 z-50"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
     >
-      <div className="absolute bottom-0 w-full lg:flex lg:inset-0 lg:items-center lg:justify-center">
-        <div className="bg-white border shadow-md p-4 lg:w-[500px] lg:p-6 lg:rounded">
+      <motion.div
+        initial={{ y: "100%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: "100%", opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute bottom-0 w-full lg:flex lg:inset-0 lg:items-center lg:justify-center"
+      >
+        <div className="bg-white border shadow-md p-4 lg:w-[500px] lg:p-6 lg:rounded rounded-t-lg">
           <h2 className="text-center text-lg font-bold mb-4">Bagikan ke:</h2>
           <div className="flex gap-4 justify-center text-4xl">
             <Link
@@ -91,7 +100,7 @@ export function SharePopup({ isOpen, onClose, title }: SharePopupProps) {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

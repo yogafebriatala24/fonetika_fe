@@ -70,7 +70,7 @@ export default function ContentDetailBerita({
             height={10}
             className="w-full h-60 object-cover mt-4 rounded"
           />
-          <p className="text-center text-[11px] mt-1 text-gray-400">
+          <p className="text-center text-[13px] mt-1 text-gray-400">
             https://freeprik.com
           </p>
         </div>

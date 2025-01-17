@@ -4,7 +4,7 @@ import { RiDiscussFill } from "react-icons/ri";
 
 const BottomNav = () => {
   return (
-    <nav className="fixed bottom-0 border-t left-0 w-full bg-white shadow-xl md:hidden">
+    <nav className="fixed bottom-0 border-t left-0 w-full bg-white shadow-xl md:hidden rounded-t-xl">
       <ul className="flex justify-around py-3">
         <li>
           <Link href="/">

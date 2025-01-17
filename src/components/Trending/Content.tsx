@@ -36,7 +36,7 @@ export default function ContentTrending({
               />
             </Link>
             {/* Title */}
-            <div className="flex items-center gap-2 text-sm mb-2 mt-2 lg:hidden">
+            <div className="flex items-center gap-2 text-[13px] mb-2 mt-2 lg:hidden">
               <h1 className="flex items-center gap-1 font-medium">
                 <FaUserCircle />
                 FonetikaHEALTH{" "}
@@ -45,9 +45,9 @@ export default function ContentTrending({
                 </span>
               </h1>
             </div>
-            <p className="flex flex-col   text-[11px]  mt-2 text-gray-400 lg:hidden">
+            <p className="flex flex-col   text-[12px]  mt-1 text-gray-400 lg:hidden">
               <span>{formatDateSecond(data.created_at)}</span>
-              <span className="font-semibold mt-1  text-primary">
+              <span className="font-semibold  text-primary">
                 {data.kategori.nama}
               </span>
             </p>
@@ -61,11 +61,11 @@ export default function ContentTrending({
                   {data.nama}
                 </p>
               </Link>
-              <p className="flex  items-center text-[11px]  mt-2 text-gray-400 lg:block max-lg:hidden">
+              <p className="flex  items-center text-[12px]  mt-2 text-gray-400 lg:block max-lg:hidden">
                 <span>{formatDateSecond(data.created_at)}</span>
                 <span className="font-semibold ml-2 text-primary">Health</span>
               </p>
-              <span className="hidden lg:block text-[13px] mt-2">
+              <span className="hidden lg:block text-[13px] mt-1">
                 <span className="flex items-center gap-1 font-medium ">
                   <FaUserCircle />
                   FonetikaHEALTH{" "}

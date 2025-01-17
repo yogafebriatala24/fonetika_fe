@@ -43,13 +43,16 @@ export default function ContentHeadline({
     <div className="w-full relative mt-4  bg-gray-50 p-4 rounded">
       <h1 className="font-bold text-xl  text-primary">Berita Utama</h1>
       <IconLine />
-      <div className="relative w-full overflow-hidden mt-4">
+      <div className="relative w-full overflow-hidden mt-4 ">
         <div
-          className="flex transition-all duration-500 ease-in-out"
+          className="flex transition-all duration-500 ease-in-out "
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {data.map((data) => (
-            <div key={data.slug} className="w-full flex-shrink-0 relative ">
+            <div
+              key={data.slug}
+              className="w-full flex-shrink-0 relative h-[300px] lg:h-[400px]"
+            >
               <Link href={`/detail-berita/${data.slug}`} prefetch={true}>
                 <Image
                   src={data.src}
@@ -63,7 +66,7 @@ export default function ContentHeadline({
               </Link>
 
               <div className=" absolute bottom-0   bg-white w-full  p-2 text-black   font-bold">
-                <div className="flex items-center gap-2 text-[13px]  mt-2">
+                <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
                   <h1 className="flex items-center gap-1 font-medium">
                     <FaUserCircle />
                     FonetikaPOLITIK{" "}
@@ -75,7 +78,7 @@ export default function ContentHeadline({
                     Hot News
                   </p>
                 </div>
-                <div className="flex items-center gap-2 text-[11px] font-normal mb-2 text-gray-500">
+                <div className="flex items-center gap-2 text-[12px] font-normal mb-2 text-gray-500">
                   <p className="">{formatDateSecond(data.date)}</p>
                   <p className="font-semibold text-primary">{data.kategori}</p>
                 </div>
@@ -102,7 +105,7 @@ export default function ContentHeadline({
             >
               {data.nama}
             </Link>
-            <div className="flex items-center gap-2 text-[13px] mb-2 mt-2">
+            <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
               <h1 className="flex items-center gap-1 font-medium">
                 <FaUserCircle />
                 FonetikaTECH
@@ -111,7 +114,7 @@ export default function ContentHeadline({
                 </span>
               </h1>
             </div>
-            <div className="flex items-center gap-2 text-[11px] font-normal mb-2 text-gray-500">
+            <div className="flex items-center gap-2 text-[12px] font-normal text-gray-500">
               <p className="">{formatDateSecond(data.created_at)}</p>
               <p className="font-semibold text-primary">{data.kategori.nama}</p>
             </div>

@@ -1,5 +1,6 @@
-// FontSizePopup.tsx
 "use client";
+
+import { motion } from "framer-motion";
 
 interface FontSizePopupProps {
   isOpen: boolean;
@@ -37,13 +38,19 @@ export function FontSizePopup({
 
   return (
     <div
-      className={`fixed inset-0 z-50 ${!isOpen ? "hidden" : ""}`}
+      className="fixed inset-0 z-50"
       style={{
         backgroundColor: "rgba(0, 0, 0, 0.5)",
       }}
     >
-      <div className="absolute bottom-0 w-full  lg:flex lg:inset-0 lg:items-center lg:justify-center ">
-        <div className="bg-white border shadow-md p-4 lg:w-[400px] lg:p-8 lg:rounded">
+      <motion.div
+        initial={{ y: "100%", opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: "100%", opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute bottom-0 w-full lg:flex lg:inset-0 lg:items-center lg:justify-center"
+      >
+        <div className="bg-white border shadow-md p-4 lg:w-[400px] lg:p-8 lg:rounded rounded-t-lg">
           <div className="flex gap-4 items-center justify-center">
             <button
               className="px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded-md"
@@ -75,7 +82,7 @@ export function FontSizePopup({
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -28,6 +28,7 @@ export default function RootLayout({
         <SessionProvider>
           <Providers>
             <PopupContainer />
+
             <Header />
             <div className=" lg:max-w-6xl max-w-full  mx-auto">
               <ErrorBoundary errorComponent={ErrorComponent}>

@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import Link from "next/link";
 import { LuCircleUserRound } from "react-icons/lu";
 import { useSession, signOut } from "next-auth/react";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -10,7 +13,17 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const { data: session } = useSession(); // Mengambil session
+  const { data: session } = useSession();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+      onClose();
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -21,10 +34,12 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       }`}
       onClick={onClose}
     >
-      <div
-        className={`fixed top-0 right-0 h-full w-full bg-white shadow-lg z-50 transform transition-transform duration-300 ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+      <motion.div
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.3 }}
+        className="fixed top-0 right-0 h-full w-full bg-white shadow-lg z-50 transform"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center p-4 mx-4 border-b border-gray-200">
@@ -34,11 +49,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
         <div className="p-2 mx-4">
-          <input
-            type="text"
-            placeholder="Cari Berita"
-            className="w-full rounded p-2 border"
-          />
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Cari Berita"
+              className="w-full rounded p-2 border"
+            />
+            <button type="submit" className="hidden"></button>
+          </form>
         </div>
         <div className="mx-4">
           <Link
@@ -70,7 +90,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           ) : (
             <button
               onClick={() => signOut({ callbackUrl: "/" })}
-              className="block focus:underline  rounded-lg mt-4"
+              className="block focus:underline rounded-lg mt-4"
             >
               Keluar
             </button>
@@ -78,7 +98,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
 
           <p className="mt-2">PT. Media Bersama-sama aja</p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

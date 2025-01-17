@@ -34,7 +34,7 @@ export default function ContentRekomendasi({
                   className="w-full h-[200px] object-cover rounded hover:scale-105 transition-transform duration-300 ease-in-out"
                 />
               </Link>
-              <div className="flex items-center gap-2 text-[13px] mb-2 mt-2">
+              <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
                 <h1 className="flex items-center gap-1 font-medium">
                   <FaUserCircle />
                   FonetikaSPORT
@@ -43,7 +43,7 @@ export default function ContentRekomendasi({
                   </span>
                 </h1>
               </div>
-              <div className="flex items-center gap-2 text-[11px] text-gray-400">
+              <div className="flex items-center gap-2 text-[12px] text-gray-400">
                 <span>{formatDateSecond(data.created_at)}</span>{" "}
                 <span className="font-semibold text-primary">
                   {data.kategori.nama}

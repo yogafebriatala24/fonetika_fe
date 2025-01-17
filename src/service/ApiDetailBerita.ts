@@ -25,9 +25,14 @@ export function fetchDetailBerita(slug: string): Promise<any> {
     });
 }
 
-export async function fetchBeritaList(page: number = 1) {
+export async function fetchBeritaList(
+  search: string = "",
+  page: number = 1
+): Promise<any> {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/artikel?page=${page}`,
+    `${
+      process.env.NEXT_PUBLIC_API_BASE_URL
+    }/artikel?search=${encodeURIComponent(search)}&page=${page}`,
     {
       next: { revalidate: 30 },
       headers: {

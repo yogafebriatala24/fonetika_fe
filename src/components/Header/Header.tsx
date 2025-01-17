@@ -7,12 +7,22 @@ import Sidebar from "./Sidebar";
 import { LuCircleUserRound } from "react-icons/lu";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Header: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { data: session } = useSession();
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
   };
 
   return (
@@ -25,23 +35,29 @@ const Header: React.FC = () => {
               <IconLogo />
             </Link>
             <div className="ms-auto w-full hidden lg:block">
-              <input
-                type="text"
-                id="search"
-                placeholder="Search..."
-                className="border border-gray-300 p-1 w-full rounded-lg"
-              />
+              <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Cari berita disini..."
+                  className="border border-gray-300 py-1 px-3 w-full rounded-lg"
+                />
+                <button type="submit" className="hidden"></button>
+              </form>
             </div>
             <div className="flex text-3xl text-gray-700 ms-auto lg:w-[10%] items-center gap-4">
               {session ? (
                 <div className="relative">
-                  <Image
-                    width={100}
-                    height={100}
-                    src={session.user.image || "/default-avatar.png"}
-                    alt={session.user.name || "User"}
-                    className="w-8 h-8 rounded-full  object-cover"
-                  />
+                  <Link href="/profile">
+                    <Image
+                      width={100}
+                      height={100}
+                      src={session.user.image || "/default-avatar.png"}
+                      alt={session.user.name || "User"}
+                      className="w-8 h-8 rounded-full  object-cover"
+                    />
+                  </Link>
                 </div>
               ) : (
                 <Link href="/signin">
