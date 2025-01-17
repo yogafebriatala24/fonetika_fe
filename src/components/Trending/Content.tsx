@@ -1,5 +1,6 @@
 import { ArtikelListType, ArtikelType } from "@/types/ArtikelType";
 import { formatDateSecond } from "@/utils/FormatDate";
+import { da } from "date-fns/locale";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,13 +12,6 @@ export default function ContentTrending({
 }: {
   listBerita: ArtikelListType;
 }) {
-  const truncateText = (text: string, wordLimit: number) => {
-    const words = text.split(" ");
-    if (words.length > wordLimit) {
-      return words.slice(0, wordLimit).join(" ") + "...";
-    }
-    return text;
-  };
   const maxItems = 4;
   const limitedBerita = listBerita.data?.slice(0, maxItems);
 
@@ -51,17 +45,20 @@ export default function ContentTrending({
                 </span>
               </h1>
             </div>
-            <p className="text-[11px]  mt-3 text-gray-400 lg:hidden">
-              {formatDateSecond(data.created_at)}
+            <p className="flex flex-col   text-[11px]  mt-2 text-gray-400 lg:hidden">
+              <span>{formatDateSecond(data.created_at)}</span>
+              <span className="font-semibold mt-1  text-primary">
+                {data.kategori.nama}
+              </span>
             </p>
-            <div className="">
+            <div className="mt-1">
               <Link
                 prefetch={true}
                 href={`/detail-berita/${data.slug}`}
                 className="focus:underline"
               >
-                <p className="lg:mt-0  mt-2 font-medium  lg:font-semibold  lg:max-w-full max-w-[190px]">
-                  {truncateText(data.nama, 15)}
+                <p className="lg:mt-0   font-medium line-clamp-2  lg:font-semibold  lg:max-w-full max-w-[190px]">
+                  {data.nama}
                 </p>
               </Link>
               <p className="flex  items-center text-[11px]  mt-2 text-gray-400 lg:block max-lg:hidden">

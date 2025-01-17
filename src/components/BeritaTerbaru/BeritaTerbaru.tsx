@@ -43,14 +43,6 @@ export default function BeritaTerbaru({
     }
   };
 
-  const truncateText = (text: string, wordLimit: number) => {
-    const words = text.split(" ");
-    if (words.length > wordLimit) {
-      return words.slice(0, wordLimit).join(" ") + "...";
-    }
-    return text;
-  };
-
   return (
     <div className="mt-4 mx-4">
       <div className="flex items-center gap-2 text-primary text-xl font-bold">
@@ -83,9 +75,9 @@ export default function BeritaTerbaru({
                 <Link
                   href={`/detail-berita/${data.slug}`}
                   prefetch={true}
-                  className="w-full lg:text-base md:text-xl text-[14px] font-semibold focus:underline"
+                  className="w-full lg:text-base md:text-xl text-[14px] font-semibold focus:underline line-clamp-2"
                 >
-                  {truncateText(data.nama, 12)}
+                  {data.nama}
                 </Link>
               </div>
               <div className="flex items-center gap-2 text-[13px] mb-2 mt-1">
@@ -99,7 +91,10 @@ export default function BeritaTerbaru({
               </div>
 
               <div className="flex items-center gap-2 text-[11px] text-gray-400">
-                <span>{formatDateSecond(data.created_at)}</span>
+                <span>{formatDateSecond(data.created_at)}</span>{" "}
+                <span className="font-semibold text-primary">
+                  {data.kategori.nama}
+                </span>
               </div>
             </div>
             <div className="col-span-12 mt-2">

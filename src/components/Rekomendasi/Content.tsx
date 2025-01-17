@@ -43,13 +43,16 @@ export default function ContentRekomendasi({
                   </span>
                 </h1>
               </div>
-              <p className="mt-2 mb-2 text-[11px] text-gray-400">
-                {formatDateSecond(data.created_at)}
-              </p>
+              <div className="flex items-center gap-2 text-[11px] text-gray-400">
+                <span>{formatDateSecond(data.created_at)}</span>{" "}
+                <span className="font-semibold text-primary">
+                  {data.kategori.nama}
+                </span>
+              </div>
               <Link
                 prefetch={true}
                 href={`/detail-berita/${data.slug}`}
-                className=" font-semibold text-lg focus:underline"
+                className=" font-semibold text-lg focus:underline mt-2 line-clamp-2"
               >
                 {data.nama}
               </Link>

@@ -20,23 +20,16 @@ export default function ContentHeadline({
         src: berita.url_image,
         title: berita.nama,
         date: berita.created_at,
-        content: berita.content, // Pastikan berita memiliki properti content
+        content: berita.content,
         slug: berita.slug,
+        kategori: berita.kategori.nama,
         width: 200,
         height: 100,
       }))
     : [];
 
-  const maxItems = 3;
+  const maxItems = 2;
   const limitedBerita = listBerita.data?.slice(0, maxItems);
-
-  const truncateText = (text: string, wordLimit: number) => {
-    const words = text.split(" ");
-    if (words.length > wordLimit) {
-      return words.slice(0, wordLimit).join(" ") + "...";
-    }
-    return text;
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,7 +41,7 @@ export default function ContentHeadline({
 
   return (
     <div className="w-full relative mt-4  bg-gray-50 p-4 rounded">
-      <h1 className="font-bold text-xl  text-primary">Headline</h1>
+      <h1 className="font-bold text-xl  text-primary">Berita Utama</h1>
       <IconLine />
       <div className="relative w-full overflow-hidden mt-4">
         <div
@@ -85,13 +78,13 @@ export default function ContentHeadline({
                 </div>
                 <div className="flex items-center gap-2 text-[11px] font-normal mb-2 text-gray-500">
                   <p className="">{formatDateSecond(data.date)}</p>
-                  <p className="font-semibold text-primary">Politik</p>
+                  <p className="font-semibold text-primary">{data.kategori}</p>
                 </div>
 
                 <Link
                   href={`/detail-berita/${data.slug}`}
                   prefetch={true}
-                  className="focus:underline md:text-2xl text-xl"
+                  className="focus:underline md:text-2xl text-xl line-clamp-2"
                 >
                   {data.title}
                 </Link>
@@ -106,7 +99,7 @@ export default function ContentHeadline({
           <div className="border-b p-2" key={data.slug}>
             <Link
               href={`/detail-berita/${data.slug}`}
-              className="font-medium text-[17px] md:text-lg focus:underline"
+              className="font-medium text-[17px] md:text-lg focus:underline line-clamp-2"
             >
               {data.nama}
             </Link>
@@ -121,7 +114,7 @@ export default function ContentHeadline({
             </div>
             <div className="flex items-center gap-2 text-[11px] font-normal mb-2 text-gray-500">
               <p className="">{formatDateSecond(data.created_at)}</p>
-              <p className="font-semibold text-primary">Politik</p>
+              <p className="font-semibold text-primary">{data.kategori.nama}</p>
             </div>
           </div>
         ))}
