@@ -2,56 +2,26 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { signIn } from "next-auth/react";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import * as yup from "yup";
+import { useFormik } from "formik";
+import { signIn } from "next-auth/react";
+import { RegisterType } from "@/types/RegisterType";
+import Link from "next/link";
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    phone: "",
-    image: null as File | null,
-  });
-
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files ? e.target.files[0] : null;
-    setFormData((prev) => ({
-      ...prev,
-      image: file,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.image) {
-      setError("Image is required.");
-      return;
-    }
-
+  const registerUser = async (values: RegisterType) => {
     setLoading(true);
-    setError(null);
 
     const form = new FormData();
-    form.append("name", formData.name);
-    form.append("email", formData.email);
-    form.append("password", formData.password);
-    form.append("phone", formData.phone);
-    form.append("image", formData.image);
+    form.append("name", values.name);
+    form.append("email", values.email);
+    form.append("password", values.password);
+    form.append("phone", values.phone);
 
     try {
       const response = await fetch(
@@ -66,16 +36,14 @@ export default function RegisterPage() {
 
       if (response.ok) {
         const loginResponse = await signIn("credentials", {
-          email: formData.email,
-          password: formData.password,
+          email: values.email,
+          password: values.password,
           redirect: false,
         });
 
         if (loginResponse?.error) {
-          setError(loginResponse.error);
           toast.error(loginResponse.error, {
             autoClose: 2000,
-            onClose: () => {},
           });
         } else {
           toast.success("Registrasi berhasil!", {
@@ -86,112 +54,154 @@ export default function RegisterPage() {
           });
         }
       } else {
-        setError(data.message || "Registrasigagal!");
         toast.error(data.message || "Registrasi gagal!", {
           autoClose: 2000,
-          onClose: () => {},
         });
       }
     } catch (error) {
-      setError("An error occurred. Please try again.");
       toast.error("An error occurred. Please try again.", {
         autoClose: 2000,
-        onClose: () => {},
       });
     } finally {
       setLoading(false);
     }
   };
 
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
+      phone: "",
+    },
+    validationSchema: yup.object().shape({
+      name: yup.string().required("Nama wajib diisi!"),
+      email: yup
+        .string()
+        .email("Email tidak valid!")
+        .required("Email wajib diisi!"),
+      password: yup
+        .string()
+        .min(8, "Passowrd harus minimal 8 karakter!")
+        .required("Password wajib diisi!")
+        .matches(
+          /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@!#%^&*()_+=-]{8,}$/,
+          "Passowrd harus memiliki kombinasi huruf dan angka!"
+        ),
+      phone: yup.string().required("Nomor telepon wajib diisi!"),
+    }),
+    onSubmit: registerUser,
+  });
+
   return (
     <>
-      <div className=" mx-4 p-4 mt-20 shadow rounded bg-white mb-10">
-        <h1 className="text-2xl font-semibold text-center">Register</h1>
-        {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
-        <form onSubmit={handleSubmit} className="mt-2 space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm">
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded-xl mt-1"
-              required
-            />
+      <div className="flex justify-center lg:mt-10">
+        <div className="mx-4 p-4 mt-20 shadow rounded bg-white mb-10 w-[400px] ">
+          <h1 className="text-2xl font-semibold text-center">Form Register</h1>
+          <form onSubmit={formik.handleSubmit} className="mt-2 space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm">
+                Nama Lengkap
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+              />
+              {formik.touched.name && formik.errors.name ? (
+                <div className="text-red-500 text-sm mt-1">
+                  {formik.errors.name}
+                </div>
+              ) : null}
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div className="text-red-500 text-sm mt-1">
+                  {formik.errors.email}
+                </div>
+              ) : null}
+            </div>
+            <div>
+              <label htmlFor="password" className="block text-sm">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="text-red-500 text-sm mt-1">
+                  {formik.errors.password}
+                </div>
+              ) : null}
+            </div>
+            <div>
+              <label htmlFor="phone" className="block text-sm">
+                Phone
+              </label>
+              <input
+                id="phone"
+                name="phone"
+                type="text"
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+              />
+              {formik.touched.phone && formik.errors.phone ? (
+                <div className="text-red-500 text-sm mt-1">
+                  {formik.errors.phone}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="text-center">
+              <button
+                type="submit"
+                className={`w-full p-2 mt-4 text-white bg-primary rounded-xl ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading ? "Registering..." : "Register"}
+              </button>
+            </div>
+          </form>
+          <div className="mt-6">
+            <p className="text-sm text-center">
+              Sudah punya akun?{" "}
+              <Link
+                href="/signin"
+                className="font-medium text-primary hover:underline"
+              >
+                Login disini
+              </Link>
+            </p>
           </div>
-          <div>
-            <label htmlFor="email" className="block text-sm">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded-xl mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="block text-sm">
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded-xl mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="phone" className="block text-sm">
-              Phone
-            </label>
-            <input
-              id="phone"
-              name="phone"
-              type="text"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="w-full p-2 border border-gray-300 rounded-xl mt-1"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="image" className="block text-sm">
-              Profile Image
-            </label>
-            <input
-              id="image"
-              name="image"
-              type="file"
-              onChange={handleFileChange}
-              className="w-full p-2 border border-gray-300 rounded-xl mt-1"
-              required
-            />
-          </div>
-          <div className="text-center">
-            <button
-              type="submit"
-              className={`w-full p-2 mt-4 text-white bg-primary rounded-xl ${
-                loading ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-              disabled={loading}
-            >
-              {loading ? "Registering..." : "Register"}
-            </button>
-          </div>
-        </form>
+        </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </>
   );
 }

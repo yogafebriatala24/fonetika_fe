@@ -1,8 +1,11 @@
-import { FaHome, FaFire, FaNewspaper, FaUser } from "react-icons/fa";
+import { FaHome, FaNewspaper, FaUser } from "react-icons/fa";
 import Link from "next/link";
 import { RiDiscussFill } from "react-icons/ri";
+import { useSession } from "next-auth/react";
+import { FaPenToSquare } from "react-icons/fa6";
 
 const BottomNav = () => {
+  const { data: session } = useSession();
   return (
     <nav className="fixed bottom-0 border-t left-0 w-full bg-white shadow-xl md:hidden rounded-t-xl">
       <ul className="flex justify-around py-3">
@@ -33,19 +36,23 @@ const BottomNav = () => {
         <li>
           <Link href="/">
             <p className="flex flex-col items-center active:scale-90 transition-all duration-100 text-gray-700 hover:text-primary">
-              <FaFire className="h-6 w-6" />
-              <span className="text-xs">Populer</span>
+              <FaPenToSquare className="h-6 w-6" />
+              <span className="text-xs">Menulis</span>
             </p>
           </Link>
         </li>
-        <li>
-          <Link href="/profile">
-            <p className="flex flex-col items-center active:scale-90 transition-all duration-100 text-gray-700 hover:text-primary">
-              <FaUser className="h-6 w-6" />
-              <span className="text-xs">Profile</span>
-            </p>
-          </Link>
-        </li>
+        {session ? (
+          <li>
+            <Link href={`/profile/${session.user.uuid}`}>
+              <p className="flex flex-col items-center active:scale-90 transition-all duration-100 text-gray-700 hover:text-primary">
+                <FaUser className="h-6 w-6" />
+                <span className="text-xs">Profile</span>
+              </p>
+            </Link>
+          </li>
+        ) : (
+          ""
+        )}
       </ul>
     </nav>
   );

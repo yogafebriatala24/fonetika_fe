@@ -45,6 +45,7 @@ export const authOptions: AuthOptions = {
           }
 
           const data = await res.json();
+          console.log(data);
 
           if (data?.data?.user?.email && data?.data?.token) {
             return {
@@ -52,8 +53,12 @@ export const authOptions: AuthOptions = {
               email: data.data.user.email,
               name: data.data.user.name,
               token: data.data.token,
-              image: data.data.user.image,
+              image_url: data.data.user.image_url,
               phone: data.data.user.phone,
+              uuid: data.data.user.uuid,
+              roles: data.data.user.roles,
+              sampul_url: data.data.user.sampul_url,
+              bio: data.data.user.bio,
             };
           }
 
@@ -70,8 +75,12 @@ export const authOptions: AuthOptions = {
         token.token = user.token;
         token.name = user.name;
         token.email = user.email;
-        token.image = user.image;
+        token.image_url = user.image_url;
         token.phone = user.phone;
+        token.uuid = user.uuid;
+        token.roles = user.roles;
+        token.sampul_url = user.sampul_url;
+        token.bio = user.bio;
       }
       return token;
     },
@@ -80,8 +89,12 @@ export const authOptions: AuthOptions = {
         session.user.token = token.token;
         session.user.name = token.name;
         session.user.email = token.email;
-        session.user.image = token.image;
+        session.user.image_url = token.image_url;
         session.user.phone = token.phone;
+        session.user.uuid = token.uuid;
+        session.user.roles = token.roles;
+        session.user.sampul_url = token.sampul_url;
+        session.user.bio = token.bio;
       }
       return session;
     },

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
 import { FaUserCircle } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { ArtikelListType, ArtikelType } from "@/types/ArtikelType";
+import { ArtikelListType } from "@/types/ArtikelType";
 
 export default function ContentHeadline({
   listBerita,

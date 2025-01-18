@@ -6,7 +6,6 @@ import { DetailBeritaType } from "@/types/DetailBerita";
 import { BeritaType } from "@/types/BeritaType";
 import Trending from "@/components/Trending/Trending";
 import TopikTrending from "@/components/TopikTrending/TopikTrending";
-import { useSession } from "next-auth/react";
 
 type Params = Promise<{ slug: string }>;
 
@@ -76,7 +75,7 @@ export default async function DetailBerita(props: { params: Params }) {
 
   return (
     <>
-      <div className="grid grid-cols-12 gap-2  mt-[70px] lg:mt-28">
+      <div className="grid grid-cols-12 gap-2  mt-[80px] lg:mt-28">
         <ContentDetailBerita detailBerita={detailBerita} />
         <div className="col-span-12 lg:col-span-5  sticky-wrapper">
           <div className="sticky top-20" id="trending-section">
@@ -94,7 +93,6 @@ export async function generateStaticParams() {
     const beritaList = await fetchBeritaList();
 
     if (!Array.isArray(beritaList)) {
-      console.error("Daftar berita bukan array");
       return [];
     }
 
@@ -105,6 +103,6 @@ export async function generateStaticParams() {
       }));
   } catch (error) {
     console.error("Error saat generate static params:", error);
-    return []; // Kembalikan array kosong daripada gagal build
+    return [];
   }
 }

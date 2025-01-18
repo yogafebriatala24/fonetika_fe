@@ -5,9 +5,13 @@ declare module "next-auth" {
     user: {
       token: string;
       name: string;
-      image: string;
+      image_url: string;
       phone: string;
       email: string;
+      uuid: string;
+      roles: string;
+      sampul_url: string;
+      bio: string;
     } & DefaultSession["user"];
   }
 
@@ -15,8 +19,12 @@ declare module "next-auth" {
     token: string;
     name: string;
     email: string;
-    image: string;
+    image_url: string;
     phone: string;
+    uuid: string;
+    roles: string;
+    sampul_url: string;
+    bio: string;
   }
 
   interface JWT {
@@ -24,8 +32,12 @@ declare module "next-auth" {
     user: {
       name: string;
       email: string;
-      image: string;
+      image_url: string;
       phone: string;
+      uuid: string;
+      roles: string;
+      sampul_url: string;
+      bio: string;
     };
   }
 }

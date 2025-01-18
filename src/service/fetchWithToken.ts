@@ -1,25 +1,32 @@
-import { getSession } from "next-auth/react";
+import { authOptions } from "@/libs/auth";
+import { getServerSession } from "next-auth";
 
-const fetchClient = async (url: string, options: RequestInit = {}) => {
-  const session = await getSession();
-  const token = session?.user.token;
+const fetchWithToken = async (
+  url: string,
+  req: RequestInit = {},
+  context?: any
+) => {
+  const session = await getServerSession(authOptions);
 
+  const token = session?.user?.token;
+  if (!token) {
+    throw new Error("Token tidak ditemukan");
+  }
   const headers = {
     "Content-Type": "application/json",
-    ...options.headers,
-    ...(token && { Authorization: `Bearer ${token}` }),
+    Authorization: `Bearer ${token}`,
+    ...req.headers,
   };
-
   const response = await fetch(url, {
-    ...options,
+    ...req,
     headers,
   });
 
   if (!response.ok) {
-    throw new Error("Network response was not ok");
+    throw new Error(`Request failed: `);
   }
 
   return response.json();
 };
 
-export default fetchClient;
+export default fetchWithToken;
