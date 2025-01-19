@@ -16,7 +16,6 @@
 
 # next.js
 /.next/
-/.clinic/
 /out/
 
 # production
