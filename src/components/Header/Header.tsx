@@ -53,9 +53,9 @@ const Header: React.FC = () => {
                     <Image
                       width={100}
                       height={100}
-                      src={session.user.image || "/default-avatar.png"}
+                      src={session.user.image || "/user.jpg"}
                       alt={session.user.name || "User"}
-                      className="w-8 h-8 rounded-full  object-cover active:scale-90 transition-all duration-100"
+                      className="w-9 h-9 rounded-full  object-cover active:scale-90 transition-all duration-100"
                     />
                   </Link>
                 </div>

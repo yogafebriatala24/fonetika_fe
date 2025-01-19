@@ -9,7 +9,7 @@ export default function BacaGoogleNews() {
         <SiGooglenews className="text-blue-400 text-4xl" />
         <span className="text-sm lg:text-base text font-semibold">
           Baca juga berita Fonetika di{" "}
-          <Link href={"/"} className="text-primary">
+          <Link href={"/"} className="text-primary underline">
             Google News
           </Link>
         </span>

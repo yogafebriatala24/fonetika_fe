@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "fenotika.nusacitateknologi.com",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "ui-avatars.com",
+        pathname: "**",
+      },
     ],
   },
   experimental: {

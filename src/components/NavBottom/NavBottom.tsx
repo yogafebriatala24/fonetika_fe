@@ -26,7 +26,7 @@ const BottomNav = () => {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/forum">
             <p className="flex flex-col items-center active:scale-90 transition-all duration-100 text-gray-700 hover:text-primary">
               <RiDiscussFill className="h-6 w-6" />
               <span className="text-xs">Forum</span>
@@ -34,7 +34,7 @@ const BottomNav = () => {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href={"/profile/create-berita"}>
             <p className="flex flex-col items-center active:scale-90 transition-all duration-100 text-gray-700 hover:text-primary">
               <FaPenToSquare className="h-6 w-6" />
               <span className="text-xs">Menulis</span>

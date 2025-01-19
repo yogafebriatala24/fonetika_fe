@@ -9,16 +9,16 @@ export default function BacaJuga() {
   };
   return (
     <>
-      <div className="mt-4 mb-4 bg-gray-50   p-2 flex gap-2">
+      <div className="mt-4 mb-4  text-[14px] bg-slate-50 rounded  p-2 flex gap-2">
         <h4 className="font-medium ">Baca juga:</h4>
         <div className="">
-          <p className="font-semibold text-primary lg:hidden ">
+          <p className="font-semibold text-primary lg:hidden  underline">
             {truncateText(
               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-              30
+              33
             )}
           </p>
-          <p className="font-semibold text-primary lg:block hidden">
+          <p className="font-semibold  text-primary lg:block hidden">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
             quae
           </p>

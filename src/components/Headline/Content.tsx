@@ -67,8 +67,14 @@ export default function ContentHeadline({
               <div className=" absolute bottom-0   bg-white w-full  p-2 text-black   font-bold">
                 <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
                   <h1 className="flex items-center gap-1 font-medium">
-                    <FaUserCircle />
-                    FonetikaPOLITIK{" "}
+                    <Image
+                      src={"/user2.jpg"}
+                      alt="user"
+                      width={100}
+                      height={100}
+                      className="w-[20px] h-[20px] rounded-full object-cover"
+                    />
+                    Gusti Maulana
                     <span className="text-primary">
                       <RiVerifiedBadgeFill />
                     </span>
@@ -106,8 +112,14 @@ export default function ContentHeadline({
             </Link>
             <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
               <h1 className="flex items-center gap-1 font-medium">
-                <FaUserCircle />
-                FonetikaTECH
+                <Image
+                  src={"/user3.jpg"}
+                  alt="user"
+                  width={100}
+                  height={100}
+                  className="w-[20px] h-[20px] rounded-full object-cover"
+                />
+                Jupri Nugroho
                 <span className="text-primary">
                   <RiVerifiedBadgeFill />
                 </span>

@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
     url.pathname.startsWith("/profile/") &&
     url.pathname.split("/").length === 3 &&
     !url.pathname.includes("/create-berita") &&
-    !url.pathname.includes("/edit-bio");
+    !url.pathname.includes("/edit-profile");
 
   if (token && (url.pathname === "/signin" || url.pathname === "/register")) {
     return NextResponse.redirect(new URL("/", req.url));
@@ -22,6 +22,12 @@ export async function middleware(req: NextRequest) {
   ) {
     return NextResponse.redirect(new URL("/signin", req.url));
   }
+  if (
+    !token &&
+    (url.pathname === "/forum" || url.pathname.startsWith("/forum"))
+  ) {
+    return NextResponse.redirect(new URL("/signin", req.url));
+  }
 
   if (!token && (url.pathname === "/signin" || url.pathname === "/register")) {
     return NextResponse.next();
@@ -30,8 +36,15 @@ export async function middleware(req: NextRequest) {
   if (!token && url.pathname.startsWith("/profile/") && !isPublicProfilePage) {
     return NextResponse.redirect(new URL("/signin", req.url));
   }
+
   if (
     req.nextUrl.pathname.startsWith("/profile") &&
+    req.nextUrl.searchParams.has("preview")
+  ) {
+    return NextResponse.next();
+  }
+  if (
+    req.nextUrl.pathname.startsWith("/forum") &&
     req.nextUrl.searchParams.has("preview")
   ) {
     return NextResponse.next();

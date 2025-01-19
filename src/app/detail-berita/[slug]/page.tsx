@@ -6,6 +6,7 @@ import { DetailBeritaType } from "@/types/DetailBerita";
 import { BeritaType } from "@/types/BeritaType";
 import Trending from "@/components/Trending/Trending";
 import TopikTrending from "@/components/TopikTrending/TopikTrending";
+import KolomKomentar from "@/components/KolomKomentar";
 
 type Params = Promise<{ slug: string }>;
 
@@ -80,10 +81,10 @@ export default async function DetailBerita(props: { params: Params }) {
         <div className="col-span-12 lg:col-span-5  sticky-wrapper">
           <div className="sticky top-20" id="trending-section">
             <Trending />
-            <TopikTrending />
           </div>
         </div>
       </div>
+      <KolomKomentar />
     </>
   );
 }

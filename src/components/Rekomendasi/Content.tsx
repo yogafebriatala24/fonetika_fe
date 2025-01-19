@@ -11,7 +11,7 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 export default function ContentRekomendasi({
   listBerita,
 }: {
-  listBerita: ArtikelListType;
+  listBerita: ArtikelType[];
 }) {
   return (
     <>
@@ -20,7 +20,7 @@ export default function ContentRekomendasi({
         <IconLine />
 
         <div className="grid grid-cols-12 gap-4 mt-4">
-          {listBerita.data.map((data) => (
+          {listBerita.map((data) => (
             <div
               className="col-span-12 md:col-span-6 lg:col-span-4"
               key={data.slug}

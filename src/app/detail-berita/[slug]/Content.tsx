@@ -12,6 +12,7 @@ import { stripTags } from "@/utils/useHtmlParser";
 import DOMPurify from "dompurify";
 import BacaJuga from "@/components/BacaJuga";
 import BacaGoogleNews from "@/components/BacaGoogleNews";
+import { BiLike, BiMessageRounded } from "react-icons/bi";
 
 export default function ContentDetailBerita({
   detailBerita,
@@ -61,6 +62,12 @@ export default function ContentDetailBerita({
             {formatDate(detailBerita.detail_artikel.created_at)}
           </p>
           <div className="flex items-center ms-auto text-gray-500 w-fit mt-2 gap-4 border border-gray-500 rounded py-2 px-4">
+            <button className="text-2xl active:scale-90 transition-all duration-100">
+              <BiLike />
+            </button>
+            <button className="text-2xl active:scale-90 transition-all duration-100">
+              <BiMessageRounded />
+            </button>
             <button
               className="text-xl active:scale-90 transition-all duration-100"
               onClick={handleFontSizeClick}
@@ -85,7 +92,7 @@ export default function ContentDetailBerita({
             {detailBerita.detail_artikel.nama}
           </p>
         </div>
-        <div className="mt-3 text-justify">
+        <div className="mt-3">
           {isClient && processedContent && (
             <span style={{ fontSize: `${fontSize}px` }}>
               <span className="font-bold">Fonetika.id - </span>

@@ -19,7 +19,7 @@ export default function ProfilePage() {
       <div className="mt-[60px]">
         <div className="bg-white relative shadow rounded">
           <Image
-            src={session?.user?.sampul_url || "/sampul.png"}
+            src={"/sampul.png"}
             width={700}
             height={100}
             alt="profile"
@@ -32,21 +32,13 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className="-mt-3 flex items-center gap-2 justify-start ml-2">
-          {session?.user.image_url ? (
-            <Image
-              src={session?.user.image_url}
-              width={100}
-              height={100}
-              alt="profile"
-              className="w-[90px] h-[90px] object-cover rounded-full border-4 border-white z-10"
-            />
-          ) : (
-            <div className="w-[90px] h-[90px] bg-gray-400 rounded-full  border-4 border-white z-10">
-              <div className="w-full h-full flex items-center justify-center">
-                <span className="text-white text-2xl">??</span>
-              </div>
-            </div>
-          )}
+          <Image
+            src={"/user.jpg"}
+            width={90}
+            height={90}
+            alt="profile"
+            className="w-[90px] h-[90px] object-cover rounded-full border-4 border-white z-10"
+          />
           <div className="">
             <p className="font-medium text-l mb-1 flex items-center gap-1">
               <span>{session?.user.name}</span>
@@ -72,20 +64,23 @@ export default function ProfilePage() {
             ""
           )}
           {session ? (
-            <button
-              onClick={handleCreateBerita}
-              className="bg-primary w-fit mt-4 flex active:scale-90 transition-transform  bg-opacity-80 text-sm items-center text-white gap-2 py-1 px-3 rounded-full"
-            >
-              Mulai Menulis
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleCreateBerita}
+                className="bg-primary w-fit mt-4 flex active:scale-90 transition-transform  bg-opacity-80 text-sm items-center text-white gap-2 py-1 px-3 rounded-full"
+              >
+                Mulai Menulis
+              </button>
+              <button
+                onClick={handleCreateBerita}
+                className="bg-gray-600 w-fit mt-4 flex active:scale-90 transition-transform  bg-opacity-80 text-sm items-center text-white gap-2 py-1 px-3 rounded-full"
+              >
+                Kelola Berita
+              </button>
+            </div>
           ) : (
-            <p className="text-xs mt-3  underline text-primary font-semibold">
-              Laporkan pengguna?
-            </p>
+            ""
           )}
-          <p className="text-sm mt-3  underline text-primary font-semibold">
-            Laporkan pengguna?
-          </p>
         </div>
       </div>
     </>

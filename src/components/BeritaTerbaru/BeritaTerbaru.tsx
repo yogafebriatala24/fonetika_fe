@@ -72,9 +72,15 @@ export default function BeritaTerbaru({
                 </Link>
               </div>
               <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
-                <h1 className="flex items-center gap-1 font-medium">
-                  <FaUserCircle />
-                  FonetikaNEWS{" "}
+                <h1 className="flex items-center gap-1 font-medium capitalize">
+                  <Image
+                    src={"/user.jpg"}
+                    alt="user"
+                    width={100}
+                    height={100}
+                    className="w-[20px] h-[20px] rounded-full object-cover"
+                  />
+                  Yoga Febriatala
                   <span className="text-primary">
                     <RiVerifiedBadgeFill />
                   </span>
