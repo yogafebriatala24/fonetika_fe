@@ -50,10 +50,10 @@ export default function ProfilePage() {
           </div>
           <div className="ms-auto mx-3">
             <Link
-              href="/profile/edit-profile"
+              href="/profile/kelola-profile"
               className="bg-primary flex active:scale-90 w-fit transition-transform  bg-opacity-80 text-xs items-center text-white gap-2 py-1 px-3 rounded-full"
             >
-              <FaPencilAlt /> Edit Profile
+              <FaPencilAlt /> Kelola Profile
             </Link>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function ProfilePage() {
                 onClick={handleCreateBerita}
                 className="bg-gray-600 w-fit mt-4 flex active:scale-90 transition-transform  bg-opacity-80 text-sm items-center text-white gap-2 py-1 px-3 rounded-full"
               >
-                Kelola Berita
+                Manajemen Berita
               </button>
             </div>
           ) : (

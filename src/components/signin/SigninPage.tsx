@@ -7,10 +7,13 @@ import * as yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
+import { IconEye, IconEyeOff } from "@/app/(auth)/icons";
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignInPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const formik = useFormik({
     initialValues: {
@@ -46,6 +49,10 @@ export default function SignInPage() {
       }
     },
   });
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   return (
     <>
@@ -85,11 +92,11 @@ export default function SignInPage() {
                     </p>
                   )}
                 </div>
-                <div>
+                <div className="mb-2">
                   <label htmlFor="password">Kata sandi</label>
                   <div className="relative">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       id="password"
                       value={formik.values.password}
@@ -103,6 +110,13 @@ export default function SignInPage() {
                       }`}
                       required
                     />
+                    <button
+                      type="button"
+                      onClick={handleTogglePasswordVisibility}
+                      className="absolute inset-y-0 right-3 flex items-center"
+                    >
+                      {showPassword ? <IconEyeOff /> : <IconEye />}
+                    </button>
                   </div>
                   {formik.touched.password && formik.errors.password && (
                     <p className="text-red-500 text-sm mt-1">
@@ -110,6 +124,13 @@ export default function SignInPage() {
                     </p>
                   )}
                 </div>
+
+                <Link
+                  href={"/lupa-password"}
+                  className="font-medium  text-primary"
+                >
+                  Lupa kata sandi?
+                </Link>
 
                 <button
                   type="submit"
@@ -123,6 +144,14 @@ export default function SignInPage() {
                   {loading ? "Loading..." : "Login"}
                 </button>
               </form>
+              <button
+                className={`w-full flex gap-2 items-center justify-center  bg-white mt-2  font-medium rounded-xl text-sm px-5 py-3  active:scale-90 transition-transform`}
+              >
+                <span className="text-3xl">
+                  <FcGoogle />
+                </span>{" "}
+                Masuk dengan Google
+              </button>
               <div className="mt-6">
                 <p className="text-sm text-center">
                   Belum punya akun?{" "}

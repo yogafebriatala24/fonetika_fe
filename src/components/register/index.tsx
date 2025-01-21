@@ -9,10 +9,12 @@ import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import { RegisterType } from "@/types/RegisterType";
 import Link from "next/link";
+import { IconEye, IconEyeOff } from "@/app/(auth)/icons";
 
 export default function RegisterPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const registerUser = async (values: RegisterType) => {
     setLoading(true);
@@ -93,6 +95,10 @@ export default function RegisterPage() {
     onSubmit: registerUser,
   });
 
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
   return (
     <>
       <div className="flex justify-center lg:mt-10">
@@ -110,7 +116,7 @@ export default function RegisterPage() {
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+                className="w-full p-2 border bg-gray-50 border-gray-300 rounded-xl mt-1"
               />
               {formik.touched.name && formik.errors.name ? (
                 <div className="text-red-500 text-sm mt-1">
@@ -129,7 +135,7 @@ export default function RegisterPage() {
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+                className="w-full p-2 border bg-gray-50 border-gray-300 rounded-xl mt-1"
               />
               {formik.touched.email && formik.errors.email ? (
                 <div className="text-red-500 text-sm mt-1">
@@ -137,25 +143,32 @@ export default function RegisterPage() {
                 </div>
               ) : null}
             </div>
-            <div>
-              <label htmlFor="password" className="block text-sm">
-                Password
-              </label>
+            <label htmlFor="password" className="block text-sm">
+              Password
+            </label>
+            <div className="relative">
               <input
                 id="password"
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+                className="w-full p-2 border bg-gray-50 border-gray-300   block rounded-xl mt-1"
               />
-              {formik.touched.password && formik.errors.password ? (
-                <div className="text-red-500 text-sm mt-1">
-                  {formik.errors.password}
-                </div>
-              ) : null}
+              <button
+                type="button"
+                onClick={handleTogglePasswordVisibility}
+                className="absolute inset-y-1  right-3 flex items-center"
+              >
+                {showPassword ? <IconEyeOff /> : <IconEye />}
+              </button>
             </div>
+            {formik.touched.password && formik.errors.password ? (
+              <div className="text-red-500 text-sm mt-1">
+                {formik.errors.password}
+              </div>
+            ) : null}
             <div>
               <label htmlFor="phone" className="block text-sm">
                 Phone
@@ -167,7 +180,7 @@ export default function RegisterPage() {
                 value={formik.values.phone}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                className="w-full p-2 border border-gray-300 rounded-xl mt-1"
+                className="w-full p-2 border bg-gray-50 border-gray-300 rounded-xl mt-1"
               />
               {formik.touched.phone && formik.errors.phone ? (
                 <div className="text-red-500 text-sm mt-1">

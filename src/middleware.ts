@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
     url.pathname.startsWith("/profile/") &&
     url.pathname.split("/").length === 3 &&
     !url.pathname.includes("/create-berita") &&
-    !url.pathname.includes("/edit-profile");
+    !url.pathname.includes("/kelola-profile");
 
   if (token && (url.pathname === "/signin" || url.pathname === "/register")) {
     return NextResponse.redirect(new URL("/", req.url));
