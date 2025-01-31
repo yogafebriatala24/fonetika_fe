@@ -1,4 +1,9 @@
-import { ArtikelListType, ArtikelType } from "@/types/ArtikelType";
+import {
+  ArtikelListType,
+  ArtikelPopulerListType,
+  ArtikelPopulerType,
+  ArtikelType,
+} from "@/types/ArtikelType";
 import { formatDateSecond } from "@/utils/FormatDate";
 import { da } from "date-fns/locale";
 import Image from "next/image";
@@ -10,24 +15,21 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 export default function ContentTrending({
   listBerita,
 }: {
-  listBerita: ArtikelListType;
+  listBerita: ArtikelPopulerType[];
 }) {
-  const maxItems = 4;
-  const limitedBerita = listBerita.data?.slice(0, maxItems);
-
   return (
     <>
       <div className="flex lg:flex-col gap-3 overflow-x-auto lg:overflow-auto scrollbar">
-        {limitedBerita?.map((data) => (
-          <div className=" lg:flex lg:gap-4  lg:mb-4" key={data.slug}>
+        {listBerita?.map((data) => (
+          <div className=" lg:flex lg:gap-4  lg:mb-4" key={data.artikel.slug}>
             <Link
               prefetch={true}
-              href={`/detail-berita/${data.slug}`}
+              href={`/detail-berita/${data.artikel.slug}`}
               className="flex-shrink-0 focus:scale-95 focus:transition-all"
             >
               <Image
-                src={data.url_image}
-                alt={data.nama}
+                src={data.artikel.url_image}
+                alt={data.artikel.nama}
                 width={70}
                 height={100}
                 priority
@@ -45,23 +47,23 @@ export default function ContentTrending({
               </h1>
             </div>
             <p className="flex flex-col   text-[12px]  mt-1 text-gray-400 lg:hidden">
-              <span>{formatDateSecond(data.created_at)}</span>
+              <span>{formatDateSecond(data.artikel.created_at)}</span>
               <span className="font-semibold  text-primary">
-                {data.kategori.nama}
+                {data.artikel.kategori.nama}
               </span>
             </p>
             <div className="mt-1">
               <Link
                 prefetch={true}
-                href={`/detail-berita/${data.slug}`}
+                href={`/detail-berita/${data.artikel.slug}`}
                 className="focus:underline"
               >
                 <p className="lg:mt-0   font-medium line-clamp-2  lg:font-semibold  lg:max-w-full max-w-[190px]">
-                  {data.nama}
+                  {data.artikel.nama}
                 </p>
               </Link>
               <p className="flex  items-center text-[12px]  mt-2 text-gray-400 lg:block max-lg:hidden">
-                <span>{formatDateSecond(data.created_at)}</span>
+                <span>{formatDateSecond(data.artikel.created_at)}</span>
                 <span className="font-semibold ml-2 text-primary">Health</span>
               </p>
               <span className="hidden lg:block text-[13px] mt-1">

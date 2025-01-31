@@ -1,5 +1,8 @@
 export function formatDate(created_at: string): string {
   const date = new Date(created_at);
+  if (isNaN(date.getTime())) {
+    return "Invalid date";
+  }
 
   const utcOffset = date.getTimezoneOffset() * 60000;
   const wibDate = new Date(date.getTime() + utcOffset + 7 * 3600000);
@@ -18,6 +21,11 @@ export function formatDate(created_at: string): string {
 
 export function formatDateSecond(created_at: string): string {
   const date = new Date(created_at);
+
+  if (isNaN(date.getTime())) {
+    return "Invalid date";
+  }
+
   const now = new Date();
 
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);

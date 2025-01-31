@@ -10,6 +10,7 @@ import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import ErrorComponent from "./error";
 import BottomNav from "../components/NavBottom/NavBottom";
 import { SessionProvider } from "next-auth/react";
+import NotificationPrompt from "@/components/Notif";
 
 const figtree = Figtree({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -43,6 +44,7 @@ export default function RootLayout({
             </div>
           </Providers>
         </SessionProvider>
+        <NotificationPrompt />
       </body>
     </html>
   );

@@ -43,7 +43,7 @@ const BottomNav = () => {
         </li>
         {session ? (
           <li>
-            <Link href={`/profile/${session.user.uuid}`}>
+            <Link href={`/profile/${session.user.username}`}>
               <p className="flex flex-col items-center active:scale-90 transition-all duration-100 text-gray-700 hover:text-primary">
                 <FaUser className="h-6 w-6" />
                 <span className="text-xs">Profile</span>

@@ -1,42 +1,48 @@
-import { authOptions } from "@/libs/auth";
-import { getServerSession } from "next-auth";
+import { getSession } from "next-auth/react";
 
-const fetchWithToken = async (
+export async function fetchWithToken(
   endpoint: string,
-  req: RequestInit = {},
-  context?: any
-) => {
-  const session = await getServerSession(authOptions);
-
+  options: RequestInit = {}
+): Promise<any> {
+  const session = await getSession();
   const token = session?.user?.token;
-  console.log(token);
-  if (!token) {
-    throw new Error("Token tidak ditemukan");
-  }
 
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  if (!baseUrl) {
-    throw new Error("Base URL tidak ditemukan");
-  }
+  const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoint}`;
 
-  const url = `${baseUrl}${endpoint}`;
-
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-    ...req.headers,
+  const defaultOptions: RequestInit = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
 
-  const response = await fetch(url, {
-    ...req,
-    headers,
-  });
-
-  if (!response.ok) {
-    throw new Error(`Request failed with status ${response.status}`);
+  const mergedOptions: RequestInit = {
+    ...defaultOptions,
+    ...options,
+    headers: {
+      ...defaultOptions.headers,
+      ...options.headers,
+    },
+  };
+  if (options.body instanceof FormData) {
+    if (
+      mergedOptions.headers &&
+      typeof mergedOptions.headers === "object" &&
+      !Array.isArray(mergedOptions.headers)
+    ) {
+      delete (mergedOptions.headers as Record<string, string>)["Content-Type"];
+    }
   }
 
-  return response.json();
-};
+  const res = await fetch(url, mergedOptions);
 
-export default fetchWithToken;
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(
+      errorData.message || `Failed to fetch data from ${endpoint}`
+    );
+  }
+
+  const data = await res.json();
+  return data;
+}

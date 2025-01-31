@@ -1,25 +1,22 @@
-import fetchWithToken from "./fetchWithToken";
+import { fetchData } from "./BaseUrl";
+import { fetchWithToken } from "./fetchWithToken";
 
-export async function fetchDetailUser(uuid: string) {
-  try {
-    const data = await fetchWithToken(`/profile/${uuid}`, {
-      next: { revalidate: 60 },
-      method: "GET",
-      headers: {
-        "Cache-Control": "public, max-age=20, stale-while-revalidate=60",
-      },
+export function fetchDetailUser(username: string): Promise<any> {
+  return fetchData(`/profile/${username}`)
+    .then((data) => {
+      if (!data || !data) {
+        throw new Error(`Invalid response format for username: ${username}`);
+      }
+      return data;
+    })
+    .catch((error) => {
+      console.error(
+        `Error in fetchDetailKategori for username ${username}:`,
+        error
+      );
+      throw error;
     });
-
-    return data.data;
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(error.message);
-    } else {
-      throw new Error("Error ambil detail user");
-    }
-  }
 }
-
 export async function updateProfile(profileData: Record<string, any>) {
   try {
     const data = await fetchWithToken(`/profile-update`, {

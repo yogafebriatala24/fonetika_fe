@@ -1,27 +1,34 @@
 import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function BacaJuga() {
+type BacaJugaProps = {
+  article: {
+    slug: string;
+    nama: string;
+    url_image: string;
+  };
+};
+
+export default function BacaJuga({ article }: BacaJugaProps) {
   const truncateText = (text: string, maxLength: number) => {
     if (text.length > maxLength) {
       return text.substring(0, maxLength) + "...";
     }
     return text;
   };
+
   return (
     <>
-      <div className="mt-4 mb-4  text-[14px] bg-slate-50 rounded  p-2 flex gap-2">
-        <h4 className="font-medium ">Baca juga:</h4>
+      <div className="mt-6 mb-4 text-[14px] bg-slate-50 rounded px-2 py-3 flex gap-2">
         <div className="">
-          <p className="font-semibold text-primary lg:hidden  underline">
-            {truncateText(
-              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.",
-              33
-            )}
-          </p>
-          <p className="font-semibold  text-primary lg:block hidden">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-            quae
-          </p>
+          <Link
+            href={`/detail-berita/${article.slug}`}
+            className="font-semibold  "
+          >
+            Baca juga:{" "}
+            <span className="text-primary underline"> {article.nama}</span>
+          </Link>
         </div>
       </div>
     </>

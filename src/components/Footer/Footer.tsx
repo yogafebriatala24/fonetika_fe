@@ -11,7 +11,7 @@ import {
 export default function Footer() {
   return (
     <>
-      <div className="border-t p-6  border-gray-200">
+      <div className="border-t p-4  border-gray-200">
         <div className="flex justify-center">
           <Image
             src={"/fonetika-logo.png"}
@@ -45,9 +45,9 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      {/* <div className="w-full bg-primary p-1 text-white flex justify-center text-xs">
-        <p>© 2025 PT Media Bersama | All rights reserved.</p>
-      </div> */}
+      <div className="w-full max-md:hidden  p-1 mb-2 flex justify-center text-xs">
+        <p>© 2025 PT Fonetika Digital Nusantara | All rights reserved.</p>
+      </div>
     </>
   );
 }

@@ -8,7 +8,7 @@ declare module "next-auth" {
       image_url: string;
       phone: string;
       email: string;
-      uuid: string;
+      username: string;
       roles: string;
       sampul_url: string;
       bio: string;
@@ -21,7 +21,7 @@ declare module "next-auth" {
     email: string;
     image_url: string;
     phone: string;
-    uuid: string;
+    username: string;
     roles: string;
     sampul_url: string;
     bio: string;
@@ -34,7 +34,7 @@ declare module "next-auth" {
       email: string;
       image_url: string;
       phone: string;
-      uuid: string;
+      username: string;
       roles: string;
       sampul_url: string;
       bio: string;

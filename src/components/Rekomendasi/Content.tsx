@@ -1,6 +1,5 @@
 import { IconLine } from "@/app/assets/icons";
-import { ArtikelListType, ArtikelType } from "@/types/ArtikelType";
-import { BeritaType } from "@/types/BeritaType";
+import { ArtikelType } from "@/types/ArtikelType";
 import { formatDateSecond } from "@/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +21,7 @@ export default function ContentRekomendasi({
         <div className="grid grid-cols-12 gap-4 mt-4">
           {listBerita.map((data) => (
             <div
-              className="col-span-12 md:col-span-6 lg:col-span-4"
+              className="col-span-12 md:col-span-6 lg:col-span-4 border-b"
               key={data.slug}
             >
               <Link prefetch={true} href={`/detail-berita/${data.slug}`}>
@@ -36,8 +35,14 @@ export default function ContentRekomendasi({
               </Link>
               <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
                 <h1 className="flex items-center gap-1 font-medium">
-                  <FaUserCircle />
-                  FonetikaSPORT
+                  <Image
+                    src={data.user.image_url || "/user.png"}
+                    alt="user"
+                    width={100}
+                    height={100}
+                    className="w-[20px] h-[20px] rounded-full object-cover"
+                  />
+                  <span>{data.user.name}</span>
                   <span className="text-primary">
                     <RiVerifiedBadgeFill />
                   </span>
@@ -56,7 +61,6 @@ export default function ContentRekomendasi({
               >
                 {data.nama}
               </Link>
-              <hr className="mt-2 mb-2" />
             </div>
           ))}
         </div>

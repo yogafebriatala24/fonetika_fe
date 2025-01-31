@@ -49,11 +49,11 @@ const Header: React.FC = () => {
             <div className="flex text-3xl text-gray-700 ms-auto lg:w-[10%] items-center gap-4">
               {session ? (
                 <div className="relative">
-                  <Link href={`/profile/${session.user.uuid}`}>
+                  <Link href={`/profile/${session.user.username}`}>
                     <Image
                       width={100}
                       height={100}
-                      src={session.user.image || "/user.jpg"}
+                      src={session.user.image_url || "/user.jpg"}
                       alt={session.user.name || "User"}
                       className="w-9 h-9 rounded-full  object-cover active:scale-90 transition-all duration-100"
                     />

@@ -1,15 +1,15 @@
 "use client";
-import React from "react";
+
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { signIn } from "next-auth/react";
 import { RegisterType } from "@/types/RegisterType";
 import Link from "next/link";
 import { IconEye, IconEyeOff } from "@/app/(auth)/icons";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -37,6 +37,8 @@ export default function RegisterPage() {
       const data = await response.json();
 
       if (response.ok) {
+        toast.success("Registrasi berhasil!");
+
         const loginResponse = await signIn("credentials", {
           email: values.email,
           password: values.password,
@@ -44,26 +46,14 @@ export default function RegisterPage() {
         });
 
         if (loginResponse?.error) {
-          toast.error(loginResponse.error, {
-            autoClose: 2000,
-          });
         } else {
-          toast.success("Registrasi berhasil!", {
-            autoClose: 2000,
-            onClose: () => {
-              router.push("/");
-            },
-          });
+          router.push("/");
         }
       } else {
-        toast.error(data.message || "Registrasi gagal!", {
-          autoClose: 2000,
-        });
+        toast.error("Terjadi kesalahan saat registrasi!");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.", {
-        autoClose: 2000,
-      });
+      toast.error("Terjadi kesalahan saat registrasi!");
     } finally {
       setLoading(false);
     }
@@ -101,6 +91,12 @@ export default function RegisterPage() {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+      />
+
       <div className="flex justify-center lg:mt-10">
         <div className="mx-4 p-4 mt-20 shadow rounded bg-white mb-10 w-[400px] ">
           <h1 className="text-2xl font-semibold text-center">Form Register</h1>
@@ -159,7 +155,7 @@ export default function RegisterPage() {
               <button
                 type="button"
                 onClick={handleTogglePasswordVisibility}
-                className="absolute inset-y-1  right-3 flex items-center"
+                className="absolute inset-y-1 right-3 flex items-center"
               >
                 {showPassword ? <IconEyeOff /> : <IconEye />}
               </button>
@@ -213,7 +209,6 @@ export default function RegisterPage() {
             </p>
           </div>
         </div>
-        <ToastContainer />
       </div>
     </>
   );

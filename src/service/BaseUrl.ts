@@ -18,6 +18,7 @@ export async function fetchData(
   }
 
   const data = await res.json();
+  console.log(data);
 
   if (!data || !data.data) {
     throw new Error("Invalid response format from API");

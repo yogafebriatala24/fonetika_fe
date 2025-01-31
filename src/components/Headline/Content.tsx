@@ -4,7 +4,6 @@ import Image from "next/image";
 import { formatDateSecond } from "@/utils/FormatDate";
 import Link from "next/link";
 import { IconLine } from "@/app/assets/icons";
-import { FaUserCircle } from "react-icons/fa";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { ArtikelListType } from "@/types/ArtikelType";
 
@@ -25,6 +24,9 @@ export default function ContentHeadline({
         kategori: berita.kategori.nama,
         width: 200,
         height: 100,
+        profile: berita.user.image_url,
+        username: berita.user.username,
+        user: berita.user.name,
       }))
     : [];
 
@@ -51,7 +53,7 @@ export default function ContentHeadline({
           {data.map((data) => (
             <div
               key={data.slug}
-              className="w-full flex-shrink-0 relative h-[300px] lg:h-[400px]"
+              className="w-full flex-shrink-0 relative h-[350px] lg:h-[450px]"
             >
               <Link href={`/detail-berita/${data.slug}`} prefetch={true}>
                 <Image
@@ -64,21 +66,23 @@ export default function ContentHeadline({
                 />
               </Link>
 
-              <div className=" absolute bottom-0   bg-white w-full  p-2 text-black   font-bold">
+              <div className=" absolute bottom-0   bg-white  w-full  p-2 text-black   font-bold">
                 <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
-                  <h1 className="flex items-center gap-1 font-medium">
-                    <Image
-                      src={"/user2.jpg"}
-                      alt="user"
-                      width={100}
-                      height={100}
-                      className="w-[20px] h-[20px] rounded-full object-cover"
-                    />
-                    Gusti Maulana
-                    <span className="text-primary">
-                      <RiVerifiedBadgeFill />
-                    </span>
-                  </h1>
+                  <Link href={`/profile/${data.username}`}>
+                    <h1 className="flex items-center gap-1 font-medium">
+                      <Image
+                        src={data.profile || "/user.png"}
+                        alt="user"
+                        width={100}
+                        height={100}
+                        className="w-[20px] h-[20px] rounded-full object-cover"
+                      />
+                      {data.user}
+                      <span className="text-primary">
+                        <RiVerifiedBadgeFill />
+                      </span>
+                    </h1>
+                  </Link>
                   <p className="bg-secondary text-[10px] rounded px-2">
                     Hot News
                   </p>
@@ -106,24 +110,26 @@ export default function ContentHeadline({
           <div className="border-b p-2" key={data.slug}>
             <Link
               href={`/detail-berita/${data.slug}`}
-              className="font-medium text-[17px] md:text-lg focus:underline line-clamp-2"
+              className="font-semibold text-[17px] md:text-lg focus:underline line-clamp-2"
             >
               {data.nama}
             </Link>
             <div className="flex items-center gap-2 text-[13px] mb-1 mt-2">
-              <h1 className="flex items-center gap-1 font-medium">
-                <Image
-                  src={"/user3.jpg"}
-                  alt="user"
-                  width={100}
-                  height={100}
-                  className="w-[20px] h-[20px] rounded-full object-cover"
-                />
-                Jupri Nugroho
-                <span className="text-primary">
-                  <RiVerifiedBadgeFill />
-                </span>
-              </h1>
+              <Link href={`/profile/${data.user.username}`}>
+                <h1 className="flex items-center gap-1 font-medium">
+                  <Image
+                    src={data.user.image_url || "/user3.jpg"}
+                    alt="user"
+                    width={100}
+                    height={100}
+                    className="w-[20px] h-[20px] rounded-full object-cover"
+                  />
+                  {data.user.name}
+                  <span className="text-primary">
+                    <RiVerifiedBadgeFill />
+                  </span>
+                </h1>
+              </Link>
             </div>
             <div className="flex items-center gap-2 text-[12px] font-normal text-gray-500">
               <p className="">{formatDateSecond(data.created_at)}</p>

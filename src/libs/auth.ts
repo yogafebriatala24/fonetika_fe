@@ -55,7 +55,7 @@ export const authOptions: AuthOptions = {
               token: data.data.token,
               image_url: data.data.user.image_url,
               phone: data.data.user.phone,
-              uuid: data.data.user.uuid,
+              username: data.data.user.username,
               roles: data.data.user.roles,
               sampul_url: data.data.user.sampul_url,
               bio: data.data.user.bio,
@@ -77,7 +77,7 @@ export const authOptions: AuthOptions = {
         token.email = user.email;
         token.image_url = user.image_url;
         token.phone = user.phone;
-        token.uuid = user.uuid;
+        token.username = user.username;
         token.roles = user.roles;
         token.sampul_url = user.sampul_url;
         token.bio = user.bio;
@@ -91,7 +91,7 @@ export const authOptions: AuthOptions = {
         session.user.email = token.email;
         session.user.image_url = token.image_url;
         session.user.phone = token.phone;
-        session.user.uuid = token.uuid;
+        session.user.username = token.username;
         session.user.roles = token.roles;
         session.user.sampul_url = token.sampul_url;
         session.user.bio = token.bio;

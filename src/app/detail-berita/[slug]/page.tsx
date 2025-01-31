@@ -5,8 +5,10 @@ import { notFound } from "next/navigation";
 import { DetailBeritaType } from "@/types/DetailBerita";
 import { BeritaType } from "@/types/BeritaType";
 import Trending from "@/components/Trending/Trending";
-import TopikTrending from "@/components/TopikTrending/TopikTrending";
 import KolomKomentar from "@/components/KolomKomentar";
+import BeritaTerkait from "@/components/BeritaTerkait";
+import TopikTrending from "@/components/TopikTrending/TopikTrending";
+import { fetchKomentarList } from "@/service/ApiKomentar";
 
 type Params = Promise<{ slug: string }>;
 
@@ -42,9 +44,7 @@ export async function generateMetadata({
       description: detailBerita.detail_artikel.content || "",
       images: [
         {
-          url: detailBerita.detail_artikel.url_image,
-          width: 1200,
-          height: 630,
+          url: `${detailBerita.detail_artikel.url_image}?v=${Date.now()}`,
         },
       ],
     },
@@ -62,6 +62,7 @@ export default async function DetailBerita(props: { params: Params }) {
   const slug = params.slug;
 
   let detailBerita: DetailBeritaType | null = null;
+  const listKomentar = await fetchKomentarList(slug);
 
   try {
     detailBerita = await fetchDetailBerita(slug);
@@ -81,10 +82,12 @@ export default async function DetailBerita(props: { params: Params }) {
         <div className="col-span-12 lg:col-span-5  sticky-wrapper">
           <div className="sticky top-20" id="trending-section">
             <Trending />
+            <TopikTrending />
           </div>
         </div>
+        <BeritaTerkait artikelTerkait={detailBerita.artikel_terkait} />
       </div>
-      <KolomKomentar />
+      <KolomKomentar listKomentar={listKomentar} artikelSlug={slug} />
     </>
   );
 }

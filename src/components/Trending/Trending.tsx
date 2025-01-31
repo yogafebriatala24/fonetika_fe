@@ -1,13 +1,17 @@
 import React from "react";
 
 import ContentTrending from "./Content";
-import { fetchBeritaList } from "@/service/ApiDetailBerita";
+import { fetchBeritaList, fetchBeritaPopuler } from "@/service/ApiDetailBerita";
 import { IconLine } from "@/app/assets/icons";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
-import { ArtikelListType } from "@/types/ArtikelType";
+import {
+  ArtikelListType,
+  ArtikelPopulerListType,
+  ArtikelPopulerType,
+} from "@/types/ArtikelType";
 
 export default async function Trending() {
-  const listBerita: ArtikelListType = await fetchBeritaList();
+  const listPopuler: ArtikelPopulerType[] = await fetchBeritaPopuler();
 
   return (
     <>
@@ -27,7 +31,7 @@ export default async function Trending() {
           </p>
         </div>
         <div className="mt-4">
-          <ContentTrending listBerita={listBerita} />
+          <ContentTrending listBerita={listPopuler} />
           <hr className="mt-4" />
         </div>
       </div>

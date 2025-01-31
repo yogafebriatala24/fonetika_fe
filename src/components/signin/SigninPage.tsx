@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { IconEye, IconEyeOff } from "@/app/(auth)/icons";
 import { FcGoogle } from "react-icons/fc";
@@ -57,7 +55,7 @@ export default function SignInPage() {
   return (
     <>
       <section className="bg-white text-primarydark mx-4 lg:mx-0">
-        <div className="flex flex-col items-center justify-center mx-auto lg:py-0 lg:mt-[180px] lg:mb-44 mt-[130px] mb-24">
+        <div className="flex flex-col items-center justify-center mx-auto lg:py-0 lg:mt-[180px] lg:mb-40 mt-[100px] mb-24">
           <div className="w-full bg-white rounded-xl shadow sm:max-w-md xl:p-0">
             <div className="p-6">
               <h1 className="text-3xl mb-2 font-bold leading-tight tracking-tight md:text-[60px]">
@@ -167,7 +165,6 @@ export default function SignInPage() {
           </div>
         </div>
       </section>
-      <ToastContainer />
     </>
   );
 }

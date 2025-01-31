@@ -96,7 +96,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </button>
           )}
 
-          <p className="mt-2">PT. Media Bersama-sama aja</p>
+          <p className="mt-2">PT. Fonetika Digital Nusantara</p>
         </div>
       </motion.div>
     </div>
